@@ -1,0 +1,74 @@
+[
+    {
+        "3c4596ce-ffc2-4485-8abc-2bee9f5a670b": {
+            "Level 1a": 2.0,
+            "Level 1b": 2.2857142857142856,
+            "Level 1c": 1.8571428571428572,
+            "Level 1_overall": 2.0,
+            "Level 2a": 2.4285714285714284,
+            "Level 2b": 1.8571428571428572,
+            "Level 2c": 2.857142857142857,
+            "Level 2d": 2.5714285714285716,
+            "Level 2e": 2.857142857142857,
+            "Level 2_overall": 2.4285714285714284,
+            "Level 3a": 1.8571428571428572,
+            "Level 3b": 2.0,
+            "Level 3c": 1.8571428571428572,
+            "Level 3_overall": 1.8571428571428572
+        }
+    },
+    {
+        "44e70823-4c8e-401e-99f5-b15af8a86784": {
+            "Level 1a": 2.0,
+            "Level 1b": 2.0,
+            "Level 1c": 1.625,
+            "Level 1_overall": 2.0,
+            "Level 2a": 1.625,
+            "Level 2b": 1.625,
+            "Level 2c": 2.125,
+            "Level 2d": 2.0,
+            "Level 2e": 2.0,
+            "Level 2_overall": 1.75,
+            "Level 3a": 1.625,
+            "Level 3b": 2.0,
+            "Level 3c": 1.625,
+            "Level 3_overall": 1.625
+        }
+    },
+    {
+        "36ce99e3-cdef-4e45-8d51-0ee49a1f428a": {
+            "Level 1a": 2.3,
+            "Level 1b": 2.4,
+            "Level 1c": 2.1,
+            "Level 1_overall": 2.2,
+            "Level 2a": 2.0,
+            "Level 2b": 1.5,
+            "Level 2c": 2.6,
+            "Level 2d": 2.3,
+            "Level 2e": 2.6,
+            "Level 2_overall": 2.1,
+            "Level 3a": 2.1,
+            "Level 3b": 2.3,
+            "Level 3c": 1.8,
+            "Level 3_overall": 2.1
+        }
+    },
+    {
+        "aggregate_mean": {
+            "Level 1a": 2.1,
+            "Level 1b": 2.228571428571428,
+            "Level 1c": 1.8607142857142858,
+            "Level 1_overall": 2.066666666666667,
+            "Level 2a": 2.017857142857143,
+            "Level 2b": 1.6607142857142858,
+            "Level 2c": 2.5273809523809523,
+            "Level 2d": 2.2904761904761903,
+            "Level 2e": 2.4857142857142858,
+            "Level 2_overall": 2.092857142857143,
+            "Level 3a": 1.8607142857142858,
+            "Level 3b": 2.1,
+            "Level 3c": 1.760714285714286,
+            "Level 3_overall": 1.8607142857142858
+        }
+    }
+]
