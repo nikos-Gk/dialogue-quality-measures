@@ -1,0 +1,22 @@
+{
+    "2adbde81-135e-4b18-9049-05237ffcb70f": {
+        "entropy_number_of_messages": 0.9780416657815159,
+        "entropy_number_of_words": 0.9230866008143616
+    },
+    "3c4596ce-ffc2-4485-8abc-2bee9f5a670b": {
+        "entropy_number_of_messages": 0.7909769782074465,
+        "entropy_number_of_words": 0.7952463097280955
+    },
+    "44e70823-4c8e-401e-99f5-b15af8a86784": {
+        "entropy_number_of_messages": 0.9101415926479804,
+        "entropy_number_of_words": 0.9500145745649475
+    },
+    "36ce99e3-cdef-4e45-8d51-0ee49a1f428a": {
+        "entropy_number_of_messages": 0.9462651872218009,
+        "entropy_number_of_words": 0.95097248325374
+    },
+    "aggregate_mean": {
+        "entropy_number_of_messages": 0.9063563559646859,
+        "entropy_number_of_words": 0.9048299920902861
+    }
+}
