@@ -160,11 +160,8 @@ for dialog in dialogs:
         coord_user_2_allspeaker[user]=user_2_allspeakers
     output_dict[conversation_id]={'coord_allspeakers_2_user':coord_allspeakers_2_user,'coord_user_2_allspeaker':coord_user_2_allspeaker}
     
-###################################################################################
-#with open('coord_per_dialogue_'+timestr+'.json', 'w',encoding="utf-8") as fout:
-#    json.dump(output_dict, fout, ensure_ascii=False, indent=4)
-###################################################################################
-###################################################################################
-#with open('aggregate_datacord_'+timestr+'.json', 'w',encoding="utf-8") as fout:
-#    json.dump(aggregate_datacord, fout, ensure_ascii=False, indent=4)
-###################################################################################
+
+with open('coord_per_dialogue_'+timestr+'.json', 'w',encoding="utf-8") as fout:
+    json.dump(output_dict, fout, ensure_ascii=False, indent=4)
+with open('aggregate_datacord_'+timestr+'.json', 'w',encoding="utf-8") as fout:
+    json.dump(aggregate_datacord, fout, ensure_ascii=False, indent=4)
