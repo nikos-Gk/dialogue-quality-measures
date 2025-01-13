@@ -1,0 +1,1133 @@
+{
+    "2f5c5648-e539-4b2c-af6c-fbc24bf7aab5": {
+        "coord_allspeakers_2_user": {
+            "moderator": {
+                "marker_agg1": {},
+                "marker_agg2": {},
+                "marker_agg3": {},
+                "agg1": null,
+                "agg2": null,
+                "agg3": null,
+                "count_agg1": 0,
+                "count_agg2": 0,
+                "count_agg3": 0
+            },
+            "DarkShadow333": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.16666666666666674
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.16666666666666674
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.16666666666666674
+                },
+                "agg1": -0.020833333333333343,
+                "agg2": -0.020833333333333343,
+                "agg3": -0.020833333333333343,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.5,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.5,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.5,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0625,
+                "agg2": 0.0625,
+                "agg3": 0.0625,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "TechGuru88": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {},
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0
+                },
+                "agg1": null,
+                "agg2": null,
+                "agg3": 0.0,
+                "count_agg1": 0,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.5
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.5
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.5
+                },
+                "agg1": 0.0625,
+                "agg2": 0.0625,
+                "agg3": 0.0625,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        },
+        "coord_user_2_allspeaker": {
+            "moderator": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "DarkShadow333": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.33333333333333337,
+                    "preps": 0.0,
+                    "quant": -0.08333333333333331
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.33333333333333337,
+                    "preps": 0.0,
+                    "quant": -0.08333333333333331
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.33333333333333337,
+                    "preps": 0.0,
+                    "quant": -0.08333333333333331
+                },
+                "agg1": 0.03125000000000001,
+                "agg2": 0.03125000000000001,
+                "agg3": 0.03125000000000001,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "TechGuru88": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.09999999999999998
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.09999999999999998
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": -0.09999999999999998
+                },
+                "agg1": -0.012499999999999997,
+                "agg2": -0.012499999999999997,
+                "agg3": -0.012499999999999997,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {},
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": null,
+                "agg2": null,
+                "agg3": 0.0,
+                "count_agg1": 0,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.25,
+                    "preps": 0.0,
+                    "quant": -0.25
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.25,
+                    "preps": 0.0,
+                    "quant": -0.25
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.25,
+                    "preps": 0.0,
+                    "quant": -0.25
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        }
+    },
+    "3c4596ce-ffc2-4485-8abc-2bee9f5a670b": {
+        "coord_allspeakers_2_user": {
+            "QueenOfChaos": {
+                "marker_agg1": {},
+                "marker_agg2": {},
+                "marker_agg3": {},
+                "agg1": null,
+                "agg2": null,
+                "agg3": null,
+                "count_agg1": 0,
+                "count_agg2": 0,
+                "count_agg3": 0
+            },
+            "TechGuru88": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        },
+        "coord_user_2_allspeaker": {
+            "QueenOfChaos": {
+                "marker_agg1": {},
+                "marker_agg2": {},
+                "marker_agg3": {},
+                "agg1": null,
+                "agg2": null,
+                "agg3": null,
+                "count_agg1": 0,
+                "count_agg2": 0,
+                "count_agg3": 0
+            },
+            "TechGuru88": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        }
+    },
+    "36ce99e3-cdef-4e45-8d51-0ee49a1f428a": {
+        "coord_allspeakers_2_user": {
+            "QueenOfChaos": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "DarkShadow333": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        },
+        "coord_user_2_allspeaker": {
+            "QueenOfChaos": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "DarkShadow333": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "doing_my_best24": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "GoldenYears66": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "WiseOwl71": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        }
+    }
+}
