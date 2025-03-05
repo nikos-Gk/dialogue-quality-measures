@@ -1,0 +1,470 @@
+{
+    "028f869d-cf12-444a-aefc-62f8b6294acd": {
+        "entropy_number_of_messages": 0.8822716235122601,
+        "entropy_number_of_words": 0.7698529466380669
+    },
+    "0594f5fe-3bef-4642-8bb7-9ac356f44acb": {
+        "entropy_number_of_messages": 0.8116425976615914,
+        "entropy_number_of_words": 0.7981444366919629
+    },
+    "07bd0dbc-5591-4b1a-ba75-fb7a84c28986": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.8981879654438621
+    },
+    "095f8e2c-4c6b-45d3-983b-c0a836cd1d4e": {
+        "entropy_number_of_messages": 0.781251028453521,
+        "entropy_number_of_words": 0.8181227270216348
+    },
+    "0d4caeec-0d56-4074-a2df-4bf5012d1c19": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.8288126320198784
+    },
+    "11d555f4-f5e4-4f64-a0cd-f89f2b29553d": {
+        "entropy_number_of_messages": 0.8445906211970907,
+        "entropy_number_of_words": 0.8662721099878162
+    },
+    "139dce53-526b-4950-83cc-1ce060739e3e": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.904391358618333
+    },
+    "15f0ac31-1302-40eb-ba03-b486561cfd2b": {
+        "entropy_number_of_messages": 0.8268160539661173,
+        "entropy_number_of_words": 0.8466992005855015
+    },
+    "1809810f-858f-468c-b9a4-bbcf0523bcdb": {
+        "entropy_number_of_messages": 0.8288193572093743,
+        "entropy_number_of_words": 0.8600769047015805
+    },
+    "180eb804-cb97-4406-90e8-3e7a09f9c053": {
+        "entropy_number_of_messages": 0.8175437659065087,
+        "entropy_number_of_words": 0.8937883998860356
+    },
+    "1814b1e7-c4eb-4450-b1f0-e610c6867ad1": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.7678169256293752
+    },
+    "1b036ecb-5907-4257-a3eb-f564536938b2": {
+        "entropy_number_of_messages": 0.8175437659065087,
+        "entropy_number_of_words": 0.7960523989449841
+    },
+    "1b9af03a-f1c8-4a44-a8af-1145c839107b": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.7715293169400131
+    },
+    "1fa4c466-c4d5-4687-8768-c48b51d3a2bd": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.7858456773763838
+    },
+    "2085249e-2875-4d5b-a538-0b01f43880fa": {
+        "entropy_number_of_messages": 0.8159141063107807,
+        "entropy_number_of_words": 0.8845146616199936
+    },
+    "2792182e-9171-4d23-a5c2-6c1e5e65d5ad": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8191067160800535
+    },
+    "2c2254a1-01fc-498c-9754-f9022c082640": {
+        "entropy_number_of_messages": 0.8445906211970907,
+        "entropy_number_of_words": 0.9415021128868417
+    },
+    "2d97b29f-39b8-405c-b536-7ca08a060e8b": {
+        "entropy_number_of_messages": 0.7774162965334104,
+        "entropy_number_of_words": 0.7074763337840644
+    },
+    "2e536c84-7daa-4e12-b307-4e210953b7ea": {
+        "entropy_number_of_messages": 0.8116425976615914,
+        "entropy_number_of_words": 0.8316709618309538
+    },
+    "3250a893-1fe5-49de-9bc9-4779dfe68c13": {
+        "entropy_number_of_messages": 0.8987931696745561,
+        "entropy_number_of_words": 0.8695372938186587
+    },
+    "34418c58-f3e9-4dfd-94fe-de4dec288206": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.8383512969621655
+    },
+    "391ae05a-aaea-4445-ba16-02d78ea61b70": {
+        "entropy_number_of_messages": 0.8376868832769487,
+        "entropy_number_of_words": 0.9187676197454332
+    },
+    "3a7772b5-2338-4428-b688-a895d4911cec": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.922820067094216
+    },
+    "3b13bb6b-933c-4fac-a920-5d63c2537cfa": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.8000133078820908
+    },
+    "3bd075d6-b91b-4f60-9138-c33feff56d2c": {
+        "entropy_number_of_messages": 0.7880336774855088,
+        "entropy_number_of_words": 0.9316759161359718
+    },
+    "3c54ff28-8df5-46af-9a92-f6485d99aab6": {
+        "entropy_number_of_messages": 0.7917511047888155,
+        "entropy_number_of_words": 0.8821460067470734
+    },
+    "3c7a897a-7c1d-4208-868c-a5e3b1382245": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.7858495198897942
+    },
+    "3d355114-3f2e-4ff0-8bca-f3ca8b2f7464": {
+        "entropy_number_of_messages": 0.8115223291217244,
+        "entropy_number_of_words": 0.9350705502343438
+    },
+    "3f01371c-5cc3-4b78-a05b-2211637ac21c": {
+        "entropy_number_of_messages": 0.7962286042773314,
+        "entropy_number_of_words": 0.919804320987213
+    },
+    "3f2b7591-7433-4138-b716-e30c1c96fcd7": {
+        "entropy_number_of_messages": 0.8363914457984363,
+        "entropy_number_of_words": 0.9562647371001851
+    },
+    "3f5bfecb-272d-4535-a0f3-e2d083b80a5b": {
+        "entropy_number_of_messages": 0.8283672844848071,
+        "entropy_number_of_words": 0.8724267826394776
+    },
+    "3f96869b-6cc1-448e-ad1d-07d74985ffeb": {
+        "entropy_number_of_messages": 0.8115223291217244,
+        "entropy_number_of_words": 0.947510731386516
+    },
+    "416cc7ff-3394-44af-b09c-4af4b3dc0f30": {
+        "entropy_number_of_messages": 0.8094764474964824,
+        "entropy_number_of_words": 0.7935284024815858
+    },
+    "464105a7-8c06-4b22-9f4d-0996f51baa47": {
+        "entropy_number_of_messages": 0.7680872695141342,
+        "entropy_number_of_words": 0.7297321054008516
+    },
+    "49d3315e-05e3-47a3-981a-12e39c75d4e2": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.974865889219155
+    },
+    "4b0f71c3-126f-41a3-a304-0c587a6de2a4": {
+        "entropy_number_of_messages": 0.8213148390172832,
+        "entropy_number_of_words": 0.9071243925563922
+    },
+    "4d5061ed-8982-49b1-b4c1-5bb78977e931": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8240132305851353
+    },
+    "53160b89-5ba2-4239-a4ff-f9911466166f": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8630140569533221
+    },
+    "572252a2-ab55-4029-a99a-7fd786fd963f": {
+        "entropy_number_of_messages": 0.8123280830391466,
+        "entropy_number_of_words": 0.923029271306538
+    },
+    "577de68d-dc5d-4c5c-a7ae-948a6645fb1e": {
+        "entropy_number_of_messages": 0.8115223291217244,
+        "entropy_number_of_words": 0.817442789817329
+    },
+    "5904e50b-711c-4683-882d-afdbe40125ad": {
+        "entropy_number_of_messages": 0.8445906211970907,
+        "entropy_number_of_words": 0.9364840024024389
+    },
+    "5b5158f4-bc3d-4c99-84fe-c8c99a840fac": {
+        "entropy_number_of_messages": 0.8115223291217244,
+        "entropy_number_of_words": 0.9245271900100188
+    },
+    "63277108-b3f6-439e-a6e2-09515f909318": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.9152353195756592
+    },
+    "653caf7c-6c7f-4e07-92d1-07d7a7df4a70": {
+        "entropy_number_of_messages": 0.7680872695141342,
+        "entropy_number_of_words": 0.891326855376674
+    },
+    "66a3c1da-ac08-4ae0-8288-6aa3df78f5ae": {
+        "entropy_number_of_messages": 0.8511301010506309,
+        "entropy_number_of_words": 0.9867838830905106
+    },
+    "6771157a-1f77-4752-96d1-91215c77efb5": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.7875865744206343
+    },
+    "6b41030e-adfb-48ba-964d-63f3fb655c20": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8394687212588198
+    },
+    "6c74f8b6-b9f4-44b6-83fd-2db50c0a1d7f": {
+        "entropy_number_of_messages": 0.849022936214872,
+        "entropy_number_of_words": 0.8273783965191905
+    },
+    "6cdb31f4-3732-435a-9a20-f90807d19cdf": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.9470594849815422
+    },
+    "6da0587d-c0df-4074-9659-ab5f531ea32e": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.9079685958851713
+    },
+    "6f503e5f-09c4-42ad-90a8-f64acaee184f": {
+        "entropy_number_of_messages": 0.781251028453521,
+        "entropy_number_of_words": 0.7856444790593615
+    },
+    "6f8ff031-2968-4f0a-82bc-55d1bbcea580": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8670418913925798
+    },
+    "71df972f-32d4-460a-bea9-eed041325afa": {
+        "entropy_number_of_messages": 0.8605688026309323,
+        "entropy_number_of_words": 0.8762874651158451
+    },
+    "74284cd2-0993-4b1c-ba38-bd0e161104a2": {
+        "entropy_number_of_messages": 0.9131907539955743,
+        "entropy_number_of_words": 0.8809899170633365
+    },
+    "760cda2b-cda9-4540-a967-cb1369f7faf2": {
+        "entropy_number_of_messages": 0.8268160539661173,
+        "entropy_number_of_words": 0.9177889241085134
+    },
+    "7bf77ae2-059c-48cd-ba8d-ebdb40b42d48": {
+        "entropy_number_of_messages": 0.7725741606125617,
+        "entropy_number_of_words": 0.9041934215850153
+    },
+    "7c45b41a-8972-40ca-92af-a7463d45785b": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.8349255609381617
+    },
+    "7ed4a7df-adab-4320-9ca4-f8cd1f51cb30": {
+        "entropy_number_of_messages": 0.7725741606125617,
+        "entropy_number_of_words": 0.8994485280172199
+    },
+    "80a2dd36-56bb-4d6d-a16b-5887a2732e17": {
+        "entropy_number_of_messages": 0.7823989074203012,
+        "entropy_number_of_words": 0.8900315789508378
+    },
+    "866e2f2f-2906-42ba-911e-1d6478c648a4": {
+        "entropy_number_of_messages": 0.9365574702357086,
+        "entropy_number_of_words": 0.9142604016191644
+    },
+    "8cc5d294-2b7c-476d-a277-754e8087254a": {
+        "entropy_number_of_messages": 0.8925081905432292,
+        "entropy_number_of_words": 0.8864682225802126
+    },
+    "8cf18673-5f91-4d98-bf95-efe5c9547d17": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.9423457304781683
+    },
+    "8e301e72-344d-4331-89bc-4dc1edca20fe": {
+        "entropy_number_of_messages": 0.8522643192882265,
+        "entropy_number_of_words": 0.87865564525916
+    },
+    "8fd69250-71ad-4b24-9dca-0658d6eb95fc": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.8054730714283936
+    },
+    "91300316-873e-4693-b740-b4c328275be0": {
+        "entropy_number_of_messages": 0.8855215873769847,
+        "entropy_number_of_words": 0.8453958861391125
+    },
+    "921d9fca-67ce-4f9f-8153-06e588b2817c": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8681371338901803
+    },
+    "95bd926c-7fdd-4b77-a138-543a087193e9": {
+        "entropy_number_of_messages": 0.7809348794329386,
+        "entropy_number_of_words": 0.7930024243157917
+    },
+    "a34205f6-2279-4782-b072-acbf2f366920": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8160837663906398
+    },
+    "a34730de-4f8f-47dc-b2c3-b26449cf828a": {
+        "entropy_number_of_messages": 0.8175437659065087,
+        "entropy_number_of_words": 0.7764436276109096
+    },
+    "a40ee84f-6a54-44a7-a021-d37588c0324d": {
+        "entropy_number_of_messages": 0.9119901310473775,
+        "entropy_number_of_words": 0.9543904922286875
+    },
+    "a6b0f005-b108-4171-b937-8d236c4c8f0c": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.9535286451331839
+    },
+    "a7bacaf0-6881-4d73-8d3d-85b093a44786": {
+        "entropy_number_of_messages": 0.8882179345963455,
+        "entropy_number_of_words": 0.9425168540657138
+    },
+    "a8a35ead-e919-4cfc-ad3d-6ec70f8668b2": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.9075818161982371
+    },
+    "aa3d5a2a-06b4-45fd-954e-c1f50232d127": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.9005635852306925
+    },
+    "acbd45bd-1ee2-4eae-94af-804faff1aefb": {
+        "entropy_number_of_messages": 0.7764573799444225,
+        "entropy_number_of_words": 0.7736813940736075
+    },
+    "b2a258e0-7d2a-4cbd-8fbe-6102cb280aee": {
+        "entropy_number_of_messages": 0.7725741606125617,
+        "entropy_number_of_words": 0.7672715189023749
+    },
+    "b2e3d4d7-9f94-434f-add3-edf3bb36dd53": {
+        "entropy_number_of_messages": 0.7725741606125617,
+        "entropy_number_of_words": 0.8012524458488842
+    },
+    "b3901ef7-2dd2-4ce3-867e-92bc3f21e075": {
+        "entropy_number_of_messages": 0.8720380502497472,
+        "entropy_number_of_words": 0.8729081801616635
+    },
+    "b438b22c-f2db-44e8-8176-85765361ca04": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.8300603116601672
+    },
+    "b49b1b8b-eaf3-4ff7-b118-b07cc3939031": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8489087489557046
+    },
+    "b4e5422e-374d-473d-bd20-f87d3095980b": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.871762030742289
+    },
+    "b50e9b8e-4457-4352-b682-7207abc27332": {
+        "entropy_number_of_messages": 0.8053874131674276,
+        "entropy_number_of_words": 0.8092060937683054
+    },
+    "b6690a80-1a74-40f1-bccd-7248c272121c": {
+        "entropy_number_of_messages": 0.8523579541931617,
+        "entropy_number_of_words": 0.8842934768468224
+    },
+    "b7674ce3-6caf-443a-b076-b6ae35f421a2": {
+        "entropy_number_of_messages": 0.8207946171813331,
+        "entropy_number_of_words": 0.9713055675460898
+    },
+    "ba0e88c5-6c7c-4425-b8b7-ff505eac17c5": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.8050510405570257
+    },
+    "ba63bdf2-e7cf-441e-9647-362eb298248d": {
+        "entropy_number_of_messages": 0.7917511047888155,
+        "entropy_number_of_words": 0.8790565617877222
+    },
+    "bd9afcb8-af8a-4223-8bee-a077576acb95": {
+        "entropy_number_of_messages": 0.7962286042773314,
+        "entropy_number_of_words": 0.8729353881558454
+    },
+    "bdfcc19e-d999-4983-a565-4b5254352b74": {
+        "entropy_number_of_messages": 0.9528195311147832,
+        "entropy_number_of_words": 0.931675437392147
+    },
+    "bf2a3ac4-6958-4c74-8c25-413cbc5c36ec": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.8577590155612149
+    },
+    "c41d09dc-05e0-45a0-b16e-02c7bde95e81": {
+        "entropy_number_of_messages": 0.8218145630191047,
+        "entropy_number_of_words": 0.8310021883501358
+    },
+    "c7ebc04c-0cd5-47a6-a086-9591a0083c61": {
+        "entropy_number_of_messages": 0.9296473864145743,
+        "entropy_number_of_words": 0.9418008875974703
+    },
+    "c808ccff-5938-4794-8df8-950448318d4e": {
+        "entropy_number_of_messages": 0.7951067319522251,
+        "entropy_number_of_words": 0.8124391179746555
+    },
+    "c8c3eda7-92ec-4880-a6cf-4b26bb1f3815": {
+        "entropy_number_of_messages": 0.7857296680040312,
+        "entropy_number_of_words": 0.8834911580038406
+    },
+    "ca0f16c9-a47c-462b-a46f-43071a9bdb4d": {
+        "entropy_number_of_messages": 0.8022500410621157,
+        "entropy_number_of_words": 0.8838341504561146
+    },
+    "cabb2bd6-d503-4deb-bbdd-dcb27f0406fd": {
+        "entropy_number_of_messages": 0.7638972927716022,
+        "entropy_number_of_words": 0.8446758653605055
+    },
+    "cc2380bb-531d-4b95-ae84-5182d714b6d6": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8708094625805461
+    },
+    "cd732919-eb72-4ceb-9f5f-6e7ee25426ed": {
+        "entropy_number_of_messages": 0.8115223291217244,
+        "entropy_number_of_words": 0.7205287664398735
+    },
+    "ce54c6c9-6b00-4cf4-96e3-48e4b90585f7": {
+        "entropy_number_of_messages": 0.8376868832769487,
+        "entropy_number_of_words": 0.9060073385530627
+    },
+    "d0497e69-0af6-4295-8648-26afe141f8a0": {
+        "entropy_number_of_messages": 0.8159141063107807,
+        "entropy_number_of_words": 0.8686116363305916
+    },
+    "dab1eb5f-be8e-45cb-962a-3f5bed969e12": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.7914406539520809
+    },
+    "de51fa6c-ee7b-4430-8dcd-52b0046c00bc": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.7534463979777726
+    },
+    "e0a42643-3f2e-429c-bc00-c8332dc641d1": {
+        "entropy_number_of_messages": 0.7967105453264682,
+        "entropy_number_of_words": 0.7972114184434549
+    },
+    "e207a185-3ea3-4720-aed1-8064a3cb9b9f": {
+        "entropy_number_of_messages": 0.8010233928484242,
+        "entropy_number_of_words": 0.8220878042204284
+    },
+    "e470e71c-6473-407f-bd14-12c66828b5d5": {
+        "entropy_number_of_messages": 0.7725741606125617,
+        "entropy_number_of_words": 0.6790623864473472
+    },
+    "e856fa7c-da3c-49b4-a187-dbdc2d763e1f": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8205104641284442
+    },
+    "e9801980-cc94-488a-a8fc-516aab14ce1f": {
+        "entropy_number_of_messages": 0.7767641373550935,
+        "entropy_number_of_words": 0.9214305684784043
+    },
+    "ea09d5b8-22f5-4c75-a838-80c63ba84ff2": {
+        "entropy_number_of_messages": 0.7857296680040312,
+        "entropy_number_of_words": 0.7965355668522112
+    },
+    "ea8eb1b0-dfff-495d-b569-9053aa8f4a8f": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.8747920726021038
+    },
+    "ed709c3a-29f6-45f3-a63b-f1f4283d3d89": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.923517908544009
+    },
+    "f4c92f48-1045-49db-9ad5-c5aee0f650cc": {
+        "entropy_number_of_messages": 0.7997526431022199,
+        "entropy_number_of_words": 0.8870189196288017
+    },
+    "f66c6907-aa30-4dc3-8752-fa4b6d926e14": {
+        "entropy_number_of_messages": 0.8280035401349194,
+        "entropy_number_of_words": 0.8741166531476622
+    },
+    "f7221fe4-3eac-42f2-937a-1dacbbe72395": {
+        "entropy_number_of_messages": 0.8268160539661173,
+        "entropy_number_of_words": 0.9030896650243867
+    },
+    "f8085173-8cbf-4c15-a9e8-713c40539bdd": {
+        "entropy_number_of_messages": 0.8064920711858959,
+        "entropy_number_of_words": 0.9103602474086449
+    },
+    "f83f95e7-1200-4dcd-a620-29694858190b": {
+        "entropy_number_of_messages": 0.7880336774855088,
+        "entropy_number_of_words": 0.9428914764532152
+    },
+    "fce13b53-ae50-47b2-b70e-1de66f31a8bf": {
+        "entropy_number_of_messages": 0.7910757752612606,
+        "entropy_number_of_words": 0.786410890480371
+    },
+    "fdb670f7-dd7e-4222-8f5e-e3c6a8fccff4": {
+        "entropy_number_of_messages": 0.7857296680040312,
+        "entropy_number_of_words": 0.7497508761147978
+    },
+    "aggregate_mean": {
+        "entropy_number_of_messages": 0.8130249084865165,
+        "entropy_number_of_words": 0.8601885510470806
+    }
+}

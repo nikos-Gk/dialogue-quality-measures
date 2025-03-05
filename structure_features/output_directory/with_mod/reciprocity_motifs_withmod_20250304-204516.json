@@ -1,0 +1,821 @@
+{
+    "028f869d-cf12-444a-aefc-62f8b6294acd": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 11.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 17.0,
+        "count[outgoing triads]": 12.0
+    },
+    "0594f5fe-3bef-4642-8bb7-9ac356f44acb": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 16.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 16.0,
+        "count[outgoing triads]": 19.0
+    },
+    "07bd0dbc-5591-4b1a-ba75-fb7a84c28986": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 39.0,
+        "count[outgoing triads]": 37.0
+    },
+    "095f8e2c-4c6b-45d3-983b-c0a836cd1d4e": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 43.0
+    },
+    "0d4caeec-0d56-4074-a2df-4bf5012d1c19": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 23.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 39.0
+    },
+    "11d555f4-f5e4-4f64-a0cd-f89f2b29553d": {
+        "count[reciprocity motif]": 14.0,
+        "count[external reciprocity motif]": 19.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 20.0,
+        "count[outgoing triads]": 18.0
+    },
+    "139dce53-526b-4950-83cc-1ce060739e3e": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 39.0,
+        "count[outgoing triads]": 50.0
+    },
+    "15f0ac31-1302-40eb-ba03-b486561cfd2b": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 29.0,
+        "count[outgoing triads]": 29.0
+    },
+    "1809810f-858f-468c-b9a4-bbcf0523bcdb": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 30.0
+    },
+    "180eb804-cb97-4406-90e8-3e7a09f9c053": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 31.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 46.0,
+        "count[outgoing triads]": 41.0
+    },
+    "1814b1e7-c4eb-4450-b1f0-e610c6867ad1": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 34.0
+    },
+    "1b036ecb-5907-4257-a3eb-f564536938b2": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 22.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 14.0,
+        "count[outgoing triads]": 18.0
+    },
+    "1b9af03a-f1c8-4a44-a8af-1145c839107b": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 30.0,
+        "count[outgoing triads]": 35.0
+    },
+    "1fa4c466-c4d5-4687-8768-c48b51d3a2bd": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 29.0
+    },
+    "2085249e-2875-4d5b-a538-0b01f43880fa": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 10.0,
+        "count[incoming triads]": 43.0,
+        "count[outgoing triads]": 41.0
+    },
+    "2792182e-9171-4d23-a5c2-6c1e5e65d5ad": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 42.0
+    },
+    "2c2254a1-01fc-498c-9754-f9022c082640": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 32.0
+    },
+    "2d97b29f-39b8-405c-b536-7ca08a060e8b": {
+        "count[reciprocity motif]": 12.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 23.0,
+        "count[outgoing triads]": 30.0
+    },
+    "2e536c84-7daa-4e12-b307-4e210953b7ea": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 32.0
+    },
+    "3250a893-1fe5-49de-9bc9-4779dfe68c13": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 11.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 11.0,
+        "count[outgoing triads]": 14.0
+    },
+    "34418c58-f3e9-4dfd-94fe-de4dec288206": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 19.0,
+        "count[outgoing triads]": 21.0
+    },
+    "391ae05a-aaea-4445-ba16-02d78ea61b70": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 31.0,
+        "count[dyadic interaction motif]": 13.0,
+        "count[incoming triads]": 49.0,
+        "count[outgoing triads]": 55.0
+    },
+    "3a7772b5-2338-4428-b688-a895d4911cec": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 41.0,
+        "count[outgoing triads]": 45.0
+    },
+    "3b13bb6b-933c-4fac-a920-5d63c2537cfa": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 32.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 33.0
+    },
+    "3bd075d6-b91b-4f60-9138-c33feff56d2c": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 34.0,
+        "count[outgoing triads]": 42.0
+    },
+    "3c54ff28-8df5-46af-9a92-f6485d99aab6": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 21.0,
+        "count[outgoing triads]": 19.0
+    },
+    "3c7a897a-7c1d-4208-868c-a5e3b1382245": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 20.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 32.0
+    },
+    "3d355114-3f2e-4ff0-8bca-f3ca8b2f7464": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 20.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 34.0
+    },
+    "3f01371c-5cc3-4b78-a05b-2211637ac21c": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 30.0,
+        "count[outgoing triads]": 33.0
+    },
+    "3f2b7591-7433-4138-b716-e30c1c96fcd7": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 40.0,
+        "count[outgoing triads]": 40.0
+    },
+    "3f5bfecb-272d-4535-a0f3-e2d083b80a5b": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 19.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 23.0,
+        "count[outgoing triads]": 34.0
+    },
+    "3f96869b-6cc1-448e-ad1d-07d74985ffeb": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 31.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 38.0,
+        "count[outgoing triads]": 50.0
+    },
+    "416cc7ff-3394-44af-b09c-4af4b3dc0f30": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 22.0,
+        "count[outgoing triads]": 28.0
+    },
+    "464105a7-8c06-4b22-9f4d-0996f51baa47": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 28.0
+    },
+    "49d3315e-05e3-47a3-981a-12e39c75d4e2": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 25.0,
+        "count[outgoing triads]": 28.0
+    },
+    "4b0f71c3-126f-41a3-a304-0c587a6de2a4": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 31.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 40.0,
+        "count[outgoing triads]": 41.0
+    },
+    "4d5061ed-8982-49b1-b4c1-5bb78977e931": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 22.0,
+        "count[outgoing triads]": 34.0
+    },
+    "53160b89-5ba2-4239-a4ff-f9911466166f": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 33.0,
+        "count[outgoing triads]": 33.0
+    },
+    "572252a2-ab55-4029-a99a-7fd786fd963f": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 44.0,
+        "count[outgoing triads]": 53.0
+    },
+    "577de68d-dc5d-4c5c-a7ae-948a6645fb1e": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 40.0
+    },
+    "5904e50b-711c-4683-882d-afdbe40125ad": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 24.0,
+        "count[outgoing triads]": 30.0
+    },
+    "5b5158f4-bc3d-4c99-84fe-c8c99a840fac": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 22.0,
+        "count[outgoing triads]": 22.0
+    },
+    "63277108-b3f6-439e-a6e2-09515f909318": {
+        "count[reciprocity motif]": 12.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 29.0,
+        "count[outgoing triads]": 27.0
+    },
+    "653caf7c-6c7f-4e07-92d1-07d7a7df4a70": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 37.0
+    },
+    "66a3c1da-ac08-4ae0-8288-6aa3df78f5ae": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 24.0
+    },
+    "6771157a-1f77-4752-96d1-91215c77efb5": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 21.0,
+        "count[outgoing triads]": 21.0
+    },
+    "6b41030e-adfb-48ba-964d-63f3fb655c20": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 22.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 19.0,
+        "count[outgoing triads]": 23.0
+    },
+    "6c74f8b6-b9f4-44b6-83fd-2db50c0a1d7f": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 23.0,
+        "count[outgoing triads]": 24.0
+    },
+    "6cdb31f4-3732-435a-9a20-f90807d19cdf": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 32.0
+    },
+    "6da0587d-c0df-4074-9659-ab5f531ea32e": {
+        "count[reciprocity motif]": 16.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 40.0,
+        "count[outgoing triads]": 45.0
+    },
+    "6f503e5f-09c4-42ad-90a8-f64acaee184f": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 17.0,
+        "count[outgoing triads]": 26.0
+    },
+    "6f8ff031-2968-4f0a-82bc-55d1bbcea580": {
+        "count[reciprocity motif]": 0.0,
+        "count[external reciprocity motif]": 34.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 30.0,
+        "count[outgoing triads]": 27.0
+    },
+    "71df972f-32d4-460a-bea9-eed041325afa": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 13.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 10.0,
+        "count[outgoing triads]": 15.0
+    },
+    "74284cd2-0993-4b1c-ba38-bd0e161104a2": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 11.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 14.0,
+        "count[outgoing triads]": 12.0
+    },
+    "760cda2b-cda9-4540-a967-cb1369f7faf2": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 29.0
+    },
+    "7bf77ae2-059c-48cd-ba8d-ebdb40b42d48": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 35.0
+    },
+    "7c45b41a-8972-40ca-92af-a7463d45785b": {
+        "count[reciprocity motif]": 13.0,
+        "count[external reciprocity motif]": 23.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 24.0,
+        "count[outgoing triads]": 33.0
+    },
+    "7ed4a7df-adab-4320-9ca4-f8cd1f51cb30": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 43.0,
+        "count[outgoing triads]": 37.0
+    },
+    "80a2dd36-56bb-4d6d-a16b-5887a2732e17": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 34.0
+    },
+    "866e2f2f-2906-42ba-911e-1d6478c648a4": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 35.0
+    },
+    "8cc5d294-2b7c-476d-a277-754e8087254a": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 11.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 13.0,
+        "count[outgoing triads]": 11.0
+    },
+    "8cf18673-5f91-4d98-bf95-efe5c9547d17": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 32.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 34.0,
+        "count[outgoing triads]": 41.0
+    },
+    "8e301e72-344d-4331-89bc-4dc1edca20fe": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 19.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 21.0,
+        "count[outgoing triads]": 22.0
+    },
+    "8fd69250-71ad-4b24-9dca-0658d6eb95fc": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 19.0,
+        "count[outgoing triads]": 27.0
+    },
+    "91300316-873e-4693-b740-b4c328275be0": {
+        "count[reciprocity motif]": 0.0,
+        "count[external reciprocity motif]": 13.0,
+        "count[dyadic interaction motif]": 2.0,
+        "count[incoming triads]": 9.0,
+        "count[outgoing triads]": 6.0
+    },
+    "921d9fca-67ce-4f9f-8153-06e588b2817c": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 32.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 38.0,
+        "count[outgoing triads]": 43.0
+    },
+    "95bd926c-7fdd-4b77-a138-543a087193e9": {
+        "count[reciprocity motif]": 13.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 17.0,
+        "count[outgoing triads]": 22.0
+    },
+    "a34205f6-2279-4782-b072-acbf2f366920": {
+        "count[reciprocity motif]": 13.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 9.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 31.0
+    },
+    "a34730de-4f8f-47dc-b2c3-b26449cf828a": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 33.0
+    },
+    "a40ee84f-6a54-44a7-a021-d37588c0324d": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 37.0,
+        "count[outgoing triads]": 43.0
+    },
+    "a6b0f005-b108-4171-b937-8d236c4c8f0c": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 37.0,
+        "count[outgoing triads]": 38.0
+    },
+    "a7bacaf0-6881-4d73-8d3d-85b093a44786": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 52.0,
+        "count[outgoing triads]": 40.0
+    },
+    "a8a35ead-e919-4cfc-ad3d-6ec70f8668b2": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 31.0
+    },
+    "aa3d5a2a-06b4-45fd-954e-c1f50232d127": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 28.0
+    },
+    "acbd45bd-1ee2-4eae-94af-804faff1aefb": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 24.0,
+        "count[outgoing triads]": 24.0
+    },
+    "b2a258e0-7d2a-4cbd-8fbe-6102cb280aee": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 34.0,
+        "count[outgoing triads]": 40.0
+    },
+    "b2e3d4d7-9f94-434f-add3-edf3bb36dd53": {
+        "count[reciprocity motif]": 14.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 38.0,
+        "count[outgoing triads]": 27.0
+    },
+    "b3901ef7-2dd2-4ce3-867e-92bc3f21e075": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 20.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 17.0,
+        "count[outgoing triads]": 21.0
+    },
+    "b438b22c-f2db-44e8-8176-85765361ca04": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 37.0,
+        "count[outgoing triads]": 36.0
+    },
+    "b49b1b8b-eaf3-4ff7-b118-b07cc3939031": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 31.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 43.0,
+        "count[outgoing triads]": 47.0
+    },
+    "b4e5422e-374d-473d-bd20-f87d3095980b": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 40.0,
+        "count[outgoing triads]": 36.0
+    },
+    "b50e9b8e-4457-4352-b682-7207abc27332": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 35.0,
+        "count[outgoing triads]": 35.0
+    },
+    "b6690a80-1a74-40f1-bccd-7248c272121c": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 35.0
+    },
+    "b7674ce3-6caf-443a-b076-b6ae35f421a2": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 37.0,
+        "count[outgoing triads]": 37.0
+    },
+    "ba0e88c5-6c7c-4425-b8b7-ff505eac17c5": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 29.0,
+        "count[outgoing triads]": 28.0
+    },
+    "ba63bdf2-e7cf-441e-9647-362eb298248d": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 33.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 42.0,
+        "count[outgoing triads]": 34.0
+    },
+    "bd9afcb8-af8a-4223-8bee-a077576acb95": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 27.0
+    },
+    "bdfcc19e-d999-4983-a565-4b5254352b74": {
+        "count[reciprocity motif]": 0.0,
+        "count[external reciprocity motif]": 15.0,
+        "count[dyadic interaction motif]": 2.0,
+        "count[incoming triads]": 18.0,
+        "count[outgoing triads]": 18.0
+    },
+    "bf2a3ac4-6958-4c74-8c25-413cbc5c36ec": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 23.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 25.0,
+        "count[outgoing triads]": 30.0
+    },
+    "c41d09dc-05e0-45a0-b16e-02c7bde95e81": {
+        "count[reciprocity motif]": 10.0,
+        "count[external reciprocity motif]": 22.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 22.0,
+        "count[outgoing triads]": 32.0
+    },
+    "c7ebc04c-0cd5-47a6-a086-9591a0083c61": {
+        "count[reciprocity motif]": 2.0,
+        "count[external reciprocity motif]": 17.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 14.0,
+        "count[outgoing triads]": 13.0
+    },
+    "c808ccff-5938-4794-8df8-950448318d4e": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 27.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 37.0
+    },
+    "c8c3eda7-92ec-4880-a6cf-4b26bb1f3815": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 26.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 32.0
+    },
+    "ca0f16c9-a47c-462b-a46f-43071a9bdb4d": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 34.0
+    },
+    "cabb2bd6-d503-4deb-bbdd-dcb27f0406fd": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 34.0
+    },
+    "cc2380bb-531d-4b95-ae84-5182d714b6d6": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 33.0
+    },
+    "cd732919-eb72-4ceb-9f5f-6e7ee25426ed": {
+        "count[reciprocity motif]": 14.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 20.0,
+        "count[outgoing triads]": 22.0
+    },
+    "ce54c6c9-6b00-4cf4-96e3-48e4b90585f7": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 43.0,
+        "count[outgoing triads]": 55.0
+    },
+    "d0497e69-0af6-4295-8648-26afe141f8a0": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 10.0,
+        "count[incoming triads]": 43.0,
+        "count[outgoing triads]": 38.0
+    },
+    "dab1eb5f-be8e-45cb-962a-3f5bed969e12": {
+        "count[reciprocity motif]": 13.0,
+        "count[external reciprocity motif]": 24.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 26.0,
+        "count[outgoing triads]": 35.0
+    },
+    "de51fa6c-ee7b-4430-8dcd-52b0046c00bc": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 23.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 30.0,
+        "count[outgoing triads]": 33.0
+    },
+    "e0a42643-3f2e-429c-bc00-c8332dc641d1": {
+        "count[reciprocity motif]": 18.0,
+        "count[external reciprocity motif]": 19.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 23.0,
+        "count[outgoing triads]": 32.0
+    },
+    "e207a185-3ea3-4720-aed1-8064a3cb9b9f": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 21.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 16.0,
+        "count[outgoing triads]": 22.0
+    },
+    "e470e71c-6473-407f-bd14-12c66828b5d5": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 25.0,
+        "count[dyadic interaction motif]": 8.0,
+        "count[incoming triads]": 33.0,
+        "count[outgoing triads]": 28.0
+    },
+    "e856fa7c-da3c-49b4-a187-dbdc2d763e1f": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 22.0,
+        "count[dyadic interaction motif]": 4.0,
+        "count[incoming triads]": 12.0,
+        "count[outgoing triads]": 20.0
+    },
+    "e9801980-cc94-488a-a8fc-516aab14ce1f": {
+        "count[reciprocity motif]": 4.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 36.0
+    },
+    "ea09d5b8-22f5-4c75-a838-80c63ba84ff2": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 24.0,
+        "count[outgoing triads]": 25.0
+    },
+    "ea8eb1b0-dfff-495d-b569-9053aa8f4a8f": {
+        "count[reciprocity motif]": 5.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 3.0,
+        "count[incoming triads]": 28.0,
+        "count[outgoing triads]": 31.0
+    },
+    "ed709c3a-29f6-45f3-a63b-f1f4283d3d89": {
+        "count[reciprocity motif]": 1.0,
+        "count[external reciprocity motif]": 35.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 36.0,
+        "count[outgoing triads]": 32.0
+    },
+    "f4c92f48-1045-49db-9ad5-c5aee0f650cc": {
+        "count[reciprocity motif]": 11.0,
+        "count[external reciprocity motif]": 22.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 24.0,
+        "count[outgoing triads]": 33.0
+    },
+    "f66c6907-aa30-4dc3-8752-fa4b6d926e14": {
+        "count[reciprocity motif]": 8.0,
+        "count[external reciprocity motif]": 23.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 25.0,
+        "count[outgoing triads]": 31.0
+    },
+    "f7221fe4-3eac-42f2-937a-1dacbbe72395": {
+        "count[reciprocity motif]": 6.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 32.0,
+        "count[outgoing triads]": 41.0
+    },
+    "f8085173-8cbf-4c15-a9e8-713c40539bdd": {
+        "count[reciprocity motif]": 7.0,
+        "count[external reciprocity motif]": 29.0,
+        "count[dyadic interaction motif]": 10.0,
+        "count[incoming triads]": 46.0,
+        "count[outgoing triads]": 47.0
+    },
+    "f83f95e7-1200-4dcd-a620-29694858190b": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 34.0,
+        "count[dyadic interaction motif]": 6.0,
+        "count[incoming triads]": 42.0,
+        "count[outgoing triads]": 35.0
+    },
+    "fce13b53-ae50-47b2-b70e-1de66f31a8bf": {
+        "count[reciprocity motif]": 9.0,
+        "count[external reciprocity motif]": 28.0,
+        "count[dyadic interaction motif]": 5.0,
+        "count[incoming triads]": 27.0,
+        "count[outgoing triads]": 31.0
+    },
+    "fdb670f7-dd7e-4222-8f5e-e3c6a8fccff4": {
+        "count[reciprocity motif]": 3.0,
+        "count[external reciprocity motif]": 30.0,
+        "count[dyadic interaction motif]": 7.0,
+        "count[incoming triads]": 29.0,
+        "count[outgoing triads]": 29.0
+    },
+    "aggregate_mean": {
+        "count[reciprocity motif]": 7.017241379310345,
+        "count[external reciprocity motif]": 25.70689655172414,
+        "count[dyadic interaction motif]": 6.198275862068965,
+        "count[incoming triads]": 29.353448275862068,
+        "count[outgoing triads]": 31.70689655172414
+    }
+}
