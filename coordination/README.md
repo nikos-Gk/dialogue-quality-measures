@@ -1,1 +1,0 @@
-python coordination_per_dialogue.py --input_directory "directory with jsons" --include_mod_utterances True
