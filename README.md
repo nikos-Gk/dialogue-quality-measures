@@ -4,11 +4,21 @@ Discussion Quality Aspects
 
 # Installation
 ```python
-pip install discqua
+git clone https://github.com/nikos-Gk/dialogue-quality-measures.git
+cd dialogue-quality-measures
+git fetch --all
+git checkout package
+conda create --name discMeasuresEnv python=3.12
+conda activate discMeasuresEnv
+pip install -e .
 python -m spacy download en_core_web_sm
 ```
 
 # Usage
+
+In the main.py file you can find examples of usage.
+
+# Examples
 
 ## convert a csv to json files for further processing
 
