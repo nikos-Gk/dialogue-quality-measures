@@ -24,6 +24,7 @@ from DiscQuA import (
 )
 
 disc_directory = "Directory with jsons. This will be produced after the execution of convert_csv_to_json()"
+model_path = r"path\to\model\llama-2-13b-chat.Q5_K_M.gguf"
 
 
 def test_csv_to_json():
@@ -67,10 +68,24 @@ def test_controversy():
     )
 
 
-def test_coherence_conversation():
+def test_coherence_conversation_openai():
+    calculate_coherence_conversation(
+        input_directory=disc_directory,
+        openAIKEY="your-openai-key",
+        model_type="openai",
+        model_path="",
+        gpu=True,
+        moderator_flag=False,
+    )
+
+
+def test_coherence_conversation_llama():
     calculate_coherence_conversation(
         input_directory=disc_directory,
         openAIKEY="",
+        model_type="llama",
+        model_path=model_path,
+        gpu=True,
         moderator_flag=False,
     )
 
@@ -197,7 +212,8 @@ if __name__ == "__main__":
     # test_make_turn_taking_visualization()
     # test_language_features()
     # test_controversy()
-    # test_coherence_conversation() #
+    # test_coherence_conversation_openai() #
+    # test_coherence_conversation_llama() #
     # test_coherence_response() #
     # test_coherence_ecoh() #
     # test_diversity()  #

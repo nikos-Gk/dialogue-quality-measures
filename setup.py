@@ -18,7 +18,12 @@ setuptools.setup(
         "Programming Language :: Python :: 3.12",
     ],
     python_requires=">=3.12",
-    install_requires=["pandas >=2.2.3", "convokit>=3.1.0", "openai>=0.27.10"],
+    install_requires=[
+        "pandas >=2.2.3",
+        "convokit>=3.1.0",
+        "openai>=0.27.10",
+        "llama-cpp-python>=0.3.9",
+    ],
     packages=setuptools.find_packages(),
     include_package_data=True,
 )

@@ -7,6 +7,7 @@ import time
 import numpy as np
 import openai
 from convokit import Speaker, Utterance
+from llama_cpp import Llama
 
 prompt = """{conv_text}'\n\n\n
 
@@ -61,21 +62,36 @@ def processDiscussion(discussion, moderator_flag):
     return utterances, conv_topic
 
 
-def prompt_gpt4(prompt, key):
+def prompt_gpt4(prompt, key, model_type, model_path, gpu):
     openai.api_key = key
     ok = False
     counter = 0
-    while (
-        not ok
-    ):  # to avoid "ServiceUnavailableError: The server is overloaded or not ready yet."
+    while not ok:
         counter = counter + 1
         try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4-1106-preview",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=4096,
-                temperature=0,
-            )
+            if model_type == "openai":
+                response = openai.ChatCompletion.create(
+                    model="gpt-4-1106-preview",
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=4096,
+                    temperature=0,
+                )
+                result = response["choices"][0]["message"]["content"]
+            elif model_type.lower() == "llama":
+                llm = Llama(
+                    model_path=model_path,
+                    n_gpu_layers=50 if gpu else 0,
+                    n_ctx=4096,
+                )
+                messages = [{"role": "user", "content": prompt}]
+                response = llm.create_chat_completion(
+                    messages=messages,
+                    max_tokens=4096,
+                )
+                result = response["choices"][0]["message"]["content"]
+                # result = llm(prompt, max_tokens=4096)
+            else:
+                raise ValueError("Invalid model_type. Choose 'openai' or 'llama'.")
             ok = True
         except Exception as ex:
             print("error", ex)
@@ -83,10 +99,10 @@ def prompt_gpt4(prompt, key):
             time.sleep(5)
             if counter > 10:
                 return -1
-    return response["choices"][0]["message"]["content"]
+    return result
 
 
-def calculate_discussion_coherence_score(utts, topic, key):
+def calculate_discussion_coherence_score(utts, topic, key, model_type, model_path, gpu):
     conv_text = ""
     for utt in utts:
         text = utt.text
@@ -95,7 +111,7 @@ def calculate_discussion_coherence_score(utts, topic, key):
         formatted_prompt = prompt.format(conv_text=conv_text, post=topic)
     annotations_ci = []
     try:
-        response_text = prompt_gpt4(formatted_prompt, key)
+        response_text = prompt_gpt4(formatted_prompt, key, model_type, model_path, gpu)
         #        print(formatted_prompt)
         annotations_ci.append(response_text)
     except Exception as e:
@@ -104,16 +120,27 @@ def calculate_discussion_coherence_score(utts, topic, key):
     return annotations_ci
 
 
-def calculate_coherence_conversation(input_directory, openAIKEY, moderator_flag=True):
+def calculate_coherence_conversation(
+    input_directory,
+    openAIKEY,
+    model_type="openai",
+    model_path="",
+    gpu=False,
+    moderator_flag=True,
+):
     if not os.path.exists(input_directory):
         print(input_directory)
         print("input directory does not exist. Exiting")
         sys.exit(1)
 
-    if not openAIKEY:
+    if model_type == "openai" and not openAIKEY:
         print(
             "OpenAI API key does not exist. Coherence scores will not be computed. Exiting"
         )
+        sys.exit(1)
+
+    if model_type == "llama" and not model_path:
+        print("Llama model path does not exist. Exiting")
         sys.exit(1)
 
     discussions = [
@@ -130,7 +157,7 @@ def calculate_coherence_conversation(input_directory, openAIKEY, moderator_flag=
         disc_id = utterances[0].id.split("_")[2]
         print("Overall Coherence Score-Proccessing discussion: ", disc_id, " with LLM")
         coh_score = calculate_discussion_coherence_score(
-            utterances, conv_topic, openAIKEY
+            utterances, conv_topic, openAIKEY, model_type, model_path, gpu
         )
         coherence_scores_llm_output_dict[disc_id] = coh_score
 
@@ -161,8 +188,11 @@ def calculate_coherence_conversation(input_directory, openAIKEY, moderator_flag=
             rightParenthesisIndex = value.find("]")
 
             leftParenthesisIndex = value.find("[")
-            value = value[leftParenthesisIndex:rightParenthesisIndex]
-            value = value.replace("[", "").replace("]", "")
+
+            if rightParenthesisIndex > 0 and leftParenthesisIndex > 0:
+                value = value[leftParenthesisIndex:rightParenthesisIndex]
+
+            value = value.replace("[", "").replace("]", "").replace(".", "")
             coherence_scores_per_disc[disc_id] = value
 
     coh_scores_mean = np.mean(
