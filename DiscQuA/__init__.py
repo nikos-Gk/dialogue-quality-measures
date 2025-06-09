@@ -1,8 +1,8 @@
 from .argQualityAspects import calculate_arg_dim
 from .coherence import (
-    calculate_coherece_response,
     calculate_coherence_conversation,
     calculate_coherence_ecoh,
+    calculate_coherence_response,
 )
 from .collaboration import calculate_collaboration
 from .controversy import calculate_controversy

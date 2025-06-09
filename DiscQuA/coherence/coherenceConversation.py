@@ -81,7 +81,7 @@ def prompt_gpt4(prompt, key, model_type, model_path, gpu):
                 llm = Llama(
                     model_path=model_path,
                     n_gpu_layers=50 if gpu else 0,
-                    n_ctx=4096,
+                    n_ctx=4096 * 2,
                 )
                 messages = [{"role": "user", "content": prompt}]
                 response = llm.create_chat_completion(
