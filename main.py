@@ -1,9 +1,9 @@
 from DiscQuA import (
     calculate_arg_dim,
     calculate_balanced_participation,
-    calculate_coherece_response,
     calculate_coherence_conversation,
     calculate_coherence_ecoh,
+    calculate_coherence_response,
     calculate_collaboration,
     calculate_controversy,
     calculate_coordination_per_discussion,
@@ -91,7 +91,7 @@ def test_coherence_conversation_llama():
 
 
 def test_coherence_response():
-    calculate_coherece_response(
+    calculate_coherence_response(
         input_directory=disc_directory,
         openAIKEY="",
         moderator_flag=False,

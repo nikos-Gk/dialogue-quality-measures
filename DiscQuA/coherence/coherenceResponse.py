@@ -132,7 +132,7 @@ def calculate_response_coherence_score(utts, topic, openAIKEY):
     return annotations_ci
 
 
-def calculate_coherece_response(input_directory, openAIKEY, moderator_flag=True):
+def calculate_coherence_response(input_directory, openAIKEY, moderator_flag=True):
     if not os.path.exists(input_directory):
         print(input_directory)
         print("input directory does not exist. Exiting")

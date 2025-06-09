@@ -82,7 +82,7 @@ from DiscQuA import calculate_controversy
 
 ## coherence
 
-### coherece conversation with openai
+### coherence conversation with openai
 
 ```python
 from DiscQuA import calculate_coherence_conversation
@@ -97,7 +97,7 @@ from DiscQuA import calculate_coherence_conversation
         )
 ```
 
-### coherece conversation with llama, local inference. Using llama-cpp-python that supports gguf models
+### coherence conversation with llama, local inference. Using llama-cpp-python that supports gguf models
 
 ```python
 def test_coherence_conversation():
@@ -112,19 +112,19 @@ def test_coherence_conversation():
 ```
 
 
-### coherece response 
+### coherence response 
 
 ```python
-from DiscQuA import calculate_coherece_response
+from DiscQuA import calculate_coherence_response
 
-       calculate_coherece_response(
+       calculate_coherence_response(
         input_directory=disc_directory,
         openAIKEY="",
         moderator_flag=False,
     )
 ```
 
-### coherece ecoh 
+### coherence ecoh 
 
 ```python
 from DiscQuA import calculate_coherence_ecoh
