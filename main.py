@@ -1,7 +1,3 @@
-import os
-
-os.environ["HF_HOME"] = r"D:\huggingFaceModels"
-os.environ["TRANSFORMERS_CACHE"] = r"D:\huggingFaceModels"
 import json
 from pprint import pprint
 
