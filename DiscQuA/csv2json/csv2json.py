@@ -1,4 +1,5 @@
 import json
+import math
 import os
 import sys
 
@@ -16,7 +17,7 @@ def filter_df_by_key(key, df_to_filter, column):
 
 def extract_info(column, df_to_extract, warning_message):
     unq = list(df_to_extract[column].unique())
-    if len(unq) != 1:
+    if warning_message != "-" and len(unq) != 1:
         print(unq)
         print(warning_message)
     return unq[0]
@@ -24,8 +25,6 @@ def extract_info(column, df_to_extract, warning_message):
 
 def extract_conv_info(matched_df, unique_user_ids, conv_id):
     time_stamp = matched_df["timestamp_conv"].unique()[0]
-    ctx_length_conv = matched_df["ctx_length_conv"].unique()[0]
-    conv_variant = matched_df["conv_variant"].unique()[0]
     has_moderator = matched_df["is_moderator"].any()
     llm_model = sorted(list(matched_df["model"].unique()))
     if has_moderator and MODERATOR_NAME not in unique_user_ids:
@@ -33,26 +32,10 @@ def extract_conv_info(matched_df, unique_user_ids, conv_id):
             "WARNING: has_moderator true but no moderator in user ids, conv_id: ",
             conv_id,
         )
-    return time_stamp, ctx_length_conv, conv_variant, llm_model
+    return time_stamp, llm_model
 
 
-def get_user_prompts(unique_user_ids, df_to_extract_from, conv_id):
-    usersprompt_dict = {}
-    for user in unique_user_ids:
-        matcheduser_df = filter_df_by_key(user, df_to_extract_from, "user")
-
-        userprompt_unique = (
-            extract_info(
-                "user_prompt",
-                matcheduser_df,
-                f"WARNING: different prompts for the same user, user_id,conv_id :{(user,conv_id)}",
-            ),
-        )
-        usersprompt_dict[user] = userprompt_unique
-    return usersprompt_dict
-
-
-def get_conv_messages(df_to_extract_from, conv_id):
+def get_conv_messages(df_to_extract_from, conv_id, replyto_bool):
     message_order = sorted(list(df_to_extract_from["message_order"].unique()))
     message_dict = {}
     for order in message_order:
@@ -63,28 +46,42 @@ def get_conv_messages(df_to_extract_from, conv_id):
         turnuser_unq = extract_info(
             "user",
             matchedmessageorder_df,
-            f"WARNING: different user for the same message: conv_id, turn_id: {(conv_id,order)}",
+            f"WARNING: different user for the same message: conv_id, turn_id: {(conv_id, order)}",
         )
         message_unq = extract_info(
             "message",
             matchedmessageorder_df,
-            f"WARNING: different messages for the same user, conv_id, turn_number: {(turnuser_unq,conv_id,order)}",
+            f"WARNING: different messages for the same user, conv_id, turn_number: {(turnuser_unq, conv_id, order)}",
         )
         model_unq = extract_info(
             "model",
             matchedmessageorder_df,
-            f"WARNING: different model for the same user and turn_id: {(conv_id, order)}",
+            "-",
         )
         message_id_unq = extract_info(
             "message_id",
             matchedmessageorder_df,
-            f"WARNING: different message_id for the same user and turn_id: conv_id, turn_id {(conv_id,order)}",
+            f"WARNING: different message_id for the same user and turn_id: conv_id, turn_id {(conv_id, order)}",
         )
+
+        replyto_unq = "-"
+
+        if replyto_bool:
+            replyto_unq = extract_info(
+                "reply_to",
+                matchedmessageorder_df,
+                f"WARNING: different reply_to for the same user and turn_id: conv_id, turn_id {(conv_id, order)}",
+            )
+
+            if math.isnan(replyto_unq):
+                replyto_unq = "-"
+
         message_dict[str(order)] = (
             turnuser_unq,
             message_unq,
             model_unq,
             str(message_id_unq),
+            str(replyto_unq),
         )
     return message_dict
 
@@ -96,6 +93,27 @@ def convert_csv_to_json(input_file):
         sys.exit(1)
 
     dataset_df = pd.read_csv(input_file)
+    replyto_bool = False
+
+    columns2have = [
+        "conv_id",
+        "timestamp_conv",
+        "user",
+        "message",
+        "model",
+        "is_moderator",
+        "message_id",
+        "message_order",
+        "reply_to",
+    ]
+
+    for clm in columns2have:
+        if clm not in dataset_df.columns and clm != "reply_to":
+            print(f"missing column in csv file: {clm}")
+            sys.exit(1)
+
+    if "reply_to" in dataset_df.columns:
+        replyto_bool = True
 
     unique_conv_ids = sorted(list(dataset_df["conv_id"].unique()))
 
@@ -104,25 +122,19 @@ def convert_csv_to_json(input_file):
 
         unique_user_ids = sorted(list(matched_df["user"].unique()))
 
-        time_stamp, ctx_length_conv, conv_variant, llm_model = extract_conv_info(
-            matched_df, unique_user_ids, conv_id
-        )
+        time_stamp, llm_model = extract_conv_info(matched_df, unique_user_ids, conv_id)
 
-        usersprompt_dict = get_user_prompts(unique_user_ids, matched_df, conv_id)
-        message_dict = get_conv_messages(matched_df, conv_id)
+        message_dict = get_conv_messages(matched_df, conv_id, replyto_bool)
 
         sorted_keys = sorted([int(key) for key in message_dict.keys()])
         message_list = [message_dict[str(key)] for key in sorted_keys]
 
         data = {
-            "id": conv_id,
+            "id": str(conv_id),
             "timestamp": time_stamp,
             "users": unique_user_ids,
             "moderator": True if MODERATOR_NAME in unique_user_ids else False,
-            "ctx_length": int(ctx_length_conv),
-            "conv_variant": conv_variant,
             "llm_model": llm_model,
-            "user_prompts": usersprompt_dict,
             "logs": message_list,
         }
 
@@ -131,6 +143,7 @@ def convert_csv_to_json(input_file):
         file_path_no_mod = os.path.join(cwd, "no_mod")
 
         file_path = None
+        conv_id = str(conv_id)
         if not os.path.exists(file_path_with_mod) and MODERATOR_NAME in unique_user_ids:
             os.makedirs(file_path_with_mod)
             file_path = os.path.join(file_path_with_mod, conv_id + ".json")

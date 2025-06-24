@@ -1,23 +1,15 @@
-import json
-import os
-import sys
 import time
 
-import pandas as pd
-from peft import PeftModel
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
-#############################################################
+from DiscQuA.utils import save_dict_2_json
+
 #############################################################
 base_model = "Qwen/Qwen1.5-4B-Chat"
 adapter_model = "Johndfm/ECoh-4B"
+
+
 #############################################################
-MODERATOR = "moderator"
-MESSAGE_THREASHOLD_IN_CHARS = 25
-HARDCODED_MODEL = "hardcoded"
-
-
 def inferenceModel(history, response, tokenizer, model, device):
 
     textForInference = f"Context:\n {history} \n\nResponse:\n {response}"
@@ -46,35 +38,18 @@ def inferenceModel(history, response, tokenizer, model, device):
     return response
 
 
-def processDiscussion(discussion, moderator_flag, tokenizer, model, device):
-    with open(discussion, "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    conversation_id = data["id"]
-
-    if not moderator_flag:
-        data["logs"] = [
-            (log[0], log[1], log[2], log[3])
-            for log in data["logs"]
-            if log[0] != MODERATOR
-        ]
-
-    data["logs"] = [
-        (log[0], log[1], log[2], log[3])
-        for log in data["logs"]
-        if ((isinstance(log[1], str)) and (len(log[1]) > MESSAGE_THREASHOLD_IN_CHARS))
-    ]
+def processDiscussion(message_list, speaker_list, disc_id, tokenizer, model, device):
+    conversation_id = disc_id
 
     utterances = []
 
-    for i, log in enumerate(data["logs"]):
-        speaker, text, model, message_id = log
-        text = text.replace("\r\n", " ").replace("\n", " ").rstrip().lstrip()
-        if i == 0 and model == HARDCODED_MODEL:
-            conv_topic = text
-
-        utterances.append((text, speaker, f"conv_{conversation_id}_utt_{i}"))
-
+    counter = 0
+    for utt, speaker in zip(message_list, speaker_list):
+        text = utt.replace("\r\n", " ").replace("\n", " ").rstrip().lstrip()
+        #
+        utterances.append((text, speaker, f"conv_{disc_id}_utt_{counter}"))
+        counter += 1
+    #
     context_list = []
     response_list = []
     previous_context = ""
@@ -105,37 +80,29 @@ def processDiscussion(discussion, moderator_flag, tokenizer, model, device):
     return inference_result_list, context_list, response_list, conversation_id
 
 
-def calculate_coherence_ecoh(input_directory, moderator_flag=True, device="cpu"):
-
-    if not os.path.exists(input_directory):
-        print(input_directory)
-        print("input directory does not exist. Exiting")
-        sys.exit(1)
-
-    discussions = [
-        os.path.join(input_directory, f)
-        for f in os.listdir(input_directory)
-        if os.path.isfile(os.path.join(input_directory, f))
-    ]
-    print("Building corpus of ", len(discussions), "discussions")
+def calculate_coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
+    print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     #############################################################
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
     model = AutoModelForCausalLM.from_pretrained(base_model)
     model = PeftModel.from_pretrained(model, adapter_model)
     tokenizer = AutoTokenizer.from_pretrained(base_model)
     #############################################################
     model = model.to(device)
-
+    #
     aggregate_results = {}
     aggregate_context = {}
     aggregate_response = {}
-    for disc in discussions:
-        results, context_list, response_list, conversation_id = processDiscussion(
-            disc, moderator_flag, tokenizer, model, device
-        )
-        aggregate_results[conversation_id] = results
-        aggregate_context[conversation_id] = context_list
-        aggregate_response[conversation_id] = response_list
+    #
+    results, context_list, response_list, conversation_id = processDiscussion(
+        message_list, speaker_list, disc_id, tokenizer, model, device
+    )
+    aggregate_results[conversation_id] = results
+    aggregate_context[conversation_id] = context_list
+    aggregate_response[conversation_id] = response_list
 
     booleans = {}
     reasons = {}
@@ -153,42 +120,10 @@ def calculate_coherence_ecoh(input_directory, moderator_flag=True, device="cpu")
             else:
                 booleans[disc_id] = [boolean_res]
                 reasons[disc_id] = [reason]
-
-    with open(
-        "discussion_turnlevel_agresults_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(aggregate_results, fout, ensure_ascii=False, indent=4)
-
-    with open(
-        "discussion_turnlevel_reasons_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(reasons, fout, ensure_ascii=False, indent=4)
-
-    with open(
-        "discussion_turnlevel_boolean_results_" + timestr + ".json",
-        "w",
-        encoding="utf-8",
-    ) as fout:
-        json.dump(booleans, fout, ensure_ascii=False, indent=4)
-
-    average_coherence_per_discussion = []
-    for disc_id, score_list in booleans.items():
-        utt_coh_per_dialog_df = pd.DataFrame(score_list)
-        mean = utt_coh_per_dialog_df.mean()
-        average_coherence_per_discussion.append({disc_id: mean.to_dict()[0]})
-
-    flattened_data = []
-    for item in average_coherence_per_discussion:
-        for key, value in item.items():
-            flattened_data.append(value)
-    df = pd.DataFrame(flattened_data)
-    mean_values = df.mean()
-
-    average_coherence_per_discussion.append(
-        {"aggregate_mean": mean_values.to_dict()[0]}
+    #
+    save_dict_2_json(
+        aggregate_results, "discussion_turnlevel_agresults", disc_id, timestr
     )
-
-    with open(
-        "discussion_echo_results_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(average_coherence_per_discussion, fout, ensure_ascii=False, indent=4)
+    save_dict_2_json(reasons, "discussion_turnlevel_reasons", disc_id, timestr)
+    save_dict_2_json(booleans, "discussion_turnlevel_boolean_results", disc_id, timestr)
+    return booleans

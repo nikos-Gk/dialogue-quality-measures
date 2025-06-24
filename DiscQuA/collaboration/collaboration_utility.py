@@ -8,12 +8,6 @@ from .stopwords import stopwords as mallet_stopwords
 
 
 class Lexicon(object):
-    """Word matching code for lexicons.
-
-    Since lexicons may contain multi-word phrases ("I agree") and lexicons may
-    overlap, we don't tokenize, use string matching instead.
-    """
-
     def __init__(self, wordlists):
         self.wordlists = wordlists
         self.regex = {
@@ -24,11 +18,6 @@ class Lexicon(object):
         return re.compile(r"\b(?:{})\b".format("|".join(wordlist).lower()))
 
     def count_words(self, text, return_match=False):
-        """Returns a dict {category_name: sum 1[w in category]}
-
-        Words are double-counted if they occur in more
-        than one lexicon.
-        """
         text_ = text.lower()
         match = {cat: reg.findall(text_) for cat, reg in self.regex.items()}
         count = {cat: len(m) for cat, m in match.items()}
@@ -135,8 +124,6 @@ with open(os.path.join(script_dir, "lexicons", "my_hedges.txt"), encoding="utf-8
 
 lex_matcher = Lexicon(lexicons)
 
-# desired_tags=("N", "^", "S", "Z", "A", "T", "V")
-# nltk.help.upenn_tagset()
 desired_tags = (
     "NN",
     "NNP",
@@ -163,19 +150,6 @@ def get_content_tagged(words, tags):
 
 
 def message_features(reasons, stopwords=mallet_stopwords):
-    """Compute message-level features from a chat.
-
-    Parameters
-    ----------
-    reasons, iterable:
-        sequence of tuples (user, tokens, tags).
-        In StreetCrowd, users individually can leave an explanation for their
-        solo game decision.  These reasons populate the chat when the team
-        meets, but they have no intrinsic order, so they can only introduce
-        but not adopt idea words.  Also, more than one reason can introduce
-        an idea, because they are written independently.
-
-    """
     seen_words = set()
     introduced = defaultdict(set)
     where_introduced = defaultdict(list)
@@ -188,23 +162,17 @@ def message_features(reasons, stopwords=mallet_stopwords):
             w for w in get_content_tagged(tokens, tags) if w not in stopwords
         ]
 
-        #        new_words = [w for w in content_words if w not in seen_words]
-        #        introduced[user].update(new_words)
-        #       # all new content words are new ideas here
         introduced[user].update(content_words)
 
         seen_words.update(content_words)
         for w in content_words:
             where_introduced[w].append(("reason", k))
 
-        # length statistics
         features["n_words"] = len(tokens.split())
         lex_counts = lex_matcher.count_words(tokens)
         features.update(lex_counts)
 
-        # fillers
-        features["n_introduced"] = len(content_words)  # Modified for single utterance
-        #        features['n_introduced'] = len(new_words)  # Modified for single utterance
+        features["n_introduced"] = len(content_words)
         features["n_introduced_w_certain"] = (
             features["n_introduced"] * features["certain"]
         )

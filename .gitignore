@@ -32,3 +32,5 @@ build/
 Thumbs.db
 
 .vscode
+no_mod
+with_mod

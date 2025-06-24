@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
 import json
-import os
 import sys
 import time
 
-import openai
 import pandas as pd
 from convokit import Speaker, Utterance
+
+from DiscQuA.utils import (
+    getModel,
+    getUtterances,
+    isValidResponse,
+    prompt_gpt4,
+    save_dict_2_json,
+    sleep,
+    validateInputParams,
+)
 
 prompt = """\n\n
 You will be presented with a conversation history (which can be empty if the new utterance is the first utterance made in the conversation) from a 
@@ -20,110 +28,37 @@ inflammatory and aggressive speech.
 *RESPONSE*: "{response}"
 
 You are a coherence evaluator. 
-Given the post that the discussion is based on and the conversation history, you have to assign a score on a scale of 1 to 5 that indicates the coherence of the reponse.
+Given the post that the discussion is based on and the conversation history, you have to assign a score on a scale of 1 to 5 that indicates the coherence of the response.
 A score 1 indicates that the response is of poor coherence quality (incoherent), while 5 indicates that the response is of extremely high coherence quality (coherent).
-Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better 
-annotate the coherence of the new response.
+Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better annotate the coherence of the new response.
 Please provide the final answer directly with no reasoning steps.
-For clarity, your evaluation should be presented with the statement: 'The coherence of the new response is: [X]', where X is the numeric score (real number) you've determined. 
+For clarity, your evaluation should be presented with the statement: 'The coherence of the new response is: [X]', where X is the numeric score (integer number) you've determined. 
 Please, ensure that your last statement is the score in brackets [].
 """
 
-MODERATOR = "moderator"
-MESSAGE_THREASHOLD_IN_CHARS = 25
-HARDCODED_MODEL = "hardcoded"
 
-
-def processDiscussion(discussion, moderator_flag):
-    with open(discussion, "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    conversation_id = data["id"]
-    speakers = {user: Speaker(id=user) for user in data["users"]}
-
-    if not moderator_flag:
-        data["logs"] = [
-            (log[0], log[1], log[2], log[3])
-            for log in data["logs"]
-            if log[0] != MODERATOR
-        ]
-
-    data["logs"] = [
-        (log[0], log[1], log[2], log[3])
-        for log in data["logs"]
-        if ((isinstance(log[1], str)) and (len(log[1]) > MESSAGE_THREASHOLD_IN_CHARS))
-    ]
-
-    utterances = []
-
-    for i, log in enumerate(data["logs"]):
-        speaker, text, model, message_id = log
-        text = text.rstrip().lstrip()
-        if i == 0 and model == HARDCODED_MODEL:
-            conv_topic = text
-        utterances.append(
-            Utterance(
-                id=f"utt_{i}_{conversation_id}",
-                speaker=speakers[speaker],
-                conversation_id=str(conversation_id),
-                text=text,
-                meta={"timestamp": data["timestamp"]},
-            )
-        )
-    return utterances, conv_topic
-
-
-def prompt_gpt4(prompt, key):
-    openai.api_key = key
-
-    ok = False
-    counter = 0
-    while (
-        not ok
-    ):  # to avoid "ServiceUnavailableError: The server is overloaded or not ready yet."
-        counter = counter + 1
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4-1106-preview",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=4096,
-                temperature=0,
-            )
-            ok = True
-        except Exception as ex:
-            print("error", ex)
-            print("sleep for 5 seconds")
-            time.sleep(5)
-            if counter > 10:
-                return -1
-    return response["choices"][0]["message"]["content"]
-
-
-def calculate_response_coherence_score(utts, topic, openAIKEY):
-    conv_hist = ""
+def calculate_response_coherence_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
     for index, utt in enumerate(utts):
+        conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
-        if index == 0:
-            conv_hist = ""
-        else:
-            conv_hist = (
-                conv_hist
-                + "\n"
-                + "<user_name="
-                + utts[index - 1].get_speaker().id
-                + "\n"
-                + utts[index - 1].text
-                + "\n"
-            )
+
+        if index > 0:
+            start_ctx = max(0, index - ctx)
+            for i in range(start_ctx, index):
+                prev_utt = utts[i]
+                prev_speaker = prev_utt.get_speaker().id
+                prev_text = prev_utt.text
+                conv_hist += f"\n<user_name={prev_speaker}>\n{prev_text}\n"
+
         try:
             formatted_prompt = prompt.format(
                 response="<user_name=" + speaker + ">" + "\n" + text,
                 conv_history=conv_hist,
                 post=topic,
             )
-            response_text = prompt_gpt4(formatted_prompt, openAIKEY)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
             # print(formatted_prompt)
             annotations_ci.append(response_text)
         except Exception as e:
@@ -132,52 +67,52 @@ def calculate_response_coherence_score(utts, topic, openAIKEY):
     return annotations_ci
 
 
-def calculate_coherence_response(input_directory, openAIKEY, moderator_flag=True):
-    if not os.path.exists(input_directory):
-        print(input_directory)
-        print("input directory does not exist. Exiting")
-        sys.exit(1)
+def calculate_coherence_response(
+    message_list,
+    speakers_list,
+    disc_id,
+    openAIKEY,
+    model_type="openai",
+    model_path="",
+    gpu=False,
+    ctx=1,
+):
+    validateInputParams(model_type, openAIKEY, model_path)
 
-    if not openAIKEY:
-        print(
-            "OpenAI API key does not exist. Coherence scores will not be computed. Exiting"
-        )
-        sys.exit(1)
-
-    discussions = [
-        os.path.join(input_directory, f)
-        for f in os.listdir(input_directory)
-        if os.path.isfile(os.path.join(input_directory, f))
-    ]
-    print("Building corpus of ", len(discussions), "discussions")
+    print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
-    coh_per_resp_scores_llm_output_dict = {}
-    for disc in discussions:
-        try:
-            utterances, conv_topic = processDiscussion(disc, moderator_flag)
-            disc_id = utterances[0].id.split("_")[2]
-            print(
-                "Coherence Score Per Response-Proccessing discussion: ",
-                disc_id,
-                " with LLM",
-            )
-            coh_per_resp = calculate_response_coherence_score(
-                utterances, conv_topic, openAIKEY
-            )
-            coh_per_resp_scores_llm_output_dict[disc_id] = coh_per_resp
-            print("Sleeping for 60 seconds, for openAI quota")
-            time.sleep(60)
-        except Exception as e:
-            print("Error: ", e)
-            print(disc)
+    llm = None
+    if model_type == "llama":
+        llm = getModel(model_path, gpu)
 
-    with open(
-        "llm_output_coh_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(
-            coh_per_resp_scores_llm_output_dict, fout, ensure_ascii=False, indent=4
+    coh_per_resp_scores_llm_output_dict = {}
+
+    try:
+        utterances, speakers = getUtterances(
+            message_list, speakers_list, disc_id, replyto_list=[]
         )
+        conv_topic = message_list[0]
+        print(
+            "Coherence Score Per Response-Proccessing discussion: ",
+            disc_id,
+            " with LLM",
+        )
+        coh_per_resp = calculate_response_coherence_score(
+            utterances, conv_topic, openAIKEY, model_type, llm, ctx
+        )
+        coh_per_resp_scores_llm_output_dict[disc_id] = coh_per_resp
+        sleep(model_type)
+    except Exception as e:
+        print("Error: ", e)
+        print(disc_id)
+
+    save_dict_2_json(
+        coh_per_resp_scores_llm_output_dict,
+        "llm_output_coh_per_response",
+        disc_id,
+        timestr,
+    )
 
     """            
         with open("llm_output_coh_per_response_.json", encoding="utf-8") as f:
@@ -198,41 +133,20 @@ def calculate_coherence_response(input_directory, openAIKEY, moderator_flag=True
                 counter += 1
                 continue
             parts = label.split("coherence of the new response is:")
-            value = parts[1]
-            rightParenthesisIndex = value.find("]")
-            leftParenthesisIndex = value.find("[")
-            value = value[leftParenthesisIndex:rightParenthesisIndex]
-            value = value.replace("[", "").replace("]", "")
+
+            value = isValidResponse(parts)
+            if value == -1:
+                print(
+                    "LLM output with missing coherence response score , skipping discussion\n"
+                )
+                print(label)
+                counter += 1
+                continue
+
             ut_dict[disc_id + "_" + str(counter)] = value
             counter += 1
         coherence_scores_per_response[disc_id] = ut_dict
 
-    average_coherence_per_disc = []
-    for disc_id, utt_coh in coherence_scores_per_response.items():
-        utt_coh_per_disc_df = pd.DataFrame(utt_coh, index=[0])
-        utt_coh_per_disc_df = utt_coh_per_disc_df.transpose()
-        cols = utt_coh_per_disc_df.columns
-        utt_coh_per_disc_df[cols] = utt_coh_per_disc_df[cols].apply(
-            pd.to_numeric, errors="coerce"
-        )
-        mean = utt_coh_per_disc_df.mean()
-        average_coherence_per_disc.append({disc_id: mean.to_dict()[0]})
-
-    flattened_data = []
-    for item in average_coherence_per_disc:
-        for key, value in item.items():
-            flattened_data.append(value)
-    df = pd.DataFrame(flattened_data)
-    mean_values = df.mean()
-
-    average_coherence_per_disc.append({"aggregate_mean": mean_values.to_dict()[0]})
-
-    with open(
-        "disc_aver_coh_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(average_coherence_per_disc, fout, ensure_ascii=False, indent=4)
-
-    with open(
-        "coherence_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(coherence_scores_per_response, fout, ensure_ascii=False, indent=4)
+    save_dict_2_json(
+        coherence_scores_per_response, "coherence_per_response", disc_id, timestr
+    )

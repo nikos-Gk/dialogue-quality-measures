@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import time
-
-import openai
+from DiscQuA.utils import prompt_gpt4
 
 ini = """Below are two sets of linguistic features for disagreement levels and non-disagreement labels."""
 
@@ -61,7 +59,7 @@ Each utterance is a brief Reddit-based comment responding to the post and other 
 
 Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better annotate the new utterance.
 
-Thus, please do not annotate the entire conversation but annotate only the new utterance by determining its appropriate disagreement level and/or non-disagreement label(s). Please provide the final answer directly with no reasoning steps.
+Thus, please do not annotate the entire conversation but annotate only the new utterance by determining its appropriate disagreement level(s) and/or non-disagreement label(s). Please provide the final answer directly with no reasoning steps.
 
 If the new utterance fits multiple categories, list all that apply. Ensure that your final answer clearly identifies whether each of the disagreement levels (0-7) and non-disagreement labels (A-I) are applicable (1) or not applicable (0) to the new utterance.
 
@@ -89,64 +87,41 @@ For clarity, your response should succinctly be presented in a structured list f
 
 
 class DisputeTactics:
-    def __init__(self, utterances, conv_topic, openaiKey):
+    def __init__(self, utterances, conv_topic, openaiKey, model_type, llm, ctx):
         self.utterances = utterances
         self.conv_topic = conv_topic
         self.openaiKey = openaiKey
-
-    def prompt_gpt4(self, prompt):
-        openai.api_key = self.openaiKey
-
-        ok = False
-        counter = 0
-        while (
-            not ok
-        ):  # to avoid "ServiceUnavailableError: The server is overloaded or not ready yet."
-            counter = counter + 1
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-4-1106-preview",
-                    messages=[{"role": "user", "content": prompt}],
-                    max_tokens=200,
-                    temperature=0,
-                )
-                ok = True
-            except Exception as ex:
-                print("error", ex)
-                print("sleep for 5 seconds")
-                time.sleep(5)
-                if counter > 10:
-                    return -1
-        return response["choices"][0]["message"]["content"]
+        self.model_type = model_type
+        self.llm = llm
+        self.ctx = ctx
 
     def calculate_dispute_tectics(self):
         prompt = ini + disagreement_levels + non_disagreement_labels + final
         annotations_ci = []
-        conv_hist = ""
+        #
         for index, utt in enumerate(self.utterances):
+            conv_hist = ""
             text = utt.text
             speaker = utt.get_speaker().id
-            if index == 0:
-                conv_hist = ""
-            else:
-                conv_hist = (
-                    conv_hist
-                    + "\n"
-                    + "<user_name="
-                    + self.utterances[index - 1].get_speaker().id
-                    + "\n"
-                    + self.utterances[index - 1].text
-                    + "\n"
-                )
+            if index > 0:
+                start_ctx = max(0, index - self.ctx)
+                for i in range(start_ctx, index):
+                    prev_utt = self.utterances[i]
+                    prev_speaker = prev_utt.get_speaker().id
+                    prev_text = prev_utt.text
+                    conv_hist += f"\n<user_name={prev_speaker}>\n{prev_text}\n"
+            #
             try:
                 formatted_prompt = prompt.format(
                     utterance="<user_name=" + speaker + ">" + "\n" + text,
                     conv_history=conv_hist,
                     post=self.conv_topic,
                 )
-                response_text = self.prompt_gpt4(formatted_prompt)
+                response_text = prompt_gpt4(
+                    formatted_prompt, self.openaiKey, self.model_type, self.llm
+                )
+                # print(formatted_prompt)
                 annotations_ci.append(response_text)
-            #                print(formatted_prompt)
             except Exception as e:  # happens for one instance
                 print("Error: ", e)
                 annotations_ci.append(-1)

@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-
-import json
-import os
-import sys
 import time
 
-import openai
-import pandas as pd
-from convokit import Speaker, Utterance
+from DiscQuA.utils import (
+    getModel,
+    getUtterances,
+    prompt_gpt4,
+    save_dict_2_json,
+    sleep,
+    validateInputParams,
+)
 
 ini = """Below is a set of communicative functions (presented in Macagno et al., 2022) of utterances in human discussions aimed in capturing their true intention in terms of dialogicity (potential other-orientedness).
 Generally speaking, an utterance is considered less dialogic when it does not result in a continuation of the discussion and does not build on the previous discussion discourse or does not explore a viewpoint. 
@@ -73,155 +74,85 @@ For clarity, your response should succinctly be presented in a structured list f
 - Label 8: [1/0]
 """
 
-MODERATOR = "moderator"
-MESSAGE_THREASHOLD_IN_CHARS = 25
-HARDCODED_MODEL = "hardcoded"
 
-
-def processDiscussion(discussion, moderator_flag):
-    with open(discussion, "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    conversation_id = data["id"]
-    speakers = {user: Speaker(id=user) for user in data["users"]}
-
-    if not moderator_flag:
-        data["logs"] = [
-            (log[0], log[1], log[2], log[3])
-            for log in data["logs"]
-            if log[0] != MODERATOR
-        ]
-
-    utterances = []
-
-    data["logs"] = [
-        (log[0], log[1], log[2], log[3])
-        for log in data["logs"]
-        if ((isinstance(log[1], str)) and (len(log[1]) > MESSAGE_THREASHOLD_IN_CHARS))
-    ]
-
-    for i, log in enumerate(data["logs"]):
-        speaker, text, model, message_id = log
-        text = text.rstrip().lstrip()
-        if i == 0 and model == HARDCODED_MODEL:
-            conv_topic = text
-        utterances.append(
-            Utterance(
-                id=f"utt_{i}_{conversation_id}",
-                speaker=speakers[speaker],
-                conversation_id=str(conversation_id),
-                text=text,
-                meta={"timestamp": data["timestamp"]},
-            )
-        )
-    return utterances, conv_topic
-
-
-def prompt_gpt4(prompt, key):
-    openai.api_key = key
-
-    ok = False
-    counter = 0
-    while (
-        not ok
-    ):  # to avoid "ServiceUnavailableError: The server is overloaded or not ready yet."
-        counter = counter + 1
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4-1106-preview",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=4096,
-                temperature=0,
-            )
-            ok = True
-        except Exception as ex:
-            print("error", ex)
-            print("sleep for 5 seconds")
-            time.sleep(5)
-            if counter > 10:
-                return -1
-    return response["choices"][0]["message"]["content"]
-
-
-def calculate_dialog_labels(utts, topic, openAIKEY):
+def calculate_dialog_labels(utts, topic, openAIKEY, model_type, model, ctx):
     prompt = ini + dialogical_labels + final
-    conv_hist = ""
     annotations_ci = []
+    #
     for index, utt in enumerate(utts):
+        conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
-        if index == 0:
-            conv_hist = ""
-        else:
-            conv_hist = (
-                conv_hist
-                + "\n"
-                + "<user_name="
-                + utts[index - 1].get_speaker().id
-                + "\n"
-                + utts[index - 1].text
-                + "\n"
-            )
+        if index > 0:
+            start_ctx = max(0, index - ctx)
+            for i in range(start_ctx, index):
+                prev_utt = utts[i]
+                prev_speaker = prev_utt.get_speaker().id
+                prev_text = prev_utt.text
+                conv_hist += f"\n<user_name={prev_speaker}>\n{prev_text}\n"
+
         try:
             formatted_prompt = prompt.format(
                 utterance="<user_name=" + speaker + ">" + "\n" + text,
                 conv_history=conv_hist,
                 post=topic,
             )
-            response_text = prompt_gpt4(formatted_prompt, openAIKEY)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
             # print(formatted_prompt)
             annotations_ci.append(response_text)
+
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
     return annotations_ci
 
 
-def dialogicity(input_directory, openAIKEY, moderator_flag=True):
+def dialogicity(
+    message_list,
+    speakers_list,
+    disc_id,
+    openAIKEY,
+    model_type="openai",
+    model_path="",
+    gpu=False,
+    ctx=1,
+):
 
-    if not os.path.exists(input_directory):
-        print(input_directory)
-        print("input directory does not exist. Exiting")
-        sys.exit(1)
-
-    if not openAIKEY:
-        print(
-            "OpenAI API key does not exist. Dialogical labels will not be computed. Exiting"
-        )
-        sys.exit(1)
-
-    discussions = [
-        os.path.join(input_directory, f)
-        for f in os.listdir(input_directory)
-        if os.path.isfile(os.path.join(input_directory, f))
-    ]
-    print("Building corpus of ", len(discussions), "discussions")
+    validateInputParams(model_type, openAIKEY, model_path)
+    print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
+    llm = None
+    if model_type == "llama":
+        llm = getModel(model_path, gpu)
 
     dialog_labels_llm_output_dict = {}
-    for disc in discussions:
-        try:
-            utterances, conv_topic = processDiscussion(disc, moderator_flag)
-            disc_id = utterances[0].id.split("_")[2]
-            print(
-                "Dialogical labels Per Response-Proccessing discussion: ",
-                disc_id,
-                " with LLM",
-            )
-            dial_labels_per_resp = calculate_dialog_labels(
-                utterances, conv_topic, openAIKEY
-            )
-            dialog_labels_llm_output_dict[disc_id] = dial_labels_per_resp
-            print("Sleeping for 60 seconds, for openAI quota")
-            time.sleep(60)
-        except Exception as e:
-            print("Error: ", e)
-            print(disc)
 
-    with open(
-        "llm_output_diallabels_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(dialog_labels_llm_output_dict, fout, ensure_ascii=False, indent=4)
+    try:
+        utterances, speakers = getUtterances(
+            message_list, speakers_list, disc_id, replyto_list=[]
+        )
+        conv_topic = message_list[0]
+        print(
+            "Dialogical labels Per Response-Proccessing discussion: ",
+            disc_id,
+            " with LLM",
+        )
+
+        dial_labels_per_resp = calculate_dialog_labels(
+            utterances, conv_topic, openAIKEY, model_type, llm, ctx
+        )
+        dialog_labels_llm_output_dict[disc_id] = dial_labels_per_resp
+        sleep(model_type)
+    except Exception as e:
+        print("Error: ", e)
+        print(disc_id)
+
+    save_dict_2_json(
+        dialog_labels_llm_output_dict,
+        "llm_output_diallabels_per_response",
+        disc_id,
+        timestr,
+    )
 
     """        
     with open("llm_output_diallabels_per_response_.json", encoding="utf-8") as f:
@@ -239,45 +170,23 @@ def dialogicity(input_directory, openAIKEY, moderator_flag=True):
                 counter += 1
                 continue
             parts = label.split("\n")
-            feature = {}
-            for j in parts:
-                entries = j.split(":")
-                key = entries[0]
-                value = entries[1]
-                key = key.replace("-", "")
-                value = value.replace("[", "").replace("]", "")
-                feature[key] = value
-            if disc_id in dialo_labels_per_response:
-                dialo_labels_per_response[disc_id].append(feature)
-            else:
-                dialo_labels_per_response[disc_id] = [feature]
+            try:
+                feature = {}
+                for j in parts:
+                    entries = j.split(":")
+                    key = entries[0]
+                    value = entries[1]
+                    key = key.replace("-", "")
+                    value = value.replace("[", "").replace("]", "")
+                    feature[key] = value
+                if disc_id in dialo_labels_per_response:
+                    dialo_labels_per_response[disc_id].append(feature)
+                else:
+                    dialo_labels_per_response[disc_id] = [feature]
+            except Exception as e:
+                print(e)
 
-    average_diallabel_per_disc = []
-    for disc_id, dial_label in dialo_labels_per_response.items():
-        dial_label_per_disc_df = pd.DataFrame(dial_label)
-
-        cols = dial_label_per_disc_df.columns
-        dial_label_per_disc_df[cols] = dial_label_per_disc_df[cols].apply(
-            pd.to_numeric, errors="coerce"
-        )
-        mean = dial_label_per_disc_df.mean()
-        average_diallabel_per_disc.append({disc_id: mean.to_dict()})
-
-    flattened_data = []
-    for item in average_diallabel_per_disc:
-        for key, value in item.items():
-            flattened_data.append(value)
-    df = pd.DataFrame(flattened_data)
-    mean_values = df.mean()
-
-    average_diallabel_per_disc.append({"aggregate_mean": mean_values.to_dict()})
-
-    with open(
-        "disc_aver_diallabel_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(average_diallabel_per_disc, fout, ensure_ascii=False, indent=4)
-
-    with open(
-        "diallabel_per_response_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(dialo_labels_per_response, fout, ensure_ascii=False, indent=4)
+    save_dict_2_json(
+        dialo_labels_per_response, "diallabel_per_response", disc_id, timestr
+    )
+    return dialo_labels_per_response

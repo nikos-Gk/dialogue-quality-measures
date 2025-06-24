@@ -1,164 +1,160 @@
-import json
 import math
-import os
-import sys
 import time
 
-import pandas as pd
-from convokit import Speaker, Utterance
-
-MODERATOR = "moderator"
-MESSAGE_THREASHOLD_IN_CHARS = 25
-HARDCODED_MODEL = "hardcoded"
-
-
-def processDiscussion(discussion, moderator_flag):
-    with open(discussion, "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    conversation_id = data["id"]
-    speakers = {user: Speaker(id=user) for user in data["users"]}
-
-    if not moderator_flag:
-        data["logs"] = [
-            (log[0], log[1], log[2], log[3])
-            for log in data["logs"]
-            if log[0] != MODERATOR
-        ]
-    utterances = []
-
-    data["logs"] = [
-        (log[0], log[1], log[2], log[3])
-        for log in data["logs"]
-        if ((isinstance(log[1], str)) and (len(log[1]) > MESSAGE_THREASHOLD_IN_CHARS))
-    ]
-
-    for i, log in enumerate(data["logs"]):
-        speaker, text, model, message_id = log
-        text = text.rstrip().lstrip()
-        if i == 0 and model == HARDCODED_MODEL:
-            conv_topic = text
-        utterances.append(
-            Utterance(
-                id=f"utt_{i}_{conversation_id}",
-                speaker=speakers[speaker],
-                conversation_id=str(conversation_id),
-                text=text,
-                meta={"timestamp": data["timestamp"]},
-            )
-        )
-    return utterances, conv_topic, speakers
+from DiscQuA.utils import getUtterances, save_dict_2_json
 
 
 def compute_balance(contributions):
-    #    Compute the balance (S) of conversational contributions using entropy.
-
-    #    Parameters:
-    #    contributions (list): A list of contributions by each participant.
-
-    #    Returns:
-    #    float: The balance (S) of the conversation.
-
-    # Calculate the total contributions
     total_contributions = sum(contributions)
-
-    # Calculate the proportion of contributions for each participant
     proportions = [c / total_contributions for c in contributions]
-
-    # Compute the entropy (balance)
     balance = -sum(p * math.log(p, len(proportions)) for p in proportions if p > 0)
-
     return balance
 
 
-def calculate_balanced_participation(input_directory, moderator_flag=True):
-    if not os.path.exists(input_directory):
-        print(input_directory)
-        print("input directory does not exist. Exiting")
-        sys.exit(1)
-
-    discussions = [
-        os.path.join(input_directory, f)
-        for f in os.listdir(input_directory)
-        if os.path.isfile(os.path.join(input_directory, f))
-    ]
-    print("Building corpus of ", len(discussions), "discussions")
+def calculate_balanced_participation(
+    message_list, speakers_list, disc_id, discussion_level
+):
+    utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     timestr = time.strftime("%Y%m%d-%H%M%S")
-
-    disc_speakers_messages_dict = {}
-    disc_number_of_messages_dict = {}
-    disc_sum_number_of_words_dict = {}
-    for disc in discussions:
-        print(disc)
-        utterances, conv_topic, speakers = processDiscussion(disc, moderator_flag)
-        disc_id = utterances[0].id.split("_")[2]
+    if discussion_level:
+        disc_speakers_messages_dict = {}
+        disc_number_of_messages_dict = {}
+        disc_sum_number_of_words_dict = {}
         print("Balanced Participation-Proccessing discussion: ", disc_id)
         disc_speakers_messages_dict[disc_id] = {
             speaker: [] for speaker in speakers.keys()
         }
-        disc_number_of_messages_dict[disc_id] = []
-        disc_sum_number_of_words_dict[disc_id] = []
+        disc_number_of_messages_dict[disc_id] = {
+            speaker: [] for speaker in speakers.keys()
+        }
+        disc_sum_number_of_words_dict[disc_id] = {
+            speaker: [] for speaker in speakers.keys()
+        }
+        # dict with the general info:disc_speakers_messages_dict
         for utt in utterances:
             speaker = utt.get_speaker().id
             disc_speakers_messages_dict[disc_id][speaker].append(utt.text)
+        # number of messages per speaker:disc_number_of_messages_dict
         for speaker in disc_speakers_messages_dict[disc_id].keys():
-            speaker_words_per_message = []
+            #
             speaker_number_of_messages = len(
                 disc_speakers_messages_dict[disc_id][speaker]
             )
-            disc_number_of_messages_dict[disc_id].append(speaker_number_of_messages)
+            disc_number_of_messages_dict[disc_id][speaker] = speaker_number_of_messages
+            #
+            speaker_words_per_message = []
+            #
             for message in disc_speakers_messages_dict[disc_id][speaker]:
                 speaker_words_per_message.append(len(message.split()))
             disc_speaker_number_of_words = sum(speaker_words_per_message)
-            disc_sum_number_of_words_dict[disc_id].append(disc_speaker_number_of_words)
-
-    with open(
-        "number_of_messages_per_discussion_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(disc_number_of_messages_dict, fout, ensure_ascii=False, indent=4)
-
-    with open(
-        "sum_of_words_per_discussion_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(disc_sum_number_of_words_dict, fout, ensure_ascii=False, indent=4)
-
-    entropy_per_discussion = {}
-    for disc_id in disc_speakers_messages_dict.keys():
-        entropy_per_discussion[disc_id] = {}
-        entropy_per_discussion[disc_id]["entropy_number_of_messages"] = compute_balance(
-            disc_number_of_messages_dict[disc_id]
+            disc_sum_number_of_words_dict[disc_id][
+                speaker
+            ] = disc_speaker_number_of_words
+        save_dict_2_json(
+            disc_number_of_messages_dict,
+            "number_of_messages_per_discussion",
+            disc_id,
+            timestr,
         )
-        entropy_per_discussion[disc_id]["entropy_number_of_words"] = compute_balance(
-            disc_sum_number_of_words_dict[disc_id]
+        save_dict_2_json(
+            disc_sum_number_of_words_dict,
+            "sum_of_words_per_discussion",
+            disc_id,
+            timestr,
         )
+        entropy_per_discussion = {}
+        for disc_id in disc_speakers_messages_dict.keys():
+            entropy_per_discussion[disc_id] = {}
+            entropy_per_discussion[disc_id]["entropy_number_of_messages"] = (
+                compute_balance(disc_number_of_messages_dict[disc_id].values())
+            )
+            entropy_per_discussion[disc_id]["entropy_number_of_words"] = (
+                compute_balance(disc_sum_number_of_words_dict[disc_id].values())
+            )
+            save_dict_2_json(
+                entropy_per_discussion, "entropy_per_discussion", disc_id, timestr
+            )
+        return entropy_per_discussion
+    else:
+        output_dict_turn = {}
+        output_dict_all = {}
+        entropy_dict_all = {}
+        for utter_index, utter in enumerate(utterances):
+            if utter_index == 0:
+                continue
+            utterances_iter = utterances[0 : utter_index + 1]
+            # print(f"Corpus for utterances 0 - {utter_index} created successfully.")
+            #
+            disc_speakers_messages_dict_temp = {}
+            disc_number_of_messages_dict_temp = {}
+            disc_sum_number_of_words_dict_temp = {}
 
-    with open(
-        "entropy_per_discussion_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(entropy_per_discussion, fout, ensure_ascii=False, indent=4)
+            speakers_iter = [utt.get_speaker().id for utt in utterances_iter]
 
-    flattened_data_number_of_messages = []
-    flattened_data_number_of_words = []
-    for entropy_features_dict in entropy_per_discussion.values():
-        for feature_entropy, value in entropy_features_dict.items():
-            if feature_entropy == "entropy_number_of_messages":
-                flattened_data_number_of_messages.append(value)
-            elif feature_entropy == "entropy_number_of_words":
-                flattened_data_number_of_words.append(value)
+            #
+            disc_speakers_messages_dict_temp[disc_id] = {
+                speaker: [] for speaker in speakers_iter
+            }
+            disc_number_of_messages_dict_temp[disc_id] = {
+                speaker: [] for speaker in speakers_iter
+            }
+            disc_sum_number_of_words_dict_temp[disc_id] = {
+                speaker: [] for speaker in speakers_iter
+            }
+
+            #
+            for utt in utterances_iter:
+                speaker = utt.get_speaker().id
+                disc_speakers_messages_dict_temp[disc_id][speaker].append(utt.text)
+            #
+            for speaker in disc_speakers_messages_dict_temp[disc_id].keys():
+                #
+                speaker_number_of_messages = len(
+                    disc_speakers_messages_dict_temp[disc_id][speaker]
+                )
+                disc_number_of_messages_dict_temp[disc_id][
+                    speaker
+                ] = speaker_number_of_messages
+                #
+                speaker_words_per_message = []
+                #
+                for message in disc_speakers_messages_dict_temp[disc_id][speaker]:
+                    #                    print('before splitting')
+                    speaker_words_per_message.append(len(message.split()))
+                #                    print('after splitting')
+                disc_speaker_number_of_words = sum(speaker_words_per_message)
+                disc_sum_number_of_words_dict_temp[disc_id][
+                    speaker
+                ] = disc_speaker_number_of_words
+            key_iter = "utt_" + str(0) + "-" + str(utter_index)
+            #
+            output_dict_turn[key_iter] = {
+                "number_of_messages": list(disc_number_of_messages_dict_temp.values()),
+                "sum_of_words": list(disc_sum_number_of_words_dict_temp.values()),
+            }
+            if disc_id in output_dict_all:
+                output_dict_all[disc_id].append([output_dict_turn])
             else:
-                print("error in flattened data")
-                break
-    df = pd.DataFrame(
-        {
-            "entropy_number_of_messages": flattened_data_number_of_messages,
-            "entropy_number_of_words": flattened_data_number_of_words,
-        }
-    )
-    mean_values = df.mean()
+                output_dict_all[disc_id] = [output_dict_turn]
 
-    entropy_per_discussion["aggregate_mean"] = mean_values.to_dict()
+            #
+            entropy_per_turn = {}
+            for disc_id in disc_speakers_messages_dict_temp.keys():
+                entropy_per_turn[key_iter] = {}
+                entropy_per_turn[key_iter]["entropy_number_of_messages"] = (
+                    compute_balance(disc_number_of_messages_dict_temp[disc_id].values())
+                )
 
-    with open(
-        "entropy_per_discussion_" + timestr + ".json", "w", encoding="utf-8"
-    ) as fout:
-        json.dump(entropy_per_discussion, fout, ensure_ascii=False, indent=4)
+                entropy_per_turn[key_iter]["entropy_number_of_words"] = compute_balance(
+                    disc_sum_number_of_words_dict_temp[disc_id].values()
+                )
+
+            if disc_id in entropy_dict_all:
+                entropy_dict_all[disc_id].append([entropy_per_turn])
+            else:
+                entropy_dict_all[disc_id] = [entropy_per_turn]
+        save_dict_2_json(
+            output_dict_all, "number_of_msgs_sumofwords_per_utt", disc_id, timestr
+        )
+        save_dict_2_json(entropy_dict_all, "entropy_per_utt", disc_id, timestr)
+        return entropy_dict_all

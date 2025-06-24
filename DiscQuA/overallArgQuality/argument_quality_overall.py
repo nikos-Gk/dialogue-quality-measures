@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import time
-
-import openai
+from DiscQuA.utils import prompt_gpt4
 
 #################################################################################
 
@@ -32,40 +30,18 @@ Conclude your evaluation with the statement: 'The average overall quality of the
 
 
 class OAQuality:
-    def __init__(self, utterances, conv_topic, openaiKey, mode):
+    def __init__(self, utterances, conv_topic, openaiKey, mode, model_type, llm):
         self.utterances = utterances
         self.conv_topic = conv_topic
         self.openaiKey = openaiKey
         self.mode = mode
-
-    def prompt_gpt4(self, prompt):
-        openai.api_key = self.openaiKey
-
-        ok = False
-        counter = 0
-        while (
-            not ok
-        ):  # to avoid "ServiceUnavailableError: The server is overloaded or not ready yet."
-            counter = counter + 1
-            try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-4-1106-preview",
-                    messages=[{"role": "user", "content": prompt}],
-                    max_tokens=4096,
-                    temperature=0,
-                )
-                ok = True
-            except Exception as ex:
-                print("error", ex)
-                print("sleep for 5 seconds")
-                time.sleep(5)
-                if counter > 10:
-                    return -1
-        return response["choices"][0]["message"]["content"]
+        self.model_type = model_type
+        self.llm = llm
 
     def calculate_ovargquality_scores(self):
         mode_prompt = self.mode
         conv_text = ""
+        #
         for utt in self.utterances:
             text = utt.text
             speaker = utt.get_speaker().id
@@ -81,8 +57,10 @@ class OAQuality:
             )
         annotations_ci = []
         try:
-            response_text = self.prompt_gpt4(formatted_prompt)
-            #            print(formatted_prompt)
+            response_text = prompt_gpt4(
+                formatted_prompt, self.openaiKey, self.model_type, self.llm
+            )
+            # print(formatted_prompt)
             annotations_ci.append(response_text)
         except Exception as e:  # happens for one instance
             print("Error: ", e)
