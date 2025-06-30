@@ -8,6 +8,19 @@ from .collaboration_utility import CollaborationUtility
 
 
 def calculate_collaboration(message_list, speakers_list, disc_id, discussion_level):
+    """Annotates a discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, annotation at the discussion level; otherwise at the utterance level.
+
+    Returns:
+        list[dict[str, dict[str, float]]]: A list containing one dictionary per discussion.
+        Each dictionary maps a discussion ID to its corresponding set of collaboration
+        feature scores (aggregated if discussion-level, otherwise per-utterance).
+    """
+
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     if discussion_level:

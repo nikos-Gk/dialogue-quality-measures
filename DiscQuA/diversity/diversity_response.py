@@ -11,31 +11,32 @@ from DiscQuA.utils import (
     validateInputParams,
 )
 
-prompt = """
-You will be presented with a conversation history (which can be empty if the new utterance is the first utterance made in the conversation) from a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
+prompt = """\n\n
+You will be presented with a conversation history (which can be empty if the new utterance is the first utterance made in the conversation) from a 
+discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
 Post: {post}
-All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
+All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating 
+inflammatory and aggressive speech.
 
 *CONVERSATION HISTORY*: "{conv_history}"
 
-*NEW UTTERANCE*: "{utterance}"
+*RESPONSE*: "{response}"
 
-You are a toxicity evaluator. 
-Given the post that the discussion is based on and the conversation history, you have to assign a label that indicates the toxicity of the response.
-The possible labels are 1: Not Toxic, 2: Barely Toxic, 3: Almost Toxic, 4: Toxic and 5: Extremely Toxic.
-Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better annotate the toxicity of the new utterance.
+Given the post that the discussion is based on and the conversation history, rate the diversity of arguments in the response on a scale from 1 to 5.
+A score 1 indicates low diversity (the response repeats arguments that have already been presented) and 5 of high diversity (the response presents new arguments with a broad range of perspectives and reasoning styles).
 Please provide the final answer directly with no reasoning steps.
-For clarity, your evaluation should be presented with the statement: 'The toxicity of the new utterance is: [X]', where X is the label you've determined. 
-Please, ensure that your last statement is the label in brackets [].
+For clarity, your evaluation should be presented with the statement: 'The diversity of the arguments of the new response is: [X]', where X is the rating you've determined.
+Please, ensure that your last statement is the score in brackets [].
 """
 
 
-def calculate_response_toxicity_score(utts, topic, openAIKEY, model_type, model, ctx):
+def calculate_response_diversity_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
     for index, utt in enumerate(utts):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
+
         if index > 0:
             start_ctx = max(0, index - ctx)
             for i in range(start_ctx, index):
@@ -46,20 +47,20 @@ def calculate_response_toxicity_score(utts, topic, openAIKEY, model_type, model,
 
         try:
             formatted_prompt = prompt.format(
-                utterance="<user_name=" + speaker + ">" + "\n" + text,
+                response="<user_name=" + speaker + ">" + "\n" + text,
                 conv_history=conv_hist,
                 post=topic,
             )
-            # print(formatted_prompt)
-            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            annotations_ci.append(response_text)
+            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            print(formatted_prompt)
+            # annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
     return annotations_ci
 
 
-def calculate_toxicity(
+def calculate_diversity_response(
     message_list,
     speakers_list,
     disc_id,
@@ -69,8 +70,8 @@ def calculate_toxicity(
     gpu=False,
     ctx=1,
 ):
-    """Evaluates the toxicity level of each utterance in a discussion using a selected language model
-    (OpenAI or LLaMA), with optional context from previous utterances.
+    """Computes diversity scores for each response within a discussion using a specified language model.
+       Each response is evaluated in context to determine the novelty and variety of arguments presented.
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
@@ -83,78 +84,79 @@ def calculate_toxicity(
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
 
     Returns:
-        dict: A dictionary mapping each utterance ID to its associated toxicity score, structured per discussion ID.
+       dict[str, dict[str, float]]: A nested dictionary mapping discussion IDs to per-utterance
+       diversity scores, where each utterance ID (e.g., "utt_0") is assigned a numeric score.
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
+
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
+
     llm = None
     if model_type == "llama":
         llm = getModel(model_path, gpu)
-    tox_per_resp_scores_llm_output_dict = {}
+
+    div_per_resp_scores_llm_output_dict = {}
+
     try:
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-
         print(
-            "Toxicilty Label Per Response-Proccessing discussion: ",
+            "Diversity Score Per Response-Proccessing discussion: ",
             disc_id,
             " with LLM",
         )
-        #
-        tox_per_resp = calculate_response_toxicity_score(
+        div_per_resp = calculate_response_diversity_score(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
         )
-        tox_per_resp_scores_llm_output_dict[disc_id] = tox_per_resp
-        #
+        div_per_resp_scores_llm_output_dict[disc_id] = div_per_resp
         sleep(model_type)
     except Exception as e:
         print("Error: ", e)
         print(disc_id)
 
     save_dict_2_json(
-        tox_per_resp_scores_llm_output_dict,
-        "llm_output_tox_per_response",
+        div_per_resp_scores_llm_output_dict,
+        "llm_output_div_per_response",
         disc_id,
         timestr,
     )
 
     """            
-    with open("llm_output_tox_per_response_.json", encoding="utf-8") as f:
-        tox_scores = json.load(f)
-    tox_per_resp_scores_llm_output_dict=tox_scores
+        with open("llm_output_div_per_response_.json", encoding="utf-8") as f:
+            div_scores = json.load(f)
+        div_per_resp_scores_llm_output_dict=div_scores
     """
-
-    toxicity_scores_per_response = {}
-    for disc_id, turnAnnotations in tox_per_resp_scores_llm_output_dict.items():
+    div_scores_per_response = {}
+    for disc_id, turnAnnotations in div_per_resp_scores_llm_output_dict.items():
         counter = 0
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
                 print(
-                    "LLM output with missing toxicity response label , skipping response\n"
+                    "LLM output with missing diversity response score , skipping response\n"
                 )
                 print(label)
                 counter += 1
                 continue
-            parts = label.split("toxicity of the new utterance is:")
+            parts = label.split("diversity of the arguments of the new response is:")
+
             value = isValidResponse(parts)
             if value == -1:
                 print(
-                    "LLM output with missing toxicity response label , skipping response\n"
+                    "LLM output with missing diversity response score , skipping response\n"
                 )
                 print(label)
                 counter += 1
                 continue
-
-            ut_dict[disc_id + "_" + str(counter)] = value
+            key_iter = "utt_" + str(counter)
+            ut_dict[key_iter] = value
             counter += 1
-        toxicity_scores_per_response[disc_id] = ut_dict
+        div_scores_per_response[disc_id] = ut_dict
 
     save_dict_2_json(
-        toxicity_scores_per_response, "toxicity_per_response", disc_id, timestr
+        div_scores_per_response, "diversity_per_response", disc_id, timestr
     )
-    return toxicity_scores_per_response

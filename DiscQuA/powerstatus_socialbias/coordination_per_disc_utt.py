@@ -4,12 +4,30 @@ from datetime import datetime
 from convokit import Coordination, Corpus, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import getUtterances, save_dict_2_json
+from DiscQuA.utils import save_dict_2_json
 
 
-def calculate_coordination_per_discussion(
+def calculate_coordination_per_disc_utt(
     message_list, speakers_list, msgsid_list, replyto_list, disc_id, discussion_level
 ):
+    """Computes linguistic coordination metrics either at the discussion level or at the utterance level
+    for a given sequence of messages.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]):  List of messages ids corresponding to each utterance.
+        replyto_list (list[str]): List indicating the message ID each utterance is replying to.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, calculates coordination metrics over the full discussion; otherwise if False, incrementally per utterance.
+
+    Returns:
+        dict: A dictionary containing coordination metrics for either the entire discussion or
+              for each incremental utterance window. Metrics include:
+              -'coord_allspeakers_2_user': Coordination from all speakers toward each user.
+              -'coord_user_2_allspeaker': Coordination from each user toward all other speakers.
+    """
+
     speakers_unq = set(speakers_list)
     speakers = {speaker: Speaker(id=speaker) for speaker in speakers_unq}
     utterances = []

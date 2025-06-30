@@ -5,7 +5,27 @@ import numpy as np
 from DiscQuA.utils import save_dict_2_json
 
 
-def calculate_controversy(message_list, disc_id):
+def calculate_controversy(message_list, disc_id, discussion_level):
+    """Evaluates the controversy of a discussion based on sentiment variability.
+       Sentiment scores are computed using a pretrained multilingual sentiment analysis model.
+       Variability is quantified using the sample standard deviation of the sentiment scores, either at the discussion or utterance level.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
+
+    Returns:
+        - If discussion_level is True:
+                - dict[str, float]: Unnormalized controversy score (sample std) per discussion.
+                - dict[str, float]: Normalized controversy score per discussion.
+        - If discussion_level is False:
+                - dict[str, dict[str, float]]: Rolling standard deviation of the unormalized sentiment scores,
+                                               where keys are discussion IDs and values are dicts indexed
+                                               by utterance window (e.g., "utt_[0:2]").
+                - dict[str, dict[str, float]]: Corresponding rolling standard deviation of the normalized sentiment scores.
+    """
+
     from transformers import pipeline
 
     pipe = pipeline(
@@ -80,23 +100,73 @@ def calculate_controversy(message_list, disc_id):
             sent_scores = json.load(f)
         norm_disc_controversy_dict=sent_scores
     """
-    controversy_per_disc_unorm = {}
+    if discussion_level:
+        controversy_per_disc_unorm = {}
 
-    for conversation_id, dict_iter in unorm_disc_controversy_dict.items():
-        std_iter = np.std(list(dict_iter.values()), ddof=1)
-        controversy_per_disc_unorm[conversation_id] = std_iter
+        for conversation_id, dict_iter in unorm_disc_controversy_dict.items():
+            std_iter = np.std(list(dict_iter.values()), ddof=1)
+            controversy_per_disc_unorm[conversation_id] = std_iter
 
-    save_dict_2_json(
-        controversy_per_disc_unorm, "controversy_per_disc_unorm", disc_id, timestr
-    )
+        save_dict_2_json(
+            controversy_per_disc_unorm, "controversy_per_disc_unorm", disc_id, timestr
+        )
 
-    controversy_per_disc_norm = {}
+        controversy_per_disc_norm = {}
 
-    for conversation_id, dict_iter in norm_disc_controversy_dict.items():
-        std_iter = np.std(list(dict_iter.values()), ddof=1)
-        controversy_per_disc_norm[conversation_id] = std_iter
+        for conversation_id, dict_iter in norm_disc_controversy_dict.items():
+            std_iter = np.std(list(dict_iter.values()), ddof=1)
+            controversy_per_disc_norm[conversation_id] = std_iter
 
-    save_dict_2_json(
-        controversy_per_disc_norm, "controversy_per_disc_norm", disc_id, timestr
-    )
-    return controversy_per_disc_unorm, controversy_per_disc_norm
+        save_dict_2_json(
+            controversy_per_disc_norm, "controversy_per_disc_norm", disc_id, timestr
+        )
+        return controversy_per_disc_unorm, controversy_per_disc_norm
+    else:
+
+        controversy_perutt_unorm = {}
+
+        for disc_id, sent_dict in unorm_disc_controversy_dict.items():
+            utt_ids_sorted = sorted(
+                sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
+            )
+            scores_sorted = [sent_dict[utt_id] for utt_id in utt_ids_sorted]
+            #
+            rolling_std_dict = {}
+            for i in range(len(scores_sorted)):
+                key_iter = f"utt_[0:{i}]"
+                if i == 0:
+                    rolling_std_dict[key_iter] = 0.0
+                else:
+                    rolling_std_dict[key_iter] = float(
+                        np.std(scores_sorted[: i + 1], ddof=1)
+                    )
+            controversy_perutt_unorm[disc_id] = rolling_std_dict
+
+        save_dict_2_json(
+            controversy_perutt_unorm, "controversy_per_utt_unorm", disc_id, timestr
+        )
+
+        controversy_perutt_norm = {}
+
+        for disc_id, sent_dict in norm_disc_controversy_dict.items():
+            utt_ids_sorted = sorted(
+                sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
+            )
+            scores_sorted = [sent_dict[utt_id] for utt_id in utt_ids_sorted]
+            #
+            rolling_std_dict = {}
+            for i in range(len(scores_sorted)):
+                key_iter = f"utt_[0:{i}]"
+                if i == 0:
+                    rolling_std_dict[key_iter] = 0.0
+                else:
+                    rolling_std_dict[key_iter] = float(
+                        np.std(scores_sorted[: i + 1], ddof=1)
+                    )
+            controversy_perutt_norm[disc_id] = rolling_std_dict
+
+        save_dict_2_json(
+            controversy_perutt_norm, "controversy_per_utt_norm", disc_id, timestr
+        )
+
+        return controversy_perutt_unorm, controversy_perutt_norm

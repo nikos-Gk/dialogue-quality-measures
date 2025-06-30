@@ -1,1 +1,1 @@
-from .toxicity import toxicity
+from .toxicity import calculate_toxicity

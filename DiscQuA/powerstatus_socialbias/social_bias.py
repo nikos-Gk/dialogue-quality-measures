@@ -96,6 +96,21 @@ def calculate_social_bias(
     gpu=False,
     ctx=1,
 ):
+    """Analyzes social bias in a discussion using a language model (OpenAI or LLaMA) and returns bias annotations per utterance or for the entire discussion.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        ctx (int): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
+
+    Returns:
+        dict: Dictionary containing social bias annotations per utterance for the given discussion.
+    """
     validateInputParams(model_type, openAIKEY, model_path)
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -137,6 +152,7 @@ def calculate_social_bias(
     social_bias_per_response = {}
     for disc_id, turnAnnotations in socialbiaslabels_llm_output_dict.items():
         counter = 0
+        ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
                 print("LLM output with missing social bias label , skipping response\n")
@@ -144,6 +160,13 @@ def calculate_social_bias(
                 counter += 1
                 continue
             parts = label.split("\n")
+            if len(parts) != 6:
+                print(
+                    "LLM output with missing social bias labels, skipping utterance\n"
+                )
+                print(label)
+                counter += 1
+                continue
             try:
                 feature = {}
                 for j in parts:
@@ -153,12 +176,15 @@ def calculate_social_bias(
                     key = key.replace("-", "")
                     value = value.replace("[", "").replace("]", "")
                     feature[key] = value
-                if disc_id in social_bias_per_response:
-                    social_bias_per_response[disc_id].append(feature)
-                else:
-                    social_bias_per_response[disc_id] = [feature]
+                key_iter = "utt_" + str(counter)
+                ut_dict[key_iter] = [feature]
+                counter += 1
             except Exception as e:
                 print(e)
+            if disc_id in social_bias_per_response:
+                social_bias_per_response[disc_id].append(ut_dict)
+            else:
+                social_bias_per_response[disc_id] = [ut_dict]
 
     save_dict_2_json(
         social_bias_per_response, "socialbias_per_utterance", disc_id, timestr

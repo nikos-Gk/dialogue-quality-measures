@@ -1,1 +1,2 @@
-from .informativeness_discussion import informativeness
+from .informativeness_discussion import calculate_informativeness_conversation
+from .informativeness_response import calculate_informativeness_response

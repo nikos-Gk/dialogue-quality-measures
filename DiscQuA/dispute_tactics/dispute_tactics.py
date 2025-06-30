@@ -21,6 +21,26 @@ def calculate_dispute_tactics(
     gpu=False,
     ctx=1,
 ):
+    """Annotates the utterances in a discussion using the dispute tactics labels based on the frameworks proposed by De Kock and Vlachos (2022, December).
+
+     Args:
+         message_list (list[str]):  The list of utterances in the discussion.
+         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+         disc_id (str): Unique identifier for the discussion.
+         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+         model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+         model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+
+    Returns:
+        dict[str, list[dict[str, dict[str, str]]]]: A mapping from the discussion ID to a list
+        of dictionaries, each representing dispute tactic features per utterance (e.g., "utt_0").
+
+
+
+
+    """
     validateInputParams(model_type, openAIKEY, model_path)
     print("Building corpus of ", len(message_list), "utterances")
 
@@ -60,14 +80,25 @@ def calculate_dispute_tactics(
     dispute_tactics_llm_output_dict=d
     """
 
-    dispute_tactics_per_disc = {}
+    dispute_tactics_per_utt = {}
     for disc_id, turnAnnotations in dispute_tactics_llm_output_dict.items():
+        counter = 0
+        ut_dict = {}
         for label in turnAnnotations:
             if label == -1 or not label.startswith("- Level 0:"):
                 print("LLM output for utterance is ill-formatted, skipping utterance\n")
                 print(label)
+                counter += 1
                 continue
             parts = label.split("\n")
+            #
+            if len(parts) != 18:
+                print(
+                    "LLM output with missing dispute act labels, skipping utterance\n"
+                )
+                print(label)
+                counter += 1
+                continue
             feature = {}
             try:
                 for j in parts:
@@ -77,17 +108,20 @@ def calculate_dispute_tactics(
                     key = key.replace("-", "")
                     value = value.replace("[", "").replace("]", "")
                     feature[key] = value
-                if disc_id in dispute_tactics_per_disc:
-                    dispute_tactics_per_disc[disc_id].append(feature)
-                else:
-                    dispute_tactics_per_disc[disc_id] = [feature]
+                key_iter = "utt_" + str(counter)
+                ut_dict[key_iter] = feature
+                counter += 1
             except Exception as e:
                 print(e)
+            if disc_id in dispute_tactics_per_utt:
+                dispute_tactics_per_utt[disc_id].append(ut_dict)
+            else:
+                dispute_tactics_per_utt[disc_id] = [ut_dict]
 
     save_dict_2_json(
-        dispute_tactics_per_disc,
+        dispute_tactics_per_utt,
         "dispute_tactics_features_per_utterance",
         disc_id,
         timestr,
     )
-    return dispute_tactics_per_disc
+    return dispute_tactics_per_utt

@@ -85,6 +85,19 @@ def get_metrics_contentwords(u1, u2):
 
 
 def calculate_language_features(message_list, disc_id):
+    """Computes lexical similarity features between consecutive utterance pairs in a discussion.
+    For each adjacent pair, it extracts overlap metrics based on all words, stopwords, and content words.
+
+    Args:
+        message_list (list[str]):  The list of utterances in the discussion.
+        disc_id (str): Unique identifier for the discussion.
+
+    Returns:
+        dict[str, dict[str, list[dict[str, float]]]]: A nested dictionary where the top-level key is the discussion ID.
+        Each value maps a pair ID (e.g., "pair_0,1") to a list of dictionaries, each containing language overlap features
+        for all words, stopwords, and content words, respectively.
+    """
+
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances = message_list
     language_feat_dict = {}

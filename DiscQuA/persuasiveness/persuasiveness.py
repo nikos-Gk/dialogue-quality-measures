@@ -15,7 +15,7 @@ The texts above show a discussion in an online chatroom with respect to this pot
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
 Now, please use chain-of-thought reasoning to rate the persuasiveness of the arguments of the above discussion.
-After the Chain-of-Thoughts reasoning steps, rate the persuasiveness of the arguments of the entire discussion on a scale of 1 to 5, where 1 is of poor persuasiveness quality (low convincing arguments) and 5 of high persuasiveness quality (high convincing arguments). 
+After the Chain-of-Thoughts reasoning steps, rate the persuasiveness of the arguments of the entire discussion on a scale from 1 to 5, where 1 is of poor persuasiveness quality (low convincing arguments) and 5 of high persuasiveness quality (high convincing arguments). 
 Conclude your evaluation with the statement: 'The persuasiveness of the arguments of the above discussion is: [X]', where X is the rating you've determined. 
 Please, ensure that your last statement is the score in brackets [].
 """
@@ -39,7 +39,7 @@ def calculate_discussion_persuasiveness_score(utts, topic, key, model_type, mode
     return annotations_ci
 
 
-def persuasiveness(
+def calculate_persuasiveness(
     message_list,
     speakers_list,
     disc_id,
@@ -48,6 +48,21 @@ def persuasiveness(
     model_path="",
     gpu=False,
 ):
+    """Calculates the overall persuasiveness score of the arguments of the discussion using a specified language model.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+
+    Returns:
+        dict: A dictionary mapping the discussion ID to an overall persuasiveness score.
+    """
+
     validateInputParams(model_type, openAIKEY, model_path)
 
     print("Building corpus of ", len(message_list), "utterances")

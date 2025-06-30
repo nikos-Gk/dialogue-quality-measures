@@ -6,6 +6,19 @@ from DiscQuA.utils import getUtterances, save_dict_2_json
 
 
 def calculate_politeness(message_list, speakers_list, disc_id, discussion_level):
+    """Annotates a discussion with politeness markers based on the framework presented by Danescu-Niculescu-Mizil et al. (2013, August),
+    either at the discussion level or at the utterance level.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
+
+    Returns:
+        dict: If discussion_level=True, returns a dictionary mapping the discussion ID to an aggregated politeness strategy summary.
+              If utterance-level=False, returns a dictionary mapping the discussion ID to a list of per-utterance politeness strategy summaries.
+    """
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     if discussion_level:

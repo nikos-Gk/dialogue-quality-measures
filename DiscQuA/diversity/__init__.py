@@ -1,1 +1,2 @@
-from .diversity import calculate_diversity
+from .diversity_discussion import calculate_diversity_conversation
+from .diversity_response import calculate_diversity_response

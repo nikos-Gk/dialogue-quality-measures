@@ -81,6 +81,20 @@ def processDiscussion(message_list, speaker_list, disc_id, tokenizer, model, dev
 
 
 def calculate_coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
+    """Calculates coherence scores for a discussion using a fine-tuned causal language model,
+       returning binary judgments and rationales for each message.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speaker_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        device (str): The device to load the model on. If `None`, the device will be inferred. Defaults to cpu.
+
+    Returns:
+         dict[str, list[int]]: A mapping from the discussion ID to a list of binary labels,
+        where 1 indicates a coherent response and 0 indicates incoherence, for each utterance.
+    """
+
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     #############################################################

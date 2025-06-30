@@ -117,11 +117,11 @@ class DisputeTactics:
                     conv_history=conv_hist,
                     post=self.conv_topic,
                 )
-                response_text = prompt_gpt4(
-                    formatted_prompt, self.openaiKey, self.model_type, self.llm
-                )
-                # print(formatted_prompt)
-                annotations_ci.append(response_text)
+                # response_text = prompt_gpt4(
+                #    formatted_prompt, self.openaiKey, self.model_type, self.llm
+                # )
+                print(formatted_prompt)
+                # annotations_ci.append(response_text)
             except Exception as e:  # happens for one instance
                 print("Error: ", e)
                 annotations_ci.append(-1)

@@ -36,6 +36,19 @@ def save_stdout_to_image(func, conversation_id, *args, **kwargs):
 
 
 def make_visualization(message_list, speakers_list, msgsid_list, replyto_list, disc_id):
+    """Generates a text-based visualization of a discussion's structure and saves it as an image file.
+
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]): List of messages ids corresponding to each utterance.
+        replyto_list (list[str]): List indicating the message ID each utterance is replying to.
+        disc_id (str): Unique identifier for the discussion.
+
+    Returns:
+        _type_: _description_
+    """
 
     print("Building corpus of ", len(message_list), "utterances")
 

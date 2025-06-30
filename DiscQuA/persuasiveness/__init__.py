@@ -1,1 +1,1 @@
-from .persuasiveness import persuasiveness
+from .persuasiveness import calculate_persuasiveness

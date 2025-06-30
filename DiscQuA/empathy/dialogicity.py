@@ -97,9 +97,9 @@ def calculate_dialog_labels(utts, topic, openAIKEY, model_type, model, ctx):
                 conv_history=conv_hist,
                 post=topic,
             )
-            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            # print(formatted_prompt)
-            annotations_ci.append(response_text)
+            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            print(formatted_prompt)
+            # annotations_ci.append(response_text)
 
         except Exception as e:
             print("Error: ", e)
@@ -117,6 +117,26 @@ def dialogicity(
     gpu=False,
     ctx=1,
 ):
+    """Assigns dialogicity labels to utterances in a discussion using a large language model (LLM).
+    Labels reflect the dialogic function of each response, offering insights into the conversational dynamics and expressions of empathy.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+
+    Returns:
+
+        dict[str, dict[str, dict[str, str]]]: Dictionary mapping the discussion ID to a dictionary
+        of utterance-level dialogicity labels. Each inner dictionary maps utterance IDs (e.g., "utt_0")
+        to a set of extracted dialogic features as key-value pairs.
+
+    """
 
     validateInputParams(model_type, openAIKEY, model_path)
     print("Building corpus of ", len(message_list), "utterances")
@@ -163,13 +183,21 @@ def dialogicity(
     dialo_labels_per_response = {}
     for disc_id, turnAnnotations in dialog_labels_llm_output_dict.items():
         counter = 0
+        ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print("LLM output with missing dialogicity label, skipping response\n")
+                print("LLM output with missing dialogicity label, skipping utterance\n")
                 print(label)
                 counter += 1
                 continue
             parts = label.split("\n")
+            #
+            if len(parts) != 12:
+                print("LLM output with missing dialogical labels, skipping utterance\n")
+                print(label)
+                counter += 1
+                continue
+            #
             try:
                 feature = {}
                 for j in parts:
@@ -179,14 +207,14 @@ def dialogicity(
                     key = key.replace("-", "")
                     value = value.replace("[", "").replace("]", "")
                     feature[key] = value
-                if disc_id in dialo_labels_per_response:
-                    dialo_labels_per_response[disc_id].append(feature)
-                else:
-                    dialo_labels_per_response[disc_id] = [feature]
+                key_iter = "utt_" + str(counter)
+                ut_dict[key_iter] = feature
+                counter += 1
             except Exception as e:
                 print(e)
+        dialo_labels_per_response[disc_id] = ut_dict
 
     save_dict_2_json(
-        dialo_labels_per_response, "diallabel_per_response", disc_id, timestr
+        dialo_labels_per_response, "dialogicity_label_per_response", disc_id, timestr
     )
     return dialo_labels_per_response

@@ -9,20 +9,25 @@ from DiscQuA import (
     calculate_coherence_response,
     calculate_collaboration,
     calculate_controversy,
-    calculate_coordination_per_discussion,
+    calculate_coordination_per_disc_utt,
     calculate_dispute_tactics,
-    calculate_diversity,
+    calculate_diversity_conversation,
+    calculate_diversity_response,
+    calculate_engagement_conversation,
+    calculate_engagement_response,
+    calculate_informativeness_conversation,
+    calculate_informativeness_response,
     calculate_language_features,
     calculate_overall_arg_quality,
+    calculate_persuasiveness,
     calculate_politeness,
+    calculate_readability,
     calculate_social_bias,
+    calculate_speech_acts,
     calculate_structure_features,
+    calculate_toxicity,
     dialogicity,
-    engagement,
-    informativeness,
     make_visualization,
-    persuasiveness,
-    toxicity,
 )
 
 # model_path = "meta-llama/Meta-Llama-3-8B-Instruct"  # "TheBloke/Llama-2-13B-chat-GGUF"  # "unsloth/Llama-3.2-1B-Instruct"  # r"D:\virtual\models\llama-2-13b-chat.Q5_K_M.gguf"
@@ -87,7 +92,7 @@ def test_language_features():
 
 def test_controversy():
     unorm_scores, norm_scores = calculate_controversy(
-        message_list=message_list, disc_id=disc_id
+        message_list=message_list, disc_id=disc_id, discussion_level=False
     )
     pprint(unorm_scores)
     pprint(norm_scores)
@@ -98,7 +103,7 @@ def test_coherence_conversation():
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="123",
         model_type="openai",
         model_path="",
         gpu=False,
@@ -107,17 +112,17 @@ def test_coherence_conversation():
 
 
 def test_coherence_response():
-    score = calculate_coherence_response(
+    coherence_resp_score = calculate_coherence_response(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="234",
         model_type="openai",
         model_path="",
         gpu=True,
-        ctx=3,
+        ctx=1,
     )
-    print(score)
+    print(coherence_resp_score)
 
 
 def test_coherence_ecoh():
@@ -130,17 +135,34 @@ def test_coherence_ecoh():
     print(coherence_booleans)
 
 
-def test_diversity():
-    diversity_score = calculate_diversity(
+test_coherence_conversation
+
+
+def test_diversity_conversation():
+    diversity_disc_score = calculate_diversity_conversation(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="123",
         model_type="openai",
         model_path="",
         gpu=False,
     )
-    print(diversity_score)
+    print(diversity_disc_score)
+
+
+def test_diversity_response():
+    diversity_resp_score = calculate_diversity_response(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="123",
+        model_type="openai",
+        model_path="",
+        gpu=False,
+        ctx=1,
+    )
+    print(diversity_resp_score)
 
 
 def test_dialogicity():
@@ -157,34 +179,62 @@ def test_dialogicity():
     print(dialogicity_labels)
 
 
-def test_engagement():
-    engagement_score = engagement(
+def test_engagement_conversation():
+    engagement_disc_score = calculate_engagement_conversation(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="123",
         model_type="openai",
         model_path="",
         gpu=False,
     )
-    print(engagement_score)
+    print(engagement_disc_score)
 
 
-def test_informativeness():
-    informativeness_score = informativeness(
+def test_engagement_response():
+    engagement_resp_score = calculate_engagement_response(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="123",
+        model_type="openai",
+        model_path="",
+        gpu=False,
+        ctx=1,
+    )
+    print(engagement_resp_score)
+
+
+def test_informativeness_conversation():
+    informativeness_disc_score = calculate_informativeness_conversation(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="123",
         model_type="openai",
         model_path="",
         gpu=False,
     )
-    print(informativeness_score)
+    print(informativeness_disc_score)
+
+
+def test_informativeness_response():
+    informativeness_resp_score = calculate_informativeness_response(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="123",
+        model_type="openai",
+        model_path="",
+        gpu=False,
+        ctx=1,
+    )
+    print(informativeness_resp_score)
 
 
 def test_persuasiveness():
-    persuasiveness_score = persuasiveness(
+    persuasiveness_score = calculate_persuasiveness(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
@@ -197,7 +247,7 @@ def test_persuasiveness():
 
 
 def test_toxicity():
-    toxicity_scores = toxicity(
+    toxicity_scores = calculate_toxicity(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
@@ -210,14 +260,14 @@ def test_toxicity():
     print(toxicity_scores)
 
 
-def test_coordination_per_discussion():
-    coordination_scores = calculate_coordination_per_discussion(
+def test_coordination_per_disc_utt():
+    coordination_scores = calculate_coordination_per_disc_utt(
         message_list=message_list,
         speakers_list=speakers_list,
         msgsid_list=msgsid_list,
         replyto_list=replyto_list,
         disc_id=disc_id,
-        discussion_level=False,
+        discussion_level=True,
     )
     print(coordination_scores)
 
@@ -246,12 +296,19 @@ def test_politeness():
     print(politeness_features_scores)
 
 
+def test_redability():
+    readability_scores = calculate_readability(
+        message_list=message_list, disc_id=disc_id
+    )
+    print(readability_scores)
+
+
 def test_collaboration():
     collaboration_scores = calculate_collaboration(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        discussion_level=True,
+        discussion_level=False,
     )
     print(collaboration_scores)
 
@@ -261,11 +318,12 @@ def test_argument_qual_dim():
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="132",
         model_type="openai",
         model_path="",
         gpu=False,
         ctx=1,
+        dimension="overall",
     )
     print(arg_dim_scores)
 
@@ -289,13 +347,27 @@ def test_dispute_tactics():
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        openAIKEY="",
+        openAIKEY="123",
         model_type="openai",
         model_path="",
         gpu=False,
         ctx=1,
     )
     print(disp_tact)
+
+
+def test_speech_acts():
+    speech_acts = calculate_speech_acts(
+        message_list,
+        speakers_list,
+        disc_id,
+        openAIKEY="",
+        model_type="openai",
+        model_path="",
+        gpu=False,
+        ctx=1,
+    )
+    print(speech_acts)
 
 
 if __name__ == "__main__":
@@ -308,16 +380,21 @@ if __name__ == "__main__":
     # test_coherence_conversation()  # llama-cpp-python
     # test_coherence_response()  #
     # test_coherence_ecoh()  #
-    # test_diversity()  #
+    # test_diversity_conversation()  #
+    # test_diversity_response()
     # test_dialogicity()  #
-    # test_engagement()  #
-    # test_informativeness()  #
+    # test_engagement_conversation()  #
+    # test_engagement_response()
+    # test_informativeness_conversation()  #
+    # test_informativeness_response()
     # test_persuasiveness()  #
     # test_toxicity()  #
-    # test_coordination_per_discussion()
+    # test_coordination_per_disc_utt()
     # test_social_bias()  #
     # test_politeness()
+    # test_redability()
     # test_collaboration()
     # test_argument_qual_dim()  #
     # test_overall_arg_quality()  #
     # test_dispute_tactics()  #
+    # test_speech_acts()

@@ -32,16 +32,16 @@ def calculate_discussion_engagement_score(utts, topic, key, model_type, model):
         formatted_prompt = prompt.format(conv_text=conv_text, post=topic)
     annotations_ci = []
     try:
-        response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
-        # print(formatted_prompt)
-        annotations_ci.append(response_text)
+        # response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
+        print(formatted_prompt)
+        # annotations_ci.append(response_text)
     except Exception as e:
         print("Error: ", e)
         annotations_ci.append(-1)
     return annotations_ci
 
 
-def engagement(
+def calculate_engagement_conversation(
     message_list,
     speakers_list,
     disc_id,
@@ -50,6 +50,21 @@ def engagement(
     model_path="",
     gpu=False,
 ):
+    """Calculates an overall engagement score for a discussion using a large language model (LLM).
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+
+    Returns:
+        dict[str, float]: Dictionary mapping the discussion ID to its overall LLM-generated engagement score.
+    """
+
     validateInputParams(model_type, openAIKEY, model_path)
 
     print("Building corpus of ", len(message_list), "utterances")

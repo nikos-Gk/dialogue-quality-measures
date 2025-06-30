@@ -14,6 +14,20 @@ def compute_balance(contributions):
 def calculate_balanced_participation(
     message_list, speakers_list, disc_id, discussion_level
 ):
+    """Computes participation balance metrics by analyzing the number of messages and total words contributed by each speaker.
+    These metrics are used to calculate entropy-based indicators of participation equality.
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
+
+    Returns:
+        dict: A dictionary containing entropy values for each discussion or each turn:
+              - 'entropy_number_of_messages': Entropy based on speaker message counts.
+              - 'entropy_number_of_words': Entropy based on total word counts per speaker.
+    """
+
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     if discussion_level:

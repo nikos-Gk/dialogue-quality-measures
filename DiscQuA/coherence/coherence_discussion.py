@@ -16,7 +16,7 @@ The texts above show a discussion in an online chatroom with respect to this pot
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
 Now, please use chain-of-thought reasoning to rate the coherence of the above discussion.
-After the Chain-of-Thoughts reasoning steps, you should assign a score for the coherence of the entire discussion on a scale of 1 to 5, where 1 is of poor coherence quality (incoherent) and 5 of high coherence quality (coherent). 
+After the Chain-of-Thoughts reasoning steps, you should assign a score for the coherence of the entire discussion on a scale from 1 to 5, where 1 is of poor coherence quality (incoherent) and 5 of high coherence quality (coherent). 
 Conclude your evaluation with the statement: 'The coherence of the comments presented in the above discussion is: [X]', where X is the numeric score (real number) you've determined. 
 Please, ensure that your last statement is the score in brackets [].
 """
@@ -31,9 +31,9 @@ def calculate_discussion_coherence_score(utts, topic, key, model_type, model):
         formatted_prompt = prompt.format(conv_text=conv_text, post=topic)
     annotations_ci = []
     try:
-        response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
-        # print(formatted_prompt)
-        annotations_ci.append(response_text)
+        # response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
+        print(formatted_prompt)
+    # annotations_ci.append(response_text)
     except Exception as e:
         print("Error: ", e)
         annotations_ci.append(-1)
@@ -49,6 +49,21 @@ def calculate_coherence_conversation(
     model_path="",
     gpu=False,
 ):
+    """Evaluates the overall coherence of a discussion on a scale from 1 to 5, where 1 is of poor coherence quality (incoherent) and 5 of high coherence quality (coherent).
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+
+    Returns:
+         dict: A dictionary containing the final coherence score for the given discussion.
+    """
+
     validateInputParams(model_type, openAIKEY, model_path)
 
     print("Building corpus of ", len(message_list), "utterances")
@@ -78,7 +93,7 @@ def calculate_coherence_conversation(
     )
 
     """               
-        with open("llm_output_coherence.json", encoding="utf-8") as f:
+        with open("llm_output_coherence_.json", encoding="utf-8") as f:
             coh_scores = json.load(f)
         coherence_scores_llm_output_dict=coh_scores
     """

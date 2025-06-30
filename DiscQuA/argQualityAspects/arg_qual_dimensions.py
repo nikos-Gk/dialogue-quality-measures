@@ -4,8 +4,9 @@ from DiscQuA.utils import prompt_gpt4
 #######################################################################################################################################
 ini = """Below is given a set of definitions of various argument quality dimensions."""
 #######################################################################################################################################
-Argument_quality_dimensions = """\n\n
-Argument quality dimensions:
+
+logic_prompt = """\n\n
+Logic argument quality dimensions:
 
 Label 1a: 
 Local Acceptability: A premise of an argument should be seen as acceptable if it is worthy of being believed, i.e., if you rationally think it is true or if you see no reason for not believing that it may be true.
@@ -28,6 +29,9 @@ Cogency: An argument should be seen as cogent if it has individually acceptable 
 Try to adequately weight your judgments about local acceptability, local relevance, and local sufficiency when judging about cogency—unless there is a particular dimension among these that dominates your
 view of an argument. Accordingly, if you identify more than one argument, try to adequately weight the cogency of each argument when judging about their “aggregate” cogency—unless there is a particular
 argument that dominates your view of the author’s argumentation.
+"""
+rhetoric_prompt = """\n\n
+Rhetoric argument quality dimensions:
 
 Label 2a:
 Credibility: An argumentation should be seen as successful in creating credibility if it conveys arguments and other information in a way that makes the author worthy of credence, e.g., by indicating the honesty of
@@ -55,6 +59,9 @@ Label 2_overall:
 Effectiveness: An argumentation should be seen as effective if it achieves to persuade you of the author’s stance on the discussed topic or—in case you already agreed with the stance before—if it corroborates your agreement with the stance. 
 Besides the actual arguments, also take into consideration the credibility and the emotional force of the argumentation. Decide in dubio pro reo, i.e., if you have no doubt about the correctness of the author’s arguments, then do
 not judge him or her to be not effective—unless you explicitly think that the arguments do not support the author’s stance.
+"""
+dialectic_prompt = """\n\n
+Dialectic argument quality dimensions:
 
 Label 3a:
 Global Acceptability: An argumentation should be seen as globally acceptable if everyone from the expected target audience would accept both the consideration of the stated arguments within the discussion of the given issue and the way they are stated.
@@ -72,7 +79,10 @@ to whether all main objections of an argumentation that you see are rebutted.
 Label 3_overall:
 Reasonableness: An argumentation should be seen as reasonable if it contributes to the resolution of the given topic in a sufficient way that is acceptable to everyone from the expected target audience.
 Try to adequately weight your judgments about global acceptability, global relevance, and global sufficiency when judging about reasonableness—unless there is a particular dimension among these that dominates your view of the author’s argumentation. 
-In doubt, give more credit to global acceptability and global relevance than to global sufficiency due to the limited feasibility of the latter.    
+In doubt, give more credit to global acceptability and global relevance than to global sufficiency due to the limited feasibility of the latter.
+"""
+overall_prompt = """\n\n
+Overall argument quality:
 
 Label 4:
 Overall quality: overall quality of the presented arguments.
@@ -97,36 +107,62 @@ Please provide the final answer directly with no reasoning steps.
 Ensure that your final answer clearly assigns a score for each argument quality dimension, on a scale from 1 to 3, where 1 is of low quality, 2 of medium quality and 3 of high quality. 
 For clarity, your response should succinctly be presented in a structured list format, indicating the score for each argument quality dimensions as follows:
 
+"""
 
+logic_output_format = """
 -Label 1a: [1/2/3]
 -Label 1b: [1/2/3]
 -Label 1c: [1/2/3]
 -Label 1_overall: [1/2/3]
+"""
+
+rhetoric_output_format = """
 -Label 2a: [1/2/3]
 -Label 2b: [1/2/3]
 -Label 2c: [1/2/3]
 -Label 2d: [1/2/3]
 -Label 2e: [1/2/3]
 -Label 2_overall: [1/2/3]
+"""
+
+dialectic_output_format = """
 -Label 3a: [1/2/3]
 -Label 3b: [1/2/3]
 -Label 3c: [1/2/3]
 -Label 3_overall: [1/2/3]
+"""
+
+overall_output_format = """
 -Label 4: [1/2/3]
 """
 
 
 class AQualityDimensions:
-    def __init__(self, utterances, conv_topic, openaiKey, model_type, llm, ctx):
+    def __init__(
+        self, utterances, conv_topic, openaiKey, model_type, llm, ctx, dimension
+    ):
         self.utterances = utterances
         self.conv_topic = conv_topic
         self.openaiKey = openaiKey
         self.model_type = model_type
         self.llm = llm
         self.ctx = ctx
+        self.dimension = dimension
 
     def argquality_dimensions_scores(self):
-        prompt = ini + Argument_quality_dimensions + final
+        prompt = ""
+        if self.dimension == "logic":
+            prompt = ini + logic_prompt + final + logic_output_format
+        elif self.dimension == "rhetoric":
+            prompt = ini + rhetoric_prompt + final + rhetoric_output_format
+        elif self.dimension == "dialectic":
+            prompt = ini + dialectic_prompt + final + dialectic_output_format
+        elif self.dimension == "overall":
+            prompt = ini + overall_prompt + final + overall_output_format
+        else:
+            print("No matching dimension")
+            return []
+        # prompt = ini + Argument_quality_dimensions + final
         annotations_ci = []
         #
         for index, utt in enumerate(self.utterances):
@@ -147,11 +183,11 @@ class AQualityDimensions:
                     conv_history=conv_hist,
                     post=self.conv_topic,
                 )
-                response_text = prompt_gpt4(
-                    formatted_prompt, self.openaiKey, self.model_type, self.llm
-                )
-                # print(formatted_prompt)
-                annotations_ci.append(response_text)
+                # response_text = prompt_gpt4(
+                #    formatted_prompt, self.openaiKey, self.model_type, self.llm
+                # )
+                print(formatted_prompt)
+                # annotations_ci.append(response_text)
             except Exception as e:  # happens for one instance
                 print("Error: ", e)
                 annotations_ci.append(-1)

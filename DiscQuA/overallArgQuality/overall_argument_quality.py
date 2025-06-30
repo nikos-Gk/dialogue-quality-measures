@@ -21,6 +21,22 @@ def calculate_overall_arg_quality(
     mode="real",
     gpu=False,
 ):
+    """Calculates the overall argument quality score for a given discussion using a specified language model.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        mode (str): _description_. Defaults to "real".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+
+    Returns:
+        dict: A dictionary mapping the discussion ID to its overall argument quality score.
+    """
+
     validateInputParams(model_type, openAIKEY, model_path)
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -42,11 +58,11 @@ def calculate_overall_arg_quality(
     ovargquality_scores_llm_output_dict[disc_id] = ovargument_quality_scores_features
     #
     save_dict_2_json(
-        ovargquality_scores_llm_output_dict, "llm_output_oaq", disc_id, timestr
+        ovargquality_scores_llm_output_dict, "llm_output_ovrall_aq", disc_id, timestr
     )
 
     """        
-    with open("llm_output_oaq.json", encoding="utf-8") as f:
+    with open("llm_output_ovrall_aq_.json", encoding="utf-8") as f:
         oaq = json.load(f)
     ovargquality_scores_llm_output_dict=oaq
     """
@@ -73,5 +89,5 @@ def calculate_overall_arg_quality(
 
             oaq_dim_per_disc[disc_id] = value
 
-    save_dict_2_json(oaq_dim_per_disc, "oaq_per_disc", disc_id, timestr)
+    save_dict_2_json(oaq_dim_per_disc, "ovrall_argqual_per_disc", disc_id, timestr)
     return oaq_dim_per_disc

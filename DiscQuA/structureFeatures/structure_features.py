@@ -10,6 +10,22 @@ from DiscQuA.utils import save_dict_2_json
 def calculate_structure_features(
     message_list, speakers_list, msgsid_list, replyto_list, disc_id, discussion_level
 ):
+    """Extracts structural features from a discussion.Features can be computed over the full discussion or incrementally per utterance.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]): List of messages ids corresponding to each utterance.
+        replyto_list (list[str]): List indicating the message ID each utterance is replying to.
+        disc_id (str): Unique identifier for the discussion.
+        discussion_level (bool): A boolean flag; if True, calculates structure features over the full discussion; otherwise if False, incrementally per utterance.
+
+
+    Returns:
+        tuple: Two dictionaries:
+            - motifs_dict (dict): Contains reciprocity features extracted from the conversation structure.
+            - features_dict (dict): Contains full structural feature vectors per discussion or per utterance span.
+    """
     speakers_unq = set(speakers_list)
     speakers = {speaker: Speaker(id=speaker) for speaker in speakers_unq}
     utterances = []

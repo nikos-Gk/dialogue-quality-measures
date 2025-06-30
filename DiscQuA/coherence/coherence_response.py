@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-import json
-import sys
 import time
-
-import pandas as pd
-from convokit import Speaker, Utterance
 
 from DiscQuA.utils import (
     getModel,
@@ -28,7 +23,7 @@ inflammatory and aggressive speech.
 *RESPONSE*: "{response}"
 
 You are a coherence evaluator. 
-Given the post that the discussion is based on and the conversation history, you have to assign a score on a scale of 1 to 5 that indicates the coherence of the response.
+Given the post that the discussion is based on and the conversation history, you have to assign a score on a scale from 1 to 5 that indicates the coherence of the response.
 A score 1 indicates that the response is of poor coherence quality (incoherent), while 5 indicates that the response is of extremely high coherence quality (coherent).
 Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better annotate the coherence of the new response.
 Please provide the final answer directly with no reasoning steps.
@@ -58,9 +53,9 @@ def calculate_response_coherence_score(utts, topic, openAIKEY, model_type, model
                 conv_history=conv_hist,
                 post=topic,
             )
-            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            # print(formatted_prompt)
-            annotations_ci.append(response_text)
+            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            print(formatted_prompt)
+            # annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
@@ -77,6 +72,22 @@ def calculate_coherence_response(
     gpu=False,
     ctx=1,
 ):
+    """Calculates coherence scores for each response in a conversation using a specified language model.
+
+    Args:
+        message_list (list[str]): The list of utterances in the discussion.
+        speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        disc_id (str): Unique identifier for the discussion.
+        openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
+        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
+        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+
+    Returns:
+       dict: A nested dictionary containing per-utterance coherence scores for the given discussion ID.
+    """
+
     validateInputParams(model_type, openAIKEY, model_path)
 
     print("Building corpus of ", len(message_list), "utterances")
@@ -127,7 +138,7 @@ def calculate_coherence_response(
         for label in turnAnnotations:
             if label == -1:
                 print(
-                    "LLM output with missing coherence response score , skipping response\n"
+                    "LLM output with missing coherence response score , skipping utterance\n"
                 )
                 print(label)
                 counter += 1
@@ -137,13 +148,13 @@ def calculate_coherence_response(
             value = isValidResponse(parts)
             if value == -1:
                 print(
-                    "LLM output with missing coherence response score , skipping discussion\n"
+                    "LLM output with missing coherence response score , skipping utterance\n"
                 )
                 print(label)
                 counter += 1
                 continue
-
-            ut_dict[disc_id + "_" + str(counter)] = value
+            key_iter = "utt_" + str(counter)
+            ut_dict[key_iter] = value
             counter += 1
         coherence_scores_per_response[disc_id] = ut_dict
 
