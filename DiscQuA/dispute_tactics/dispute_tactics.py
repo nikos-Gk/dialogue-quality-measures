@@ -6,6 +6,8 @@ from DiscQuA.utils import (
     save_dict_2_json,
     sleep,
     validateInputParams,
+    extractFeature,
+    isValidResponse
 )
 
 from .DisputeTacticsCl import DisputeTactics
@@ -20,6 +22,7 @@ def calculate_dispute_tactics(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Annotates the utterances in a discussion using the dispute tactics labels based on the frameworks proposed by De Kock and Vlachos (2022, December).
 
@@ -28,13 +31,15 @@ def calculate_dispute_tactics(
          speakers_list (list[str]): The corresponding list of speakers for each utterance.
          disc_id (str): Unique identifier for the discussion.
          openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-         model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-         model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+         model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+         model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
          gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
          ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
+
 
     Returns:
-        dict[str, list[dict[str, dict[str, str]]]]: A mapping from the discussion ID to a list
+        dict[str, list[dict[str, dict[str, int]]]]: A mapping from the discussion ID to a list
         of dictionaries, each representing dispute tactic features per utterance (e.g., "utt_0").
 
 
@@ -47,8 +52,9 @@ def calculate_dispute_tactics(
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
+
 
     dispute_tactics_llm_output_dict = {}
 
@@ -85,38 +91,27 @@ def calculate_dispute_tactics(
         counter = 0
         ut_dict = {}
         for label in turnAnnotations:
-            if label == -1 or not label.startswith("- Level 0:"):
+            if label == -1:
                 print("LLM output for utterance is ill-formatted, skipping utterance\n")
                 print(label)
                 counter += 1
                 continue
-            parts = label.split("\n")
-            #
-            if len(parts) != 18:
-                print(
-                    "LLM output with missing dispute act labels, skipping utterance\n"
-                )
-                print(label)
-                counter += 1
-                continue
+            
             feature = {}
-            try:
-                for j in parts:
-                    entries = j.split(":")
-                    key = entries[0]
-                    value = entries[1]
-                    key = key.replace("-", "")
-                    value = value.replace("[", "").replace("]", "")
-                    feature[key] = value
-                key_iter = "utt_" + str(counter)
-                ut_dict[key_iter] = feature
-                counter += 1
-            except Exception as e:
-                print(e)
-            if disc_id in dispute_tactics_per_utt:
-                dispute_tactics_per_utt[disc_id].append(ut_dict)
-            else:
-                dispute_tactics_per_utt[disc_id] = [ut_dict]
+            
+            feature=extractFeature(feature , label)
+            if feature == -1:
+                counter+=1
+                continue
+
+            key_iter = "utt_" + str(counter)
+            ut_dict[key_iter] = feature
+            counter += 1
+            
+        if disc_id in dispute_tactics_per_utt:
+            dispute_tactics_per_utt[disc_id].append(ut_dict)
+        else:
+            dispute_tactics_per_utt[disc_id] = [ut_dict]
 
     save_dict_2_json(
         dispute_tactics_per_utt,

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+from tqdm import tqdm
 
 from DiscQuA.utils import (
     getModel,
@@ -25,14 +26,14 @@ inflammatory and aggressive speech.
 Given the post that the discussion is based on and the conversation history, rate the diversity of arguments in the response on a scale from 1 to 5.
 A score 1 indicates low diversity (the response repeats arguments that have already been presented) and 5 of high diversity (the response presents new arguments with a broad range of perspectives and reasoning styles).
 Please provide the final answer directly with no reasoning steps.
-For clarity, your evaluation should be presented with the statement: 'The diversity of the arguments of the new response is: [X]', where X is the rating you've determined.
+For clarity, your evaluation should be presented with the statement: 'The diversity of the arguments of the new response is: [X]', where X is the rating (integer number) you've determined.
 Please, ensure that your last statement is the score in brackets [].
 """
 
 
 def calculate_response_diversity_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -51,9 +52,9 @@ def calculate_response_diversity_score(utts, topic, openAIKEY, model_type, model
                 conv_history=conv_hist,
                 post=topic,
             )
-            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            print(formatted_prompt)
-            # annotations_ci.append(response_text)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            # print(formatted_prompt)
+            annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
@@ -69,6 +70,7 @@ def calculate_diversity_response(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Computes diversity scores for each response within a discussion using a specified language model.
        Each response is evaluated in context to determine the novelty and variety of arguments presented.
@@ -78,13 +80,14 @@ def calculate_diversity_response(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
-       dict[str, dict[str, float]]: A nested dictionary mapping discussion IDs to per-utterance
+       dict[str, dict[str, integer]]: A nested dictionary mapping discussion IDs to per-utterance
        diversity scores, where each utterance ID (e.g., "utt_0") is assigned a numeric score.
     """
 
@@ -94,8 +97,9 @@ def calculate_diversity_response(
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
+
 
     div_per_resp_scores_llm_output_dict = {}
 
@@ -160,3 +164,4 @@ def calculate_diversity_response(
     save_dict_2_json(
         div_scores_per_response, "diversity_per_response", disc_id, timestr
     )
+    return div_scores_per_response

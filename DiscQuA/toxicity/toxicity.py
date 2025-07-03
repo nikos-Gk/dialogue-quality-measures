@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
+from tqdm import tqdm
+
 
 from DiscQuA.utils import (
     getModel,
@@ -25,14 +27,14 @@ Given the post that the discussion is based on and the conversation history, you
 The possible labels are 1: Not Toxic, 2: Barely Toxic, 3: Almost Toxic, 4: Toxic and 5: Extremely Toxic.
 Noteworthy, the conversation history is provided for you to simply understand the utterances made before the new utterance so as to help you better annotate the toxicity of the new utterance.
 Please provide the final answer directly with no reasoning steps.
-For clarity, your evaluation should be presented with the statement: 'The toxicity of the new utterance is: [X]', where X is the label you've determined. 
+For clarity, your evaluation should be presented with the statement: 'The toxicity of the new utterance is: [X]', where X is the label (integer) you've determined. 
 Please, ensure that your last statement is the label in brackets [].
 """
 
 
 def calculate_response_toxicity_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -68,30 +70,33 @@ def calculate_toxicity(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
-    """Evaluates the toxicity level of each utterance in a discussion using a selected language model
-    (OpenAI or LLaMA), with optional context from previous utterances.
+    """Evaluates the toxicity level of each utterance in a discussion using a selected language model, with optional context from previous utterances.
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
-        dict: A dictionary mapping each utterance ID to its associated toxicity score, structured per discussion ID.
+        dict: A dictionary mapping each utterance ID to its associated toxicity label, structured per discussion ID.
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
+
     tox_per_resp_scores_llm_output_dict = {}
     try:
         utterances, speakers = getUtterances(

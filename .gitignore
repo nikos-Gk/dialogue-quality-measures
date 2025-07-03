@@ -34,3 +34,6 @@ Thumbs.db
 .vscode
 no_mod
 with_mod
+
+discMeasuresEnv
+unsloth_compiled_cache

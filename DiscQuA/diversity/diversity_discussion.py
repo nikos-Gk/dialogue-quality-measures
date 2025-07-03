@@ -14,11 +14,9 @@ prompt = """{conv_text}'\n\n\n
 The texts above show a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
-Now, please use chain-of-thought reasoning to rate the diversity of the arguments of the above discussion.
-Note that a high number of diverse arguments is indicative of the deliberativeness of the discussion.
-Also, can enhance the (argument) quality of discussions by bringing varied perspectives, backgrounds, and experiences into the discussion.
-After the Chain-of-Thoughts reasoning steps, rate the diversity of the arguments of the entire discussion on a scale from 1 to 5, where 1 is of poor diversity quality (arguments of high similarity) and 5 of high diversity quality (diverse arguments). 
-Conclude your evaluation with the statement: 'The diversity of the arguments of the above discussion is: [X]', where X is the rating you've determined. 
+Rate the diversity of the arguments of the above discussion  on a scale from 1 to 5, where 1 is of poor diversity quality (arguments of high similarity) and 5 of high diversity quality (diverse arguments). 
+Note that a high number of diverse arguments is indicative of the deliberativeness of the discussion. Also, can enhance the (argument) quality of discussions by bringing varied perspectives, backgrounds, and experiences into the discussion.
+Conclude your evaluation with the statement: 'The diversity of the arguments of the above discussion is: [X]', where X is the rating (integer number)you've determined. 
 Please, ensure that your last statement is the score in brackets [].
 """
 
@@ -32,9 +30,9 @@ def calculate_discussion_diversity_score(utts, topic, key, model_type, model):
         formatted_prompt = prompt.format(conv_text=conv_text, post=topic)
     annotations_ci = []
     try:
-        # response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
-        print(formatted_prompt)
-        # annotations_ci.append(response_text)
+        response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
+        #print(formatted_prompt)
+        annotations_ci.append(response_text)
     except Exception as e:
         print("Error: ", e)
         annotations_ci.append(-1)
@@ -49,18 +47,19 @@ def calculate_diversity_conversation(
     model_type="openai",
     model_path="",
     gpu=False,
+    device="auto"
 ):
     """Assings an overall conversational diversity score for the given discussion based on linguistic variety,
-    argumentation patterns, and idea breadth. The evaluation is performed using a large language model
-    (OpenAI or LLaMA).
+    argumentation patterns, and idea breadth. The evaluation is performed using a large language model.
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool):  A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
          dict[str, float]: Dictionary mapping the discussion ID to its overall LLM-assigned diversity score.
@@ -70,8 +69,8 @@ def calculate_diversity_conversation(
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
     #
     divers_scores_llm_output_dict = {}
     #

@@ -1,4 +1,6 @@
 import time
+from tqdm import tqdm
+
 
 from DiscQuA.utils import (
     getModel,
@@ -7,6 +9,8 @@ from DiscQuA.utils import (
     save_dict_2_json,
     sleep,
     validateInputParams,
+    extractFeature,
+    isValidResponse
 )
 
 ini = """Below is a set of labels used to code individual speech acts across 14 independent indicators of deliberative quality (as presented by Fournier-Tombs and MacKenzie, 2021; Zhang, Culbertson and Paritosh, 2017).
@@ -63,7 +67,7 @@ def calculate_speech_acts_labels(utts, topic, openAIKEY, model_type, model, ctx)
 
     prompt = ini + speech_act_labels + final
     annotations_ci = []
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -98,6 +102,7 @@ def calculate_speech_acts(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Annotates the utterances in a discussion using speech act labels based on the frameworks proposed by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson and Paritosh (2017).
     Args:
@@ -105,10 +110,11 @@ def calculate_speech_acts(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
         dict: A dictionary mapping discussion IDs to lists of per-utterance speech act feature dictionaries.
@@ -120,8 +126,9 @@ def calculate_speech_acts(
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
+
     #
     speechactslabels_llm_output_dict = {}
     try:
@@ -164,30 +171,22 @@ def calculate_speech_acts(
                 print(label)
                 counter += 1
                 continue
-            parts = label.split("\n")
-            if len(parts) != 14:
-                print("LLM output with missing speech act labels, skipping utterance\n")
-                print(label)
-                counter += 1
+            
+            feature = {}
+            
+            feature=extractFeature(feature , label)
+            if feature == -1:
+                counter+=1
                 continue
-            try:
-                feature = {}
-                for j in parts:
-                    entries = j.split(":")
-                    key = entries[0]
-                    value = entries[1]
-                    key = key.replace("-", "")
-                    value = value.replace("[", "").replace("]", "")
-                    feature[key] = value
-                key_iter = "utt_" + str(counter)
-                ut_dict[key_iter] = [feature]
-                counter += 1
-            except Exception as e:
-                print(e)
-            if disc_id in speechact_per_response:
-                speechact_per_response[disc_id].append(ut_dict)
-            else:
-                speechact_per_response[disc_id] = [ut_dict]
+
+            key_iter = "utt_" + str(counter)
+            ut_dict[key_iter] = [feature]
+            counter += 1
+            
+        if disc_id in speechact_per_response:
+            speechact_per_response[disc_id].append(ut_dict)
+        else:
+            speechact_per_response[disc_id] = [ut_dict]
 
     save_dict_2_json(
         speechact_per_response, "speechact_per_utterance", disc_id, timestr

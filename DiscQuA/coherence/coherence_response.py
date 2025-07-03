@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+from tqdm import tqdm
 
 from DiscQuA.utils import (
     getModel,
@@ -32,9 +33,9 @@ Please, ensure that your last statement is the score in brackets [].
 """
 
 
-def calculate_response_coherence_score(utts, topic, openAIKEY, model_type, model, ctx):
+def calculate_response_coherence_score2(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -53,14 +54,13 @@ def calculate_response_coherence_score(utts, topic, openAIKEY, model_type, model
                 conv_history=conv_hist,
                 post=topic,
             )
-            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            print(formatted_prompt)
-            # annotations_ci.append(response_text)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            #print(formatted_prompt)
+            annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
     return annotations_ci
-
 
 def calculate_coherence_response(
     message_list,
@@ -71,6 +71,7 @@ def calculate_coherence_response(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Calculates coherence scores for each response in a conversation using a specified language model.
 
@@ -79,13 +80,14 @@ def calculate_coherence_response(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
-       dict: A nested dictionary containing per-utterance coherence scores for the given discussion ID.
+       dict: A nested dictionary containing per-utterance coherence ratings for the given discussion ID.
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
@@ -94,8 +96,8 @@ def calculate_coherence_response(
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
 
     coh_per_resp_scores_llm_output_dict = {}
 
@@ -161,3 +163,4 @@ def calculate_coherence_response(
     save_dict_2_json(
         coherence_scores_per_response, "coherence_per_response", disc_id, timestr
     )
+    return coherence_scores_per_response

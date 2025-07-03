@@ -15,10 +15,9 @@ prompt = """{conv_text}'\n\n\n
 The texts above show a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
-Now, please use chain-of-thought reasoning to rate the engagement of the above discussion.
 Engagement refers to the degree to which a discussion sustains interest and participation.
-After the Chain-of-Thoughts reasoning steps, rate the engagement of the entire discussion on a scale of 1 to 5, where 1 is of poor engagement quality (that is the comments do not sustain interest and participation) and 5 of high engagement quality (comments sustain interest and participation to a high degree). 
-Conclude your evaluation with the statement: 'The engagement quality of the above discussion is: [X]', where X is the rating you've determined. 
+Rate the engagement of the above discussion on a scale of 1 to 5, where 1 is of poor engagement quality (that is the comments do not sustain interest and participation) and 5 of high engagement quality (comments sustain interest and participation to a high degree).
+Conclude your evaluation with the statement: 'The engagement quality of the above discussion is: [X]', where X is the rating (integer number) you've determined. 
 Please, ensure that your last statement is the score in brackets [].
 """
 
@@ -32,9 +31,9 @@ def calculate_discussion_engagement_score(utts, topic, key, model_type, model):
         formatted_prompt = prompt.format(conv_text=conv_text, post=topic)
     annotations_ci = []
     try:
-        # response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
-        print(formatted_prompt)
-        # annotations_ci.append(response_text)
+        response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
+        # print(formatted_prompt)
+        annotations_ci.append(response_text)
     except Exception as e:
         print("Error: ", e)
         annotations_ci.append(-1)
@@ -49,6 +48,8 @@ def calculate_engagement_conversation(
     model_type="openai",
     model_path="",
     gpu=False,
+    device="auto"
+
 ):
     """Calculates an overall engagement score for a discussion using a large language model (LLM).
 
@@ -57,12 +58,14 @@ def calculate_engagement_conversation(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
+
 
     Returns:
-        dict[str, float]: Dictionary mapping the discussion ID to its overall LLM-generated engagement score.
+        dict[str, integer]: Dictionary mapping the discussion ID to its overall LLM-generated engagement score.
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
@@ -70,8 +73,9 @@ def calculate_engagement_conversation(
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
 
     engag_scores_llm_output_dict = {}
     utterances, speakers = getUtterances(

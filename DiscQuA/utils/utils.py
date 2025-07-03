@@ -1,6 +1,7 @@
 import json
 import sys
 import time
+import re
 
 import openai
 from convokit import Speaker, Utterance
@@ -37,14 +38,57 @@ def isValidResponse(parts):
     if len(parts) != 2:
         return -1
     value = parts[1]
+    if(len(value)>10):
+        match = re.match(r'^\s*(\d+)', value)
+        if match:
+            value = match.group(1)
+            value=value.strip()
     rightParenthesisIndex = value.find("]")
     leftParenthesisIndex = value.find("[")
     if rightParenthesisIndex > 0 and leftParenthesisIndex > 0:
         value = value[leftParenthesisIndex:rightParenthesisIndex]
-    value = value.replace("[", "").replace("]", "").replace(".", "")
+    value = value.replace("[", "").replace("]", "")
+    if value.endswith("."):
+        value = value.rstrip(".")
+    try:
+        value=float(value)
+    except Exception as e:
+        return -1
     if not isinstance(value, (int, float)):
         return -1
     return value
+
+def extractFeature(feature, label):
+    #if not label.startswith("-Label"):
+    #    print("LLM output for utterance is ill-formatted, skipping utterance\n")
+    #    return -1
+
+    parts = label.split("\n")
+    for j in parts:
+        try:
+            entries = j.split(":")
+            
+            key = entries[0]
+            value = entries[1]
+
+            key = key.replace("-", "")
+            
+            rightParenthesisIndex = value.find("]")
+            leftParenthesisIndex = value.find("[")
+            if rightParenthesisIndex > 0 and leftParenthesisIndex > 0:
+                value = value[leftParenthesisIndex:rightParenthesisIndex]
+            value = value.replace("[", "").replace("]", "")
+            if value.endswith("."):
+                value = value.rstrip(".")            
+            
+            try:
+                value=float(value)
+            except Exception as e:
+                value=-1 
+            feature[key] = value
+        except Exception as e:
+            print(e)
+    return feature
 
 
 def validateInputParams(model_type, openAIKEY, model_path):
@@ -56,8 +100,12 @@ def validateInputParams(model_type, openAIKEY, model_path):
         print("Llama model path does not exist. Exiting")
         sys.exit(1)
 
-    if model_type != "llama" and model_type != "openai":
-        print("Expected model type: openai or llama. Exiting")
+    if model_type == "transformers" and not model_path:
+        print("transformers model path does not exist. Exiting")
+        sys.exit(1)
+
+    if model_type != "llama" and model_type != "openai" and model_type != "transformers":
+        print("Expected model type: openai or llama or transformers. Exiting")
         sys.exit(1)
 
     return True
@@ -93,6 +141,14 @@ def prompt_gpt4(prompt, key, model_type, model):
                 )
                 result = response["choices"][0]["message"]["content"]
                 # result = llm(prompt, max_tokens=4096)
+            elif model_type == "transformers":
+                messages = [{"role": "user", "content": prompt}]
+                response = model(
+                    messages,
+                    max_new_tokens=4096,
+                    return_full_text=False,
+                )[0]["generated_text"]
+                result = response
             else:
                 raise ValueError("Invalid model_type. Choose 'openai' or 'llama'.")
             ok = True
@@ -105,7 +161,17 @@ def prompt_gpt4(prompt, key, model_type, model):
     return result
 
 
-def getModel(model_path, gpu):
+def getModel(model_path, gpu, model_type="llama",device="auto"):
+    if model_type == "transformers":
+        import transformers
+        model = transformers.AutoModelForCausalLM.from_pretrained(
+            model_path, device_map=device
+        )
+        tokenizer = transformers.AutoTokenizer.from_pretrained(model_path)
+        generator = transformers.pipeline(
+            "text-generation", model=model, tokenizer=tokenizer
+        )
+        return generator
     llm = Llama(
         model_path=model_path,
         n_gpu_layers=50 if gpu else 0,

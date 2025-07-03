@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+from tqdm import tqdm
 
 from DiscQuA.utils import (
     getModel,
@@ -35,7 +36,7 @@ def calculate_response_informative_score(
     utts, topic, openAIKEY, model_type, model, ctx
 ):
     annotations_ci = []
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -54,9 +55,9 @@ def calculate_response_informative_score(
                 conv_history=conv_hist,
                 post=topic,
             )
-            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            print(formatted_prompt)
-            # annotations_ci.append(response_text)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            # print(formatted_prompt)
+            annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
@@ -72,6 +73,7 @@ def calculate_informativeness_response(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Computes per-response informativeness scores for a given conversation using a specified large language model (LLM).
     Each utterance is scored based on how much new and relevant information it contributes, given the conversational context.
@@ -81,13 +83,14 @@ def calculate_informativeness_response(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
-             dict[str, dict[str, float]]: A nested dictionary where each outer key is a discussion ID, and each inner
+             dict[str, dict[str, int]]: A nested dictionary where each outer key is a discussion ID, and each inner
         dictionary maps utterance IDs (e.g., "utt_0") to an informativeness score on a scale from  1 to 5.
     """
 
@@ -97,8 +100,10 @@ def calculate_informativeness_response(
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
+
 
     infor_per_resp_scores_llm_output_dict = {}
 
@@ -164,3 +169,4 @@ def calculate_informativeness_response(
     save_dict_2_json(
         inform_scores_per_response, "informativeness_per_response", disc_id, timestr
     )
+    return inform_scores_per_response

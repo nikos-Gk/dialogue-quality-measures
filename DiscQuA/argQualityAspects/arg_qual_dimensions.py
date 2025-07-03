@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from DiscQuA.utils import prompt_gpt4
+from tqdm import tqdm
 
 #######################################################################################################################################
 ini = """Below is given a set of definitions of various argument quality dimensions."""
@@ -86,16 +87,16 @@ Overall argument quality:
 
 Label 4:
 Overall quality: overall quality of the presented arguments.
-Judge about the overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
+Judge about the overall quality based on the argument quality dimensions that you think influence the overall quality of the given argumentation.
 If there is anything not covered by these dimensions that influences your view of the author's argumentation, also take that into account.
 """
 #######################################################################################################################################
 final = """\n\n
 You will presented with a conversation history (which can be empty if the new utterance is the first utterance made in the conversation) from a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
 Post: {post}
-All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating inflammatory and aggressive speech.
+
 Given the conversation history, please identify the arguments presented in each new utterance (identified by a unique user_id).
-An argument can be seen as combination of a conclusion (in terms of a claim) and a set of premises (in terms of supporting reasonsor evidence for the claim). However, parts of an argument may be implicit or may simply be missing. 
+An argument can be seen as combination of a conclusion (in terms of a claim) and a set of premises (in terms of supporting reasons or evidence for the claim). However, parts of an argument may be implicit or may simply be missing. 
 
 *CONVERSATION HISTORY*: "{conv_history}"
 
@@ -105,8 +106,25 @@ Noteworthy, the conversation history is provided for you to simply understand th
 Thus, please do not annotate the entire conversation but annotate only the argument(s) in the new utterance by determining an appropritate score for each argument quality dimension.
 Please provide the final answer directly with no reasoning steps.
 Ensure that your final answer clearly assigns a score for each argument quality dimension, on a scale from 1 to 3, where 1 is of low quality, 2 of medium quality and 3 of high quality. 
-For clarity, your response should succinctly be presented in a structured list format, indicating the score for each argument quality dimensions as follows:
+For clarity, your response should succinctly be presented in a structured list format, indicating the score (integer) for each argument quality dimensions as follows:
 
+"""
+
+final_overall = """\n\n
+You will presented with a conversation history (which can be empty if the new utterance is the first utterance made in the conversation) from a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
+Post: {post}
+Given the conversation history, please identify the arguments presented in each new utterance (identified by a unique user_id).
+An argument can be seen as combination of a conclusion (in terms of a claim) and a set of premises (in terms of supporting reasons or evidence for the claim). However, parts of an argument may be implicit or may simply be missing. 
+
+*CONVERSATION HISTORY*: "{conv_history}"
+
+*NEW UTTERANCE*: "{utterance}"
+
+You are an argument quality evaluator. 
+Rate the overall quality of the arguments in the new utterance on a scale from 1 to 3, where 1 is of low quality, 2 of medium quality and 3 of high quality. 
+Conclude your evaluation with the statement: 'The overall argument quality is: [X]', where X is the numeric score (integer) you've determined. 
+Please, provide the final answer directly with no reasoning steps.
+Please, ensure that your last statement is the score in brackets [].
 """
 
 logic_output_format = """
@@ -132,11 +150,6 @@ dialectic_output_format = """
 -Label 3_overall: [1/2/3]
 """
 
-overall_output_format = """
--Label 4: [1/2/3]
-"""
-
-
 class AQualityDimensions:
     def __init__(
         self, utterances, conv_topic, openaiKey, model_type, llm, ctx, dimension
@@ -158,14 +171,14 @@ class AQualityDimensions:
         elif self.dimension == "dialectic":
             prompt = ini + dialectic_prompt + final + dialectic_output_format
         elif self.dimension == "overall":
-            prompt = ini + overall_prompt + final + overall_output_format
+            prompt = ini + overall_prompt + final_overall
         else:
             print("No matching dimension")
             return []
         # prompt = ini + Argument_quality_dimensions + final
         annotations_ci = []
         #
-        for index, utt in enumerate(self.utterances):
+        for index, utt in enumerate(tqdm(self.utterances, desc="Processing utterances")):
             conv_hist = ""
             text = utt.text
             speaker = utt.get_speaker().id
@@ -183,12 +196,12 @@ class AQualityDimensions:
                     conv_history=conv_hist,
                     post=self.conv_topic,
                 )
-                # response_text = prompt_gpt4(
-                #    formatted_prompt, self.openaiKey, self.model_type, self.llm
-                # )
-                print(formatted_prompt)
-                # annotations_ci.append(response_text)
-            except Exception as e:  # happens for one instance
+                response_text = prompt_gpt4(
+                    formatted_prompt, self.openaiKey, self.model_type, self.llm
+                 )
+                # print(formatted_prompt)
+                annotations_ci.append(response_text)
+            except Exception as e:
                 print("Error: ", e)
                 annotations_ci.append(-1)
         return annotations_ci

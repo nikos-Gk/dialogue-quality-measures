@@ -20,6 +20,8 @@ def calculate_overall_arg_quality(
     model_path="",
     mode="real",
     gpu=False,
+    device="auto"
+
 ):
     """Calculates the overall argument quality score for a given discussion using a specified language model.
 
@@ -28,10 +30,11 @@ def calculate_overall_arg_quality(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
-        mode (str): _description_. Defaults to "real".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        mode (str): "rating" for a rating label or "real" for a real score. Defaults to "real".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
         dict: A dictionary mapping the discussion ID to its overall argument quality score.
@@ -42,8 +45,8 @@ def calculate_overall_arg_quality(
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
 
     ovargquality_scores_llm_output_dict = {}
     #

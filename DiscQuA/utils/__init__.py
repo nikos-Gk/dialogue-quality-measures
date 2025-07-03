@@ -6,4 +6,5 @@ from .utils import (
     save_dict_2_json,
     sleep,
     validateInputParams,
+    extractFeature
 )

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from DiscQuA.utils import prompt_gpt4
+from tqdm import tqdm
 
 ini = """Below are two sets of linguistic features for disagreement levels and non-disagreement labels."""
 
@@ -99,7 +100,7 @@ class DisputeTactics:
         prompt = ini + disagreement_levels + non_disagreement_labels + final
         annotations_ci = []
         #
-        for index, utt in enumerate(self.utterances):
+        for index, utt in enumerate(tqdm(self.utterances, desc="Processing utterances")):
             conv_hist = ""
             text = utt.text
             speaker = utt.get_speaker().id
@@ -117,12 +118,10 @@ class DisputeTactics:
                     conv_history=conv_hist,
                     post=self.conv_topic,
                 )
-                # response_text = prompt_gpt4(
-                #    formatted_prompt, self.openaiKey, self.model_type, self.llm
-                # )
-                print(formatted_prompt)
-                # annotations_ci.append(response_text)
-            except Exception as e:  # happens for one instance
+                response_text = prompt_gpt4(formatted_prompt, self.openaiKey, self.model_type, self.llm)
+                # print(formatted_prompt)
+                annotations_ci.append(response_text)
+            except Exception as e: 
                 print("Error: ", e)
                 annotations_ci.append(-1)
         return annotations_ci

@@ -9,23 +9,25 @@ The texts above show a discussion in an online chatroom with respect to this pot
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating 
 inflammatory and aggressive speech.
-Now, please use chain-of-thought reasoning to evaluate the average overall quality of the arguments presented in the above discussion.
-Although a definition of overall argument quality does not exist so far, try to judge about the
-overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
-After the Chain-of-Thoughts reasoning steps, you should assign a score for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 5, where 1 is of poor quality and 5 is of extremely good quality. 
-Conclude your evaluation with the statement: 'The average overall quality of the arguments presented in the above discussion is: [X]', where X is the numeric score (real number) you've determined. Please, ensure that your last statement is the score in brackets [].
+Evaluate the average overall quality of the arguments presented in the above discussion.
+Although a definition of overall argument quality does not exist so far, try to judge about the overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
+Assign a score for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 5, where 1 is of poor quality and 5 is of extremely good quality. 
+Conclude your evaluation with the statement: 'The average overall quality of the arguments presented in the above discussion is: [X]', where X is the numeric score (real number) you've determined.
+Please, ensure that your last statement is the score in brackets [].
 """
+
 prompt_ratingscale = """{conv_text}'\n\n\n
 
 The texts above show a discussion in an online chatroom with respect to this potentially controversial post between two or more individuals.
 Post: {post}
 All individuals answer to each other by presenting arguments on why they think the post(s) is or isn't reasonable, possibly incorporating 
 inflammatory and aggressive speech.
-Now, please use chain-of-thought reasoning to evaluate the average overall quality of the arguments presented in the above discussion.
-Although a definition of overall argument quality does not exist so far, try to judge about the
-overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
-After the Chain-of-Thoughts reasoning steps, you should assign a label for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 3, where 1 is low quality, 2 is medium quality  and 3 is high quality. 
-Conclude your evaluation with the statement: 'The average overall quality of the arguments presented in the above discussion is: [X]', where X is the label you've determined. Please, ensure that your last statement is the label in brackets [].
+Evaluate the average overall quality of the arguments presented in the above discussion.
+Although a definition of overall argument quality does not exist so far, try to judge about the overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
+assign a label for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 3, where 1 is low quality, 2 is medium quality and 3 is high quality. 
+Conclude your evaluation with the statement: 'The average overall quality of the arguments presented in the above discussion is: [X]', where X is the label you've determined.
+Please, ensure that your last statement is the label in brackets [].
+
 """
 
 
@@ -62,7 +64,7 @@ class OAQuality:
             )
             # print(formatted_prompt)
             annotations_ci.append(response_text)
-        except Exception as e:  # happens for one instance
+        except Exception as e: 
             print("Error: ", e)
             annotations_ci.append(-1)
         return annotations_ci

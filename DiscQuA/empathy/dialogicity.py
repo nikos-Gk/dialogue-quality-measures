@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+from tqdm import tqdm
 
 from DiscQuA.utils import (
     getModel,
@@ -8,6 +9,9 @@ from DiscQuA.utils import (
     save_dict_2_json,
     sleep,
     validateInputParams,
+    extractFeature,
+    isValidResponse
+
 )
 
 ini = """Below is a set of communicative functions (presented in Macagno et al., 2022) of utterances in human discussions aimed in capturing their true intention in terms of dialogicity (potential other-orientedness).
@@ -79,7 +83,7 @@ def calculate_dialog_labels(utts, topic, openAIKEY, model_type, model, ctx):
     prompt = ini + dialogical_labels + final
     annotations_ci = []
     #
-    for index, utt in enumerate(utts):
+    for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
         text = utt.text
         speaker = utt.get_speaker().id
@@ -97,9 +101,9 @@ def calculate_dialog_labels(utts, topic, openAIKEY, model_type, model, ctx):
                 conv_history=conv_hist,
                 post=topic,
             )
-            # response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            print(formatted_prompt)
-            # annotations_ci.append(response_text)
+            response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
+            # print(formatted_prompt)
+            annotations_ci.append(response_text)
 
         except Exception as e:
             print("Error: ", e)
@@ -116,6 +120,7 @@ def dialogicity(
     model_path="",
     gpu=False,
     ctx=1,
+    device="auto"
 ):
     """Assigns dialogicity labels to utterances in a discussion using a large language model (LLM).
     Labels reflect the dialogic function of each response, offering insights into the conversational dynamics and expressions of empathy.
@@ -125,14 +130,15 @@ def dialogicity(
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama". Defaults to "openai".
-        model_path (str): Path to the local LlaMA model directory, used only if model_type is "llama". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
+        device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
 
-        dict[str, dict[str, dict[str, str]]]: Dictionary mapping the discussion ID to a dictionary
+        dict[str, dict[str, dict[str, int]]]: Dictionary mapping the discussion ID to a dictionary
         of utterance-level dialogicity labels. Each inner dictionary maps utterance IDs (e.g., "utt_0")
         to a set of extracted dialogic features as key-value pairs.
 
@@ -142,8 +148,9 @@ def dialogicity(
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
-    if model_type == "llama":
-        llm = getModel(model_path, gpu)
+
+    if model_type == "llama" or model_type == "transformers":
+        llm = getModel(model_path, gpu, model_type, device)
 
     dialog_labels_llm_output_dict = {}
 
@@ -190,28 +197,18 @@ def dialogicity(
                 print(label)
                 counter += 1
                 continue
-            parts = label.split("\n")
-            #
-            if len(parts) != 12:
-                print("LLM output with missing dialogical labels, skipping utterance\n")
-                print(label)
-                counter += 1
+            
+            feature = {}
+            
+            feature=extractFeature(feature , label)
+            if feature == -1:
+                counter+=1
                 continue
-            #
-            try:
-                feature = {}
-                for j in parts:
-                    entries = j.split(":")
-                    key = entries[0]
-                    value = entries[1]
-                    key = key.replace("-", "")
-                    value = value.replace("[", "").replace("]", "")
-                    feature[key] = value
-                key_iter = "utt_" + str(counter)
-                ut_dict[key_iter] = feature
-                counter += 1
-            except Exception as e:
-                print(e)
+            
+            key_iter = "utt_" + str(counter)
+            ut_dict[key_iter] = feature
+            counter += 1
+            
         dialo_labels_per_response[disc_id] = ut_dict
 
     save_dict_2_json(
