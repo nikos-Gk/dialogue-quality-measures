@@ -2,13 +2,13 @@ import sys
 import time
 
 from DiscQuA.utils import (
+    extractFeature,
     getModel,
     getUtterances,
+    isValidResponse,
     save_dict_2_json,
     sleep,
     validateInputParams,
-    extractFeature,
-    isValidResponse
 )
 
 from .arg_qual_dimensions import AQualityDimensions
@@ -24,7 +24,7 @@ def calculate_arg_dim(
     gpu=False,
     ctx=1,
     dimension="logic",
-    device="auto"
+    device="auto",
 ):
     """Evaluates the quality of argumentation in each utterance of a discussion according to the taxonomy proposed by Wachsmuth et al. (2017).
        Each utterance is assessed across multiple argument quality dimensions, each scored on a scale from 1 (low) to 3 (high).
@@ -65,7 +65,6 @@ def calculate_arg_dim(
     if model_type == "llama" or model_type == "transformers":
         llm = getModel(model_path, gpu, model_type, device)
 
-
     argqualitydimensions_scores_llm_output_dict = {}
 
     try:
@@ -99,7 +98,7 @@ def calculate_arg_dim(
         disc_id,
         timestr,
     )
-    
+
     """        
     with open("llm_output_md_aq_", encoding="utf-8") as f:
         md_aq = json.load(f)
@@ -110,29 +109,31 @@ def calculate_arg_dim(
         counter = 0
         ut_dict = {}
         for label in turnAnnotations:
-            
+
             if label == -1:
                 print("LLM output for utterance is ill-formatted, skipping utterance\n")
                 print(label)
                 counter += 1
                 continue
-            
+
             feature = {}
-            
+
             if dimension == "overall":
                 parts = label.split("overall argument quality is:")
                 value = isValidResponse(parts)
                 if value == -1:
-                    print("LLM output for utterance is ill-formatted, skipping utterance\n")
+                    print(
+                        "LLM output for utterance is ill-formatted, skipping utterance\n"
+                    )
                     print(label)
                     counter += 1
                     continue
-                feature["overall"]=value
-            
+                feature["overall"] = value
+
             else:
-                feature=extractFeature(feature , label)
+                feature = extractFeature(feature, label)
                 if feature == -1:
-                    counter+=1
+                    counter += 1
                     continue
             key_iter = "utt_" + str(counter)
             ut_dict[key_iter] = [feature]

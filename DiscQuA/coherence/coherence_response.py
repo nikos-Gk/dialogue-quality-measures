@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+
 from tqdm import tqdm
 
 from DiscQuA.utils import (
@@ -33,7 +34,7 @@ Please, ensure that your last statement is the score in brackets [].
 """
 
 
-def calculate_response_coherence_score2(utts, topic, openAIKEY, model_type, model, ctx):
+def calculate_response_coherence_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
     for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
@@ -55,12 +56,13 @@ def calculate_response_coherence_score2(utts, topic, openAIKEY, model_type, mode
                 post=topic,
             )
             response_text = prompt_gpt4(formatted_prompt, openAIKEY, model_type, model)
-            #print(formatted_prompt)
+            # print(formatted_prompt)
             annotations_ci.append(response_text)
         except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
     return annotations_ci
+
 
 def calculate_coherence_response(
     message_list,
@@ -71,7 +73,7 @@ def calculate_coherence_response(
     model_path="",
     gpu=False,
     ctx=1,
-    device="auto"
+    device="auto",
 ):
     """Calculates coherence scores for each response in a conversation using a specified language model.
 

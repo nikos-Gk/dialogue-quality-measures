@@ -1,0 +1,25 @@
+{
+    "fe858614-6571-43e7-badf-3cdcb38337b3": {
+        "feature_politeness_==Please==": 0.06666666666666667,
+        "feature_politeness_==Please_start==": 0.0,
+        "feature_politeness_==HASHEDGE==": 0.8666666666666667,
+        "feature_politeness_==Indirect_(btw)==": 0.0,
+        "feature_politeness_==Hedges==": 0.2,
+        "feature_politeness_==Factuality==": 0.3333333333333333,
+        "feature_politeness_==Deference==": 0.0,
+        "feature_politeness_==Gratitude==": 0.2,
+        "feature_politeness_==Apologizing==": 0.0,
+        "feature_politeness_==1st_person_pl.==": 0.7333333333333333,
+        "feature_politeness_==1st_person==": 0.5333333333333333,
+        "feature_politeness_==1st_person_start==": 0.06666666666666667,
+        "feature_politeness_==2nd_person==": 0.9333333333333333,
+        "feature_politeness_==2nd_person_start==": 0.7333333333333333,
+        "feature_politeness_==Indirect_(greeting)==": 0.0,
+        "feature_politeness_==Direct_question==": 0.13333333333333333,
+        "feature_politeness_==Direct_start==": 0.6666666666666666,
+        "feature_politeness_==HASPOSITIVE==": 0.9333333333333333,
+        "feature_politeness_==HASNEGATIVE==": 0.9333333333333333,
+        "feature_politeness_==SUBJUNCTIVE==": 0.0,
+        "feature_politeness_==INDICATIVE==": 0.0
+    }
+}

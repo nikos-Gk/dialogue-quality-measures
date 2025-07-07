@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from DiscQuA.utils import prompt_gpt4
 from tqdm import tqdm
+
+from DiscQuA.utils import prompt_gpt4
 
 #######################################################################################################################################
 ini = """Below is given a set of definitions of various argument quality dimensions."""
@@ -150,6 +151,7 @@ dialectic_output_format = """
 -Label 3_overall: [1/2/3]
 """
 
+
 class AQualityDimensions:
     def __init__(
         self, utterances, conv_topic, openaiKey, model_type, llm, ctx, dimension
@@ -178,7 +180,9 @@ class AQualityDimensions:
         # prompt = ini + Argument_quality_dimensions + final
         annotations_ci = []
         #
-        for index, utt in enumerate(tqdm(self.utterances, desc="Processing utterances")):
+        for index, utt in enumerate(
+            tqdm(self.utterances, desc="Processing utterances")
+        ):
             conv_hist = ""
             text = utt.text
             speaker = utt.get_speaker().id
@@ -198,7 +202,7 @@ class AQualityDimensions:
                 )
                 response_text = prompt_gpt4(
                     formatted_prompt, self.openaiKey, self.model_type, self.llm
-                 )
+                )
                 # print(formatted_prompt)
                 annotations_ci.append(response_text)
             except Exception as e:

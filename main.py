@@ -1,4 +1,4 @@
-import unsloth
+# import unsloth
 import json
 from pprint import pprint
 
@@ -31,10 +31,9 @@ from DiscQuA import (
     make_visualization,
 )
 
-
-#model_path = r"D:\virtual\models\llama-2-13b-chat.Q5_K_M.gguf"
-model_path="unsloth/Meta-Llama-3.1-8B-Instruct"
-#"unsloth/Meta-Llama-3.1-8B-Instruct" #"unsloth/Llama-3.3-70B-Instruct-bnb-4bit"
+# model_path = r"D:\virtual\models\llama-2-13b-chat.Q5_K_M.gguf"
+model_path = "unsloth/Meta-Llama-3.1-8B-Instruct"
+# "unsloth/Meta-Llama-3.1-8B-Instruct" #"unsloth/Llama-3.3-70B-Instruct-bnb-4bit"
 
 test_path = "./example_discussion/fe858614-6571-43e7-badf-3cdcb38337b3.json"
 
@@ -62,7 +61,7 @@ def test_structure_features():
         msgsid_list=msgsid_list,
         replyto_list=replyto_list,
         disc_id=disc_id,
-        discussion_level=True,
+        discussion_level=False,
     )
     pprint(structure_features)
 
@@ -112,7 +111,7 @@ def test_coherence_conversation():
         model_type="transformers",
         model_path=model_path,
         gpu=True,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(coherence_disc_score)
 
@@ -127,7 +126,7 @@ def test_coherence_response():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(coherence_resp_score)
 
@@ -141,6 +140,7 @@ def test_coherence_ecoh():
     )
     print(coherence_booleans)
 
+
 def test_diversity_conversation():
     diversity_disc_score = calculate_diversity_conversation(
         message_list=message_list,
@@ -149,8 +149,8 @@ def test_diversity_conversation():
         openAIKEY="",
         model_type="transformers",
         model_path=model_path,
-        gpu=False,
-        #device="cuda:0"
+        gpu=True,
+        # device="cuda:0"
     )
     print(diversity_disc_score)
 
@@ -165,7 +165,7 @@ def test_diversity_response():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(diversity_resp_score)
 
@@ -180,7 +180,7 @@ def test_dialogicity():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(dialogicity_labels)
 
@@ -193,8 +193,8 @@ def test_engagement_conversation():
         openAIKEY="",
         model_type="transformers",
         model_path=model_path,
-        gpu=False,
-        #device="cuda:0"
+        gpu=True,
+        # device="cuda:0"
     )
     print(engagement_disc_score)
 
@@ -207,9 +207,9 @@ def test_engagement_response():
         openAIKEY="",
         model_type="transformers",
         model_path=model_path,
-        gpu=False,
+        gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(engagement_resp_score)
 
@@ -223,8 +223,7 @@ def test_informativeness_conversation():
         model_type="transformers",
         model_path=model_path,
         gpu=True,
-        #device="cuda:0"
-
+        # device="cuda:0"
     )
     print(informativeness_disc_score)
 
@@ -239,7 +238,7 @@ def test_informativeness_response():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(informativeness_resp_score)
 
@@ -253,7 +252,7 @@ def test_persuasiveness():
         model_type="transformers",
         model_path=model_path,
         gpu=True,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(persuasiveness_score)
 
@@ -268,7 +267,7 @@ def test_toxicity():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(toxicity_scores)
 
@@ -280,7 +279,7 @@ def test_coordination_per_disc_utt():
         msgsid_list=msgsid_list,
         replyto_list=replyto_list,
         disc_id=disc_id,
-        discussion_level=True,
+        discussion_level=False,
     )
     print(coordination_scores)
 
@@ -295,7 +294,7 @@ def test_social_bias():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(social_bias_labels)
 
@@ -305,7 +304,7 @@ def test_politeness():
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
-        discussion_level=True,
+        discussion_level=False,
     )
     print(politeness_features_scores)
 
@@ -337,8 +336,8 @@ def test_argument_qual_dim():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        dimension="dialectic",
-        #device="cuda:0"
+        dimension="logic",
+        # device="cuda:0"
     )
     print(arg_dim_scores)
 
@@ -352,8 +351,8 @@ def test_overall_arg_quality():
         model_type="transformers",
         model_path=model_path,
         mode="rating",
-        gpu=False,
-        #device="cuda:0"
+        gpu=True,
+        # device="cuda:0"
     )
     print(overall_argument_quality_score)
 
@@ -366,9 +365,9 @@ def test_dispute_tactics():
         openAIKEY="",
         model_type="transformers",
         model_path=model_path,
-        gpu=False,
+        gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(disp_tact)
 
@@ -383,7 +382,7 @@ def test_speech_acts():
         model_path=model_path,
         gpu=True,
         ctx=1,
-        #device="cuda:0"
+        # device="cuda:0"
     )
     print(speech_acts)
 
@@ -399,6 +398,7 @@ def non_llm_measures():
     # test_politeness()
     # test_readability()
     # test_collaboration()
+
 
 def llm_measures():
     print("LLM measures")
@@ -423,5 +423,5 @@ def llm_measures():
 
 if __name__ == "__main__":
     print("Executing discussion quality aspects.")
-    non_llm_measures()
-    llm_measures()
+    # non_llm_measures()
+    # llm_measures()

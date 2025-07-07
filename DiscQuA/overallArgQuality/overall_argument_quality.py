@@ -20,8 +20,7 @@ def calculate_overall_arg_quality(
     model_path="",
     mode="real",
     gpu=False,
-    device="auto"
-
+    device="auto",
 ):
     """Calculates the overall argument quality score for a given discussion using a specified language model.
 
@@ -63,11 +62,13 @@ def calculate_overall_arg_quality(
     save_dict_2_json(
         ovargquality_scores_llm_output_dict, "llm_output_ovrall_aq", disc_id, timestr
     )
-
-    """        
-    with open("llm_output_ovrall_aq_.json", encoding="utf-8") as f:
+    """
+    with open(
+        "llm_output_ovrall_aq_",
+        encoding="utf-8",
+    ) as f:
         oaq = json.load(f)
-    ovargquality_scores_llm_output_dict=oaq
+    ovargquality_scores_llm_output_dict = oaq
     """
 
     oaq_dim_per_disc = {}
@@ -80,7 +81,7 @@ def calculate_overall_arg_quality(
                 print(label)
                 continue
             parts = label.split(
-                "The average overall quality of the arguments presented in the above discussion is:"
+                "average overall quality of the arguments presented in the above discussion is:"
             )
             value = isValidResponse(parts)
             if value == -1:

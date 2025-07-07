@@ -1,0 +1,284 @@
+{
+    "fe858614-6571-43e7-badf-3cdcb38337b3": {
+        "pair_(0, 1)": [
+            {
+                "n_comwords": 14,
+                "reply_fra_comwords": 0.22580645161290322,
+                "op_fra_comwords": 0.3783783783783784,
+                "jac_comwords": 0.18181818181818182
+            },
+            {
+                "n_stopwords": 6,
+                "reply_fra_stopwords": 0.2857142857142857,
+                "op_fra_stopwords": 0.375,
+                "jac_stopwords": 0.24
+            },
+            {
+                "n_contwords": 8,
+                "reply_fra_contwords": 0.1951219512195122,
+                "op_fra_contwords": 0.38095238095238093,
+                "jac_contwords": 0.15384615384615385
+            }
+        ],
+        "pair_(1, 2)": [
+            {
+                "n_comwords": 23,
+                "reply_fra_comwords": 0.2948717948717949,
+                "op_fra_comwords": 0.3709677419354839,
+                "jac_comwords": 0.22549019607843138
+            },
+            {
+                "n_stopwords": 11,
+                "reply_fra_stopwords": 0.2894736842105263,
+                "op_fra_stopwords": 0.5238095238095238,
+                "jac_stopwords": 0.2972972972972973
+            },
+            {
+                "n_contwords": 12,
+                "reply_fra_contwords": 0.3,
+                "op_fra_contwords": 0.2926829268292683,
+                "jac_contwords": 0.18461538461538463
+            }
+        ],
+        "pair_(2, 3)": [
+            {
+                "n_comwords": 22,
+                "reply_fra_comwords": 0.2222222222222222,
+                "op_fra_comwords": 0.28205128205128205,
+                "jac_comwords": 0.176
+            },
+            {
+                "n_stopwords": 17,
+                "reply_fra_stopwords": 0.37777777777777777,
+                "op_fra_stopwords": 0.4473684210526316,
+                "jac_stopwords": 0.40476190476190477
+            },
+            {
+                "n_contwords": 5,
+                "reply_fra_contwords": 0.09259259259259259,
+                "op_fra_contwords": 0.125,
+                "jac_contwords": 0.060240963855421686
+            }
+        ],
+        "pair_(3, 4)": [
+            {
+                "n_comwords": 51,
+                "reply_fra_comwords": 0.45132743362831856,
+                "op_fra_comwords": 0.5151515151515151,
+                "jac_comwords": 0.3984375
+            },
+            {
+                "n_stopwords": 34,
+                "reply_fra_stopwords": 0.7083333333333334,
+                "op_fra_stopwords": 0.7555555555555555,
+                "jac_stopwords": 1.0
+            },
+            {
+                "n_contwords": 17,
+                "reply_fra_contwords": 0.26153846153846155,
+                "op_fra_contwords": 0.3148148148148148,
+                "jac_contwords": 0.18085106382978725
+            }
+        ],
+        "pair_(4, 5)": [
+            {
+                "n_comwords": 54,
+                "reply_fra_comwords": 0.4,
+                "op_fra_comwords": 0.4778761061946903,
+                "jac_comwords": 0.34615384615384615
+            },
+            {
+                "n_stopwords": 37,
+                "reply_fra_stopwords": 0.6065573770491803,
+                "op_fra_stopwords": 0.7708333333333334,
+                "jac_stopwords": 0.8604651162790697
+            },
+            {
+                "n_contwords": 17,
+                "reply_fra_contwords": 0.22972972972972974,
+                "op_fra_contwords": 0.26153846153846155,
+                "jac_contwords": 0.1504424778761062
+            }
+        ],
+        "pair_(5, 6)": [
+            {
+                "n_comwords": 46,
+                "reply_fra_comwords": 0.304635761589404,
+                "op_fra_comwords": 0.34074074074074073,
+                "jac_comwords": 0.24864864864864866
+            },
+            {
+                "n_stopwords": 34,
+                "reply_fra_stopwords": 0.4857142857142857,
+                "op_fra_stopwords": 0.5573770491803278,
+                "jac_stopwords": 0.5964912280701754
+            },
+            {
+                "n_contwords": 12,
+                "reply_fra_contwords": 0.14814814814814814,
+                "op_fra_contwords": 0.16216216216216217,
+                "jac_contwords": 0.09375
+            }
+        ],
+        "pair_(6, 7)": [
+            {
+                "n_comwords": 52,
+                "reply_fra_comwords": 0.5842696629213483,
+                "op_fra_comwords": 0.3443708609271523,
+                "jac_comwords": 0.33548387096774196
+            },
+            {
+                "n_stopwords": 38,
+                "reply_fra_stopwords": 0.7916666666666666,
+                "op_fra_stopwords": 0.5428571428571428,
+                "jac_stopwords": 0.6909090909090909
+            },
+            {
+                "n_contwords": 14,
+                "reply_fra_contwords": 0.34146341463414637,
+                "op_fra_contwords": 0.1728395061728395,
+                "jac_contwords": 0.14
+            }
+        ],
+        "pair_(7, 8)": [
+            {
+                "n_comwords": 43,
+                "reply_fra_comwords": 0.3644067796610169,
+                "op_fra_comwords": 0.48314606741573035,
+                "jac_comwords": 0.3049645390070922
+            },
+            {
+                "n_stopwords": 26,
+                "reply_fra_stopwords": 0.5,
+                "op_fra_stopwords": 0.5416666666666666,
+                "jac_stopwords": 0.5
+            },
+            {
+                "n_contwords": 17,
+                "reply_fra_contwords": 0.25757575757575757,
+                "op_fra_contwords": 0.4146341463414634,
+                "jac_contwords": 0.19101123595505617
+            }
+        ],
+        "pair_(8, 9)": [
+            {
+                "n_comwords": 45,
+                "reply_fra_comwords": 0.41284403669724773,
+                "op_fra_comwords": 0.3813559322033898,
+                "jac_comwords": 0.2795031055900621
+            },
+            {
+                "n_stopwords": 30,
+                "reply_fra_stopwords": 0.6521739130434783,
+                "op_fra_stopwords": 0.5769230769230769,
+                "jac_stopwords": 0.5660377358490566
+            },
+            {
+                "n_contwords": 15,
+                "reply_fra_contwords": 0.23809523809523808,
+                "op_fra_contwords": 0.22727272727272727,
+                "jac_contwords": 0.1388888888888889
+            }
+        ],
+        "pair_(9, 10)": [
+            {
+                "n_comwords": 46,
+                "reply_fra_comwords": 0.3709677419354839,
+                "op_fra_comwords": 0.42201834862385323,
+                "jac_comwords": 0.2967741935483871
+            },
+            {
+                "n_stopwords": 27,
+                "reply_fra_stopwords": 0.4426229508196721,
+                "op_fra_stopwords": 0.5869565217391305,
+                "jac_stopwords": 0.5
+            },
+            {
+                "n_contwords": 19,
+                "reply_fra_contwords": 0.30158730158730157,
+                "op_fra_contwords": 0.30158730158730157,
+                "jac_contwords": 0.18811881188118812
+            }
+        ],
+        "pair_(10, 11)": [
+            {
+                "n_comwords": 81,
+                "reply_fra_comwords": 0.36160714285714285,
+                "op_fra_comwords": 0.6532258064516129,
+                "jac_comwords": 0.42408376963350786
+            },
+            {
+                "n_stopwords": 48,
+                "reply_fra_stopwords": 0.44036697247706424,
+                "op_fra_stopwords": 0.7868852459016393,
+                "jac_stopwords": 0.7619047619047619
+            },
+            {
+                "n_contwords": 33,
+                "reply_fra_contwords": 0.28695652173913044,
+                "op_fra_contwords": 0.5238095238095238,
+                "jac_contwords": 0.2578125
+            }
+        ],
+        "pair_(11, 12)": [
+            {
+                "n_comwords": 123,
+                "reply_fra_comwords": 0.7365269461077845,
+                "op_fra_comwords": 0.5491071428571429,
+                "jac_comwords": 0.6029411764705882
+            },
+            {
+                "n_stopwords": 77,
+                "reply_fra_stopwords": 1.0845070422535212,
+                "op_fra_stopwords": 0.7064220183486238,
+                "jac_stopwords": 1.2622950819672132
+            },
+            {
+                "n_contwords": 46,
+                "reply_fra_contwords": 0.4791666666666667,
+                "op_fra_contwords": 0.4,
+                "jac_contwords": 0.32167832167832167
+            }
+        ],
+        "pair_(12, 13)": [
+            {
+                "n_comwords": 52,
+                "reply_fra_comwords": 0.52,
+                "op_fra_comwords": 0.31137724550898205,
+                "jac_comwords": 0.3023255813953488
+            },
+            {
+                "n_stopwords": 34,
+                "reply_fra_stopwords": 0.8095238095238095,
+                "op_fra_stopwords": 0.4788732394366197,
+                "jac_stopwords": 0.68
+            },
+            {
+                "n_contwords": 18,
+                "reply_fra_contwords": 0.3103448275862069,
+                "op_fra_contwords": 0.1875,
+                "jac_contwords": 0.14754098360655737
+            }
+        ],
+        "pair_(13, 14)": [
+            {
+                "n_comwords": 25,
+                "reply_fra_comwords": 0.3048780487804878,
+                "op_fra_comwords": 0.25,
+                "jac_comwords": 0.18518518518518517
+            },
+            {
+                "n_stopwords": 21,
+                "reply_fra_stopwords": 0.4883720930232558,
+                "op_fra_stopwords": 0.5,
+                "jac_stopwords": 0.42857142857142855
+            },
+            {
+                "n_contwords": 4,
+                "reply_fra_contwords": 0.10256410256410256,
+                "op_fra_contwords": 0.06896551724137931,
+                "jac_contwords": 0.046511627906976744
+            }
+        ]
+    }
+}

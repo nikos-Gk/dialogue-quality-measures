@@ -24,7 +24,7 @@ All individuals answer to each other by presenting arguments on why they think t
 inflammatory and aggressive speech.
 Evaluate the average overall quality of the arguments presented in the above discussion.
 Although a definition of overall argument quality does not exist so far, try to judge about the overall quality based on all those argument quality dimensions that you think influence the overall quality of the given argumentation.
-assign a label for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 3, where 1 is low quality, 2 is medium quality and 3 is high quality. 
+Assign a label for the average overall argument quality of the arguments presented in the entire discussion on a scale from 1 to 3, where 1 is low quality, 2 is medium quality and 3 is high quality. 
 Conclude your evaluation with the statement: 'The average overall quality of the arguments presented in the above discussion is: [X]', where X is the label you've determined.
 Please, ensure that your last statement is the label in brackets [].
 
@@ -64,7 +64,7 @@ class OAQuality:
             )
             # print(formatted_prompt)
             annotations_ci.append(response_text)
-        except Exception as e: 
+        except Exception as e:
             print("Error: ", e)
             annotations_ci.append(-1)
         return annotations_ci

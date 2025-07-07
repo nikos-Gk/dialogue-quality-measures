@@ -36,9 +36,9 @@ In the main.py file you can find examples of usage.
 
 -openAIKEY: OpenAI API key, required if using OpenAI-based models.
 
--model_type: Specifies the model to use; options are "openai" or "llama" .
+-model_type: Specifies the model to use; options are "openai", "llama" or "transformers" .
 
--model_path:  Path to the local LlaMA model directory, used only if model_type is "llama".
+-model_path:  Path to the local LlaMA model directory, used only if model_type is "llama" or "transformers".
 
 -gpu: A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU.
 
@@ -103,9 +103,9 @@ This module evaluates the quality of argumentation in individual discussion turn
                                         speakers_list=speakers_list,
                                         disc_id=disc_id,
                                         openAIKEY="",
-                                        model_type="llama",
-                                        model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
-                                        gpu=False,
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                        gpu=True,
                                         ctx=1,
                                         dimension="logic",
                                       )
@@ -147,15 +147,15 @@ from DiscQuA import calculate_overall_arg_quality
                                                                     speakers_list=speakers_list,
                                                                     disc_id=disc_id,
                                                                     openAIKEY="",
-                                                                    model_type="llama",
-                                                                    model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                                    model_type="transformers",
+                                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                                     mode="real",
-                                                                    gpu=False,
+                                                                    gpu=True,
                                                                   )                                                                
 ```
 # Coherence
 ## calculate_coherence_conversation: Coherence Analysis (Discussion-Level)
-This module assesses the overall coherence of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It assesses how logically and contextually connected the messages are across the discussion. The model assigns a coherence score to the entire discussion on a 1-to-5 scale, where:
+This module assesses the overall coherence of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It assesses how logically and contextually connected the messages are across the discussion. The model assigns a coherence score (integer) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Poor coherence (incoherent or disjointed)
 - **5** – Strong coherence (well-structured and contextually consistent)
@@ -180,13 +180,13 @@ from DiscQuA import calculate_coherence_conversation
                                                             speakers_list=speakers_list,
                                                             disc_id=disc_id,
                                                             openAIKEY="",
-                                                            model_type="llama",
-                                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                            model_type="transformers",
+                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                             gpu=True,
                                                          )
 ```
 ## calculate_coherence_response: Coherence Analysis (Turn-Level) 
-This module evaluates the coherence of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it examines how well a message aligns with its conversational context. The model assigns a coherence score to each response on a 1-to-5 scale:
+This module evaluates the coherence of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it examines how well a message aligns with its conversational context. The model assigns a coherence score (integer number) to each response on a 1-to-5 scale:
 
 - **1** – Incoherent response (off-topic, confusing, or disjointed)
 - **5** – Coherent (well-aligned with context, clear, and logically structured)
@@ -203,7 +203,7 @@ from DiscQuA import calculate_coherence_response
                                             openAIKEY="you key",
                                             model_type="openai",
                                             model_path="",
-                                            gpu=True,
+                                            gpu=False,
                                             ctx=1,
                                         )
     score = calculate_coherence_response(
@@ -211,8 +211,8 @@ from DiscQuA import calculate_coherence_response
                                             speakers_list=speakers_list,
                                             disc_id=disc_id,
                                             openAIKEY="",
-                                            model_type="llama",
-                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                             gpu=True,
                                             ctx=1,
                                         )
@@ -366,15 +366,15 @@ from DiscQuA import calculate_dispute_tactics
                                             speakers_list=speakers_list,
                                             disc_id=disc_id,
                                             openAIKEY="",
-                                            model_type="llama",
-                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
-                                            gpu=False,
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
                                             ctx=1,
                                          )
 ```
 # Diversity
 ## calculate_diversity_conversation: Diversity Analysis (Discussion-Level)
-This module assesses the diversity of arguments within a discussion using OpenAI's language models or a locally hosted Llama model(Zhang et al., 2024). Diversity in arguments reflects the presence of multiple perspectives, contributing to a richer and more balanced exchange. The model assigns a diversity score to the entire discussion on a 1-to-5 scale, where:
+This module assesses the diversity of arguments within a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). Diversity in arguments reflects the presence of multiple perspectives, contributing to a richer and more balanced exchange. The model assigns a diversity score (integer number) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Poor diversity (high similarity or repetition in arguments)
 - **5** – High diversity (broad range of perspectives and reasoning styles)
@@ -400,13 +400,13 @@ from DiscQuA import calculate_diversity_conversation
                                                             speakers_list=speakers_list,
                                                             disc_id=disc_id,
                                                             openAIKEY="",
-                                                            model_type="llama",
-                                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                            model_type="transformers",
+                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                             gpu=True,
                                                            )
 ```
 ## calculate_diversity_response: Diversity Analysis (Turn-Level)
-This module computes diversity scores for each response within a discussion using OpenAI's language models or a locally hosted Llama model. The model assigns a diversity score to each response on a 1-to-5 scale, where:
+This module computes diversity scores for each response within a discussion using OpenAI's language models or a locally hosted Llama model. The model assigns a diversity score (integer number) to each response on a 1-to-5 scale, where:
 
 - **1** – Poor diversity (high similarity or repetition in arguments)
 - **5** – High diversity (broad range of perspectives and reasoning styles)
@@ -431,8 +431,8 @@ from DiscQuA import calculate_diversity_response
                                                         speakers_list=speakers_list,
                                                         disc_id=disc_id,
                                                         openAIKEY="",
-                                                        model_type="llama",
-                                                        model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                        model_type="transformers",
+                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                         gpu=True,
                                                         ctx=1,
                                                        )
@@ -486,15 +486,15 @@ from DiscQuA import dialogicity
                                         speakers_list=speakers_list,
                                         disc_id=disc_id,
                                         openAIKEY="",
-                                        model_type="llama",
-                                        model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                         gpu=True,
                                         ctx=1,
                                     )
 ```
 # Engagement
 ## calculate_engagement_conversation: Engagement Analysis (Discussion–Level)
-This module assesses the level of engagement within a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). Engagement captures how actively participants contribute and how sustained the interaction is across the discussion. The model assigns an engagement score to the entire discussion on a 1-to-5 scale, where:
+This module assesses the level of engagement within a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). Engagement captures how actively participants contribute and how sustained the interaction is across the discussion. The model assigns an engagement score (integer number) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Law engagement (limited interaction, short or shallow exchanges)
 - **5** – High engagement (frequent, sustained, and reciprocal participation)
@@ -518,8 +518,8 @@ from DiscQuA import calculate_engagement_conversation
                                                                 speakers_list=speakers_list,
                                                                 disc_id=disc_id,
                                                                 openAIKEY="",
-                                                                model_type="llama",
-                                                                model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                                model_type="transformers",
+                                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                                 gpu=True,
                                                              )
 ```
@@ -549,8 +549,8 @@ from DiscQuA import calculate_engagement_response
                                                             speakers_list=speakers_list,
                                                             disc_id=disc_id,
                                                             openAIKEY="",
-                                                            model_type="llama",
-                                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                            model_type="transformers",
+                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                             gpu=False,
                                                             ctx=1,
                                                          )
@@ -558,7 +558,7 @@ from DiscQuA import calculate_engagement_response
 # Informativeness
 ## calculate_informativeness_conversation: Informativeness Analysis (Discussion-Level)
 
-This module evaluates the informativeness of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It estimates how much relevant, useful, and novel information is conveyed by the participants throughout the discussion. The model assigns an informativeness score to the entire discussion on a 1-to-5 scale, where:
+This module evaluates the informativeness of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It estimates how much relevant, useful, and novel information is conveyed by the participants throughout the discussion. The model assigns an informativeness score (integer) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Low informativeness (vague, repetitive, or off-topic discussion)
 - **5** – High informativeness (substantive, relevant, and information-rich discussion)
@@ -582,14 +582,14 @@ from DiscQuA import calculate_informativeness_conversation
                                                                         speakers_list=speakers_list,
                                                                         disc_id=disc_id,
                                                                         openAIKEY="",
-                                                                        model_type="llama",
-                                                                        model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                                        model_type="transformers",
+                                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                                         gpu=True,
                                                                        )
 ```
 ## calculate_informativeness_response: Informativeness Analysis (Turn-Level)
 
-This module evaluates the informativeness of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it assigns an informativeness score to each response on a 1-to-5 scale:
+This module evaluates the informativeness of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it assigns an informativeness score (integer number) to each response on a 1-to-5 scale:
 
 - **1** – Low informativeness (vague, repetitive, or off-topic discussion)
 - **5** – High informativeness (substantive, relevant, and information-rich discussion)
@@ -614,9 +614,9 @@ from DiscQuA import calculate_informativeness_response
                                                                     speakers_list=speakers_list,
                                                                     disc_id=disc_id,
                                                                     openAIKEY="",
-                                                                    model_type="llama",
-                                                                    model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
-                                                                    gpu=False,
+                                                                    model_type="transformers",
+                                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                                    gpu=True,
                                                                     ctx=1,
                                                                    )
 ```
@@ -652,7 +652,7 @@ from DiscQuA import calculate_language_features
 
 ## calculate_persuasiveness: Persuasiveness Analysis (Discussion-Level)
 
-This module assesses the persuasiveness of arguments exchanged within a discussion using OpenAI's language models or a locally hosted Llama model.The model evaluates the extent to which the arguments are convincing, well-supported, and logically compelling. This reflects the rhetorical strength of the discussion and how effectively participants attempt to sway one another. The model assigns a persuasiveness score to the entire discussion on a 1-to-5 scale, where:
+This module assesses the persuasiveness of arguments exchanged within a discussion using OpenAI's language models or a locally hosted Llama model.The model evaluates the extent to which the arguments are convincing, well-supported, and logically compelling. This reflects the rhetorical strength of the discussion and how effectively participants attempt to sway one another. The model assigns a persuasiveness score (integer) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Low persuasiveness.
 - **5** – High persuasiveness.
@@ -677,8 +677,8 @@ from DiscQuA import calculate_persuasiveness
                                                     speakers_list=speakers_list,
                                                     disc_id=disc_id,
                                                     openAIKEY="",
-                                                    model_type="llama",
-                                                    model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                                    model_type="transformers",
+                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                     gpu=True,
                                                    )
 ```
@@ -806,9 +806,9 @@ from DiscQuA import calculate_social_bias
                                                 speakers_list=speakers_list,
                                                 disc_id=disc_id,
                                                 openAIKEY="",
-                                                model_type="llama",
-                                                model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
-                                                gpu=False,
+                                                model_type="transformers",
+                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                gpu=True,
                                                 ctx=1,
                                               )
 ```
@@ -889,8 +889,8 @@ from DiscQuA import calculate_speech_acts
                                         speakers_list,
                                         disc_id,
                                         openAIKEY="",
-                                        model_type="llama",
-                                        model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                         gpu=True,
                                         ctx=1,
                                        )
@@ -924,7 +924,7 @@ from DiscQuA import calculate_structure_features
 ```
 # Toxicity 
 ## calculate_toxicity: Toxicity Analysis (Turn–Level)
-This module assesses the toxicity level of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a toxicity label on a 1-to-5 scale:
+This module assesses the toxicity level of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a toxicity label (integer) on a 1-to-5 scale:
 
 - **1** – Not Toxic
 - **5** – Extremely Toxic (highly offensive, threatening, or likely to push others out of the conversation)
@@ -948,8 +948,8 @@ from DiscQuA import calculate_toxicity
                                             speakers_list=speakers_list,
                                             disc_id=disc_id,
                                             openAIKEY="",
-                                            model_type="llama",
-                                            model_path="/path/to/model/llama-2-13b-chat.Q5_K_M.gguf",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                             gpu=False,
                                             ctx=1,
                                         )

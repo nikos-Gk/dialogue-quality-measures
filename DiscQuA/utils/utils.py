@@ -1,7 +1,7 @@
 import json
+import re
 import sys
 import time
-import re
 
 import openai
 from convokit import Speaker, Utterance
@@ -38,11 +38,11 @@ def isValidResponse(parts):
     if len(parts) != 2:
         return -1
     value = parts[1]
-    if(len(value)>10):
-        match = re.match(r'^\s*(\d+)', value)
+    if len(value) > 10:
+        match = re.match(r"^\s*(\d+)", value)
         if match:
             value = match.group(1)
-            value=value.strip()
+            value = value.strip()
     rightParenthesisIndex = value.find("]")
     leftParenthesisIndex = value.find("[")
     if rightParenthesisIndex > 0 and leftParenthesisIndex > 0:
@@ -51,15 +51,16 @@ def isValidResponse(parts):
     if value.endswith("."):
         value = value.rstrip(".")
     try:
-        value=float(value)
+        value = float(value)
     except Exception as e:
         return -1
     if not isinstance(value, (int, float)):
         return -1
     return value
 
+
 def extractFeature(feature, label):
-    #if not label.startswith("-Label"):
+    # if not label.startswith("-Label"):
     #    print("LLM output for utterance is ill-formatted, skipping utterance\n")
     #    return -1
 
@@ -67,24 +68,24 @@ def extractFeature(feature, label):
     for j in parts:
         try:
             entries = j.split(":")
-            
+
             key = entries[0]
             value = entries[1]
 
             key = key.replace("-", "")
-            
+
             rightParenthesisIndex = value.find("]")
             leftParenthesisIndex = value.find("[")
             if rightParenthesisIndex > 0 and leftParenthesisIndex > 0:
                 value = value[leftParenthesisIndex:rightParenthesisIndex]
             value = value.replace("[", "").replace("]", "")
             if value.endswith("."):
-                value = value.rstrip(".")            
-            
+                value = value.rstrip(".")
+
             try:
-                value=float(value)
+                value = float(value)
             except Exception as e:
-                value=-1 
+                value = -1
             feature[key] = value
         except Exception as e:
             print(e)
@@ -104,7 +105,11 @@ def validateInputParams(model_type, openAIKEY, model_path):
         print("transformers model path does not exist. Exiting")
         sys.exit(1)
 
-    if model_type != "llama" and model_type != "openai" and model_type != "transformers":
+    if (
+        model_type != "llama"
+        and model_type != "openai"
+        and model_type != "transformers"
+    ):
         print("Expected model type: openai or llama or transformers. Exiting")
         sys.exit(1)
 
@@ -150,7 +155,9 @@ def prompt_gpt4(prompt, key, model_type, model):
                 )[0]["generated_text"]
                 result = response
             else:
-                raise ValueError("Invalid model_type. Choose 'openai' or 'llama'.")
+                raise ValueError(
+                    "Invalid model_type. Choose 'openai', 'llama' or 'transformers'."
+                )
             ok = True
         except Exception as ex:
             print("error", ex)
@@ -161,9 +168,10 @@ def prompt_gpt4(prompt, key, model_type, model):
     return result
 
 
-def getModel(model_path, gpu, model_type="llama",device="auto"):
+def getModel(model_path, gpu, model_type="llama", device="auto"):
     if model_type == "transformers":
         import transformers
+
         model = transformers.AutoModelForCausalLM.from_pretrained(
             model_path, device_map=device
         )
