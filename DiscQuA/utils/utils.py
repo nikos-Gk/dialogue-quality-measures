@@ -167,8 +167,13 @@ def prompt_gpt4(prompt, key, model_type, model):
                 return -1
     return result
 
+_cached_models = {}
 
 def getModel(model_path, gpu, model_type="llama", device="auto"):
+    key = (model_path, model_type, device, gpu)
+    if key in _cached_models:
+        print(" Using cached model for:", key)
+        return _cached_models[key]
     if model_type == "transformers":
         import transformers
 
@@ -179,10 +184,12 @@ def getModel(model_path, gpu, model_type="llama", device="auto"):
         generator = transformers.pipeline(
             "text-generation", model=model, tokenizer=tokenizer
         )
+        _cached_models[key] = generator
         return generator
     llm = Llama(
         model_path=model_path,
         n_gpu_layers=50 if gpu else 0,
         n_ctx=4096 * 2,
     )
+    _cached_models[key] = llm
     return llm

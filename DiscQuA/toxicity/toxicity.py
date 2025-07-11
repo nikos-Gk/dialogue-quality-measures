@@ -155,7 +155,7 @@ def calculate_toxicity(
                 counter += 1
                 continue
 
-            ut_dict[disc_id + "_" + str(counter)] = value
+            ut_dict["utt_" + str(counter)] = value
             counter += 1
         toxicity_scores_per_response[disc_id] = ut_dict
 
