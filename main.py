@@ -96,7 +96,10 @@ def test_language_features():
 
 def test_controversy():
     unorm_scores, norm_scores = calculate_controversy(
-        message_list=message_list, disc_id=disc_id, discussion_level=False
+        message_list=message_list,
+        disc_id=disc_id,
+        discussion_level=False,
+        device="cuda",
     )
     pprint(unorm_scores)
     pprint(norm_scores)
@@ -393,7 +396,6 @@ def non_llm_measures():
     # test_balanced_participation()
     # test_make_turn_taking_visualization()
     # test_language_features()
-    # test_controversy()
     # test_coordination_per_disc_utt()
     # test_politeness()
     # test_readability()
@@ -419,6 +421,7 @@ def llm_measures():
     # test_overall_arg_quality()  #
     # test_dispute_tactics()  #
     # test_speech_acts()
+    # test_controversy()
 
 
 if __name__ == "__main__":

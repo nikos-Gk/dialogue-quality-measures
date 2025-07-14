@@ -2,11 +2,9 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import getModel, save_dict_2_json
 
 #############################################################
-base_model = "Qwen/Qwen1.5-4B-Chat"
-adapter_model = "Johndfm/ECoh-4B"
 
 
 #############################################################
@@ -97,15 +95,9 @@ def calculate_coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
 
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    #############################################################
-    from peft import PeftModel
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    model = AutoModelForCausalLM.from_pretrained(base_model)
-    model = PeftModel.from_pretrained(model, adapter_model)
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
-    #############################################################
-    model = model.to(device)
+    model, tokenizer = getModel(
+        model_path="", gpu=True, model_type="echo", device=device
+    )
     #
     aggregate_results = {}
     aggregate_context = {}

@@ -167,13 +167,39 @@ def prompt_gpt4(prompt, key, model_type, model):
                 return -1
     return result
 
+
 _cached_models = {}
+
 
 def getModel(model_path, gpu, model_type="llama", device="auto"):
     key = (model_path, model_type, device, gpu)
     if key in _cached_models:
         print(" Using cached model for:", key)
         return _cached_models[key]
+
+    if model_type == "controversy":
+        from transformers import pipeline
+
+        pipe = pipeline(
+            "text-classification",
+            model="nlptown/bert-base-multilingual-uncased-sentiment",
+            device_map=device,
+        )
+        _cached_models[key] = pipe
+        return pipe
+
+    if model_type == "echo":
+        from peft import PeftModel
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+
+        base_model = "Qwen/Qwen1.5-4B-Chat"
+        adapter_model = "Johndfm/ECoh-4B"
+        model = AutoModelForCausalLM.from_pretrained(base_model)
+        model = PeftModel.from_pretrained(model, adapter_model)
+        tokenizer = AutoTokenizer.from_pretrained(base_model)
+        model = model.to(device)
+        _cached_models[key] = (model, tokenizer)
+        return (model, tokenizer)
     if model_type == "transformers":
         import transformers
 

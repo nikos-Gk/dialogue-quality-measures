@@ -2,10 +2,10 @@ import time
 
 import numpy as np
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import getModel, save_dict_2_json
 
 
-def calculate_controversy(message_list, disc_id, discussion_level):
+def calculate_controversy(message_list, disc_id, discussion_level, device="auto"):
     """Evaluates the controversy of a discussion based on sentiment variability.
        Sentiment scores are computed using a pretrained multilingual sentiment analysis model.
        Variability is quantified using the sample standard deviation of the sentiment scores, either at the discussion or utterance level.
@@ -26,11 +26,7 @@ def calculate_controversy(message_list, disc_id, discussion_level):
                 - dict[str, dict[str, float]]: Corresponding rolling standard deviation of the normalized sentiment scores.
     """
 
-    from transformers import pipeline
-
-    pipe = pipeline(
-        "text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment"
-    )
+    pipe = getModel(model_path="", gpu=True, model_type="controversy", device=device)
     #
     print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -42,6 +38,9 @@ def calculate_controversy(message_list, disc_id, discussion_level):
     #
     utterances = []
     for i, utt in enumerate(message_list):
+        if not isinstance(utt, str):
+            print("Found non string utterance, casting to string: ", utt)
+            utt = str(utt)
         utt = utt.replace("\r\n", " ").replace("\n", " ").rstrip().lstrip()
         utterances.append((utt, f"conv_{disc_id}_utt_{i}"))
 
