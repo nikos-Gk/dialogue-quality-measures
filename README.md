@@ -8,10 +8,15 @@ git clone https://github.com/nikos-Gk/dialogue-quality-measures.git
 cd dialogue-quality-measures
 git fetch --all
 git checkout package-list-input
-conda create --name discMeasuresEnv python=3.12
+conda create --name discMeasuresEnv python=3.12.0
 conda activate discMeasuresEnv
 pip install -e .
 python -m spacy download en_core_web_sm
+
+To use the readability measure please ensure that the following resources exist in your environment by running the following commands in the python interpreter
+>>> import nltk
+>>> nltk.download('punkt_tab')
+>>> nltk.download('stopwords') 
 ```
 
 # Usage

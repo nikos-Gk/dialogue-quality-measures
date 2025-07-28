@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 import time
+
 from tqdm import tqdm
 
-
 from DiscQuA.utils import (
+    extractFeature,
     getModel,
     getUtterances,
     prompt_gpt4,
     save_dict_2_json,
     sleep,
     validateInputParams,
-    extractFeature,
-    isValidResponse
 )
 
 ini = """Below is a set of labels from a social bias frame (presented in Sap et al., 2019), properly designed for modelling the pragmatic frames in which people project social biases and stereotypes onto others."""
@@ -99,7 +98,7 @@ def calculate_social_bias(
     model_path="",
     gpu=False,
     ctx=1,
-    device="auto"
+    device="auto",
 ):
     """Analyzes social bias in a discussion using a language model (OpenAI or LLaMA) and returns bias annotations per utterance or for the entire discussion.
 
@@ -166,18 +165,17 @@ def calculate_social_bias(
                 print(label)
                 counter += 1
                 continue
-            
-            
+
             feature = {}
-            feature=extractFeature(feature , label)
+            feature = extractFeature(feature, label)
             if feature == -1:
-                counter+=1
+                counter += 1
                 continue
-               
+
             key_iter = "utt_" + str(counter)
             ut_dict[key_iter] = [feature]
             counter += 1
-            
+
         if disc_id in social_bias_per_response:
             social_bias_per_response[disc_id].append(ut_dict)
         else:

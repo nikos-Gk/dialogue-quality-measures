@@ -15,11 +15,14 @@ setuptools.setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
     ],
-    python_requires=">=3.12",
+    python_requires=">=3.10,<=3.12",
     install_requires=[
-        "pandas >=2.2.3",
+        "pandas >=1.5.0",
         "convokit>=3.1.0",
         "openai==0.28",
         "llama-cpp-python>=0.3.9",
