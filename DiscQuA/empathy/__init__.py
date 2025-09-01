@@ -1,1 +1,1 @@
-from .dialogicity import dialogicity
+from .empathy_intents import expressed_empathy

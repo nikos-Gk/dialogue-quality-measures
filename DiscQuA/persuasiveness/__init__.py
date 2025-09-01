@@ -1,1 +1,2 @@
+from .persuasion_strategies import calculate_persuasion_strategy
 from .persuasiveness import calculate_persuasiveness

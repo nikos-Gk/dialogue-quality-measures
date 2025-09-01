@@ -240,47 +240,6 @@ from DiscQuA import calculate_coherence_ecoh
                                                     device="cuda",
                                                  )
 ```
-# Collaboration
-## calculate_collaboration: Collaboration markers (Discussion and Turn Level)
-This module annotates a discussion or each comment within the discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).
-
-#### Labels:
-
--n_words: The number of words in an utterance.
-
--pron_me: The number of first-person singular pronouns.
-
--pron_we: The number of first-person plural pronouns.
-
--pron_you: The number of second-person pronouns.
-
--pron_3rd: The number of third-person pronouns.
-
--geo: The number of geography-related terms.
-
--meta: The number of meta-discourse terms. Meta terms are associated with the functionalities, actions, and elements within the StreetCrowd environment
-
--certain: The number of words expressing certainty.
-
--hedge: The number of hedging terms (words that indicate uncertainty).
-
--n_introduced: The number of new content words introduced by a user.
-
--n_introduced_w_certain: The number of new content words introduced in an utterance that are also accompanied by certainty terms.
-
--n_introduced_w_hedge: The number of new content words introduced in an utterance that are also accompanied by hedging terms.
-
-```python
-from DiscQuA import calculate_collaboration
-
-    collaboration_scores = calculate_collaboration(
-                                                    collaboration_scores = calculate_collaboration(
-                                                    message_list=message_list,
-                                                    speakers_list=speakers_list,
-                                                    disc_id=disc_id,
-                                                    discussion_level=True,
-                                                  )
-```
 # Controversy
 ## calculate_controversy: Controversy Analysis (Discussion and Turn Level)
 This module quantifies the level of controversy in a discussion by analyzing the standard deviation of sentiment scores assigned to individual comments (Avalle et al., 2024). Sentiment scores are derived using a pretrained BERT model.
@@ -442,60 +401,94 @@ from DiscQuA import calculate_diversity_response
                                                         ctx=1,
                                                        )
 ```
+## calculate_ngramdiversity_response: Ngram diversity based on word overlap (Turn-level).
+This module analyzes ngram diversity by measuring word overlap between consecutive messages within a discussion (Tan et al., 2016). It focuses on:
+
+-common words (comwords),
+
+-stopwords,
+
+-content words (contwords).
+
+### Labels: Let utt_i, and utt_i+1 two consecutive utterances in the discussion. 
+-n_comwords, n_stopwords, n_contwords: Count of overlapping words between utt_i and utt_i+1 (i.e., |utt_i ∩ utt_i+1|).
+
+-reply_fra_comwords, reply_fra_stopwords, reply_fra_contwords: Proportion of overlapping words relative to the reply (i.e., |utt_i ∩ utt_i+1|/|utt_i+1|).
+
+-op_fra_comwords, op_fra_stopwords, op_fra_contwords: Proportion of overlapping words relative to the original message (i.e., |utt_i ∩ utt_i+1|/|utt_i|).
+
+-jac_comwords, jac_stopwords, jac_contwords: Jaccard similarity between the two utterances (i.e., |utt_i ∩ utt_i+1|/|utt_i ∪ utt_i+1|). 
+
+
+```python
+from DiscQuA import calculate_ngramdiversity_response
+
+    lexical_diversity=calculate_ngramdiversity_response(
+                                                        message_list=message_list,
+                                                        disc_id=disc_id,
+                                                       )
+```
+
 # Empathy
-## calculate_dialogicity: Dialogicity (potential other-orientedness) & Empathy Analysis (Turn–Level)
-This module analyzes utterances in a discussion to identify dialogical functions that reflect empathy and support the construction of common ground, following the framework presented by Macagno et al. (2022). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific dialogical function.
+## expressed_empathy: Empathy Analysis (Turn–Level)
+This module analyzes utterances in a discussion to identify empathetic traits, based on the taxonomy introduced by Welivita and Pu (2020). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific empathetic intent.
 #### Labels:
 
--Label 0: Stating – Presents information, viewpoints, or value judgments without justification.
+-Label 0-Questioning: Seeks clarification or additional information.
 
--Label 1: Accepting/Discarding – Acknowledges, accepts, or rejects another's opinion without further reasoning or clarification.
+-Label 1–Acknowledging: Recognizes or validates another’s feelings, experiences, or perspective without implying agreement.
 
--Label 2: Managerial– Coordinates the discussion process (e.g., managing turn-taking or procedural contributions).
+-Label 2-Agreeing: Shows support or alignment with another’s viewpoint, statement, or emotion.
 
--Label 3a: Expanding/Low Relevance – Elaborates or clarifies one’s own position without referring to previous utterances.
+-Label 3–Consoling: Offers comfort or emotional support in response to distress or hardship.
 
--Label 3b: Expanding/High Relevance – Builds upon or engages with a previous utterance to clarify or deepen understanding.
+-Label 4–Encouraging: Provides support or affirmation in response to hopeful or uplifting content.
 
--Label 4a: Metadialogical/Low Relevance – Addresses linguistic or procedural aspects unrelated to the previous utterance.
+-Label 5–Sympathizing: Expresses pity, sorrow, or shared concern in response to distressing content.
 
--Label 4b: Metadialogical/High Relevance – Reflects on previous comments to clarify meaning, question assumptions, or link discourse to goals.
+-Label 6-Wishing: Expresses hope, goodwill, or kind intentions toward another participant.
 
--Label 5: Reasoning – Provides arguments, justifications, comparisons, or evidence to support or challenge a point.
+-Label 7-Suggesting: Offers advice, recommendations, or possible actions in response to a shared concern or situation.
 
--Label 6: Metadialogical Reasoning – Combines critical reasoning with meta-level reflection (e.g., challenging the language or assumptions behind arguments).
+-Label 8–Sharing Own Thoughts: Expresses personal views or reflections, often without directly replying to others.
 
--Label 7a: Inviting/Low Relevance – Encourages others to contribute without directly referencing previous statements.
+-Label 9-Sharing Experience: Recounts a personal story or experience to connect with or illustrate a point.
 
--Label 7b: Inviting/High Relevance – Prompts others to explain or justify a specific previous utterance.
+-Label 10-Advising: Provides guidance, recommendations, or suggestions.
 
--Label 8: Other – For utterances that do not fit any of the above categories.
+-Label 11-Expressing Care: Shows concern or compassion toward another participant.
+
+-Label 12–Expressing Relief: Conveys relief in response to another’s stressful or emotionally intense situation.
+
+-Label 13–Disapproving: Expresses disagreement, criticism, or concern toward another’s viewpoint or actions.
+
+-Label 14–Appreciating: Expresses gratitude, admiration, or positive recognition toward another participant.
 
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import dialogicity
+from DiscQuA import expressed_empathy
 
-    dialogicity_labels = dialogicity(
-                                        message_list=message_list,
-                                        speakers_list=speakers_list,
-                                        disc_id=disc_id,
-                                        openAIKEY="your key",
-                                        model_type="openai",
-                                        model_path="",
-                                        gpu=True,
-                                        ctx=1,
-                                    )
-    dialogicity_labels = dialogicity(
-                                        message_list=message_list,
-                                        speakers_list=speakers_list,
-                                        disc_id=disc_id,
-                                        openAIKEY="",
-                                        model_type="transformers",
-                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                        gpu=True,
-                                        ctx=1,
-                                    )
+    expr_empathy_labels = expressed_empathy(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            openAIKEY="your key",
+                                            model_type="openai",
+                                            model_path="",
+                                            gpu=False,
+                                            ctx=1,
+                                            )
+    expr_empathy_labels = expressed_empathy(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            openAIKEY="",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
+                                            ctx=1,
+                                            )
 ```
 # Engagement
 ## calculate_engagement_conversation: Engagement Analysis (Discussion–Level)
@@ -626,32 +619,64 @@ from DiscQuA import calculate_informativeness_response
                                                                    )
 ```
 # Language Features 
-## calculate_language_features: Linguistic features based on word overlap (Turn-level).
-This module analyzes linguistic features by measuring word overlap between consecutive messages within a discussion (Tan et al., 2016). It focuses on:
+## calculate_collaboration: Collaboration markers (Discussion and Turn Level)
+This module annotates a discussion or each comment within the discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).
 
--common words (comwords),
+#### Labels:
 
--stopwords,
+-n_words: The number of words in an utterance.
 
--content words (contwords).
+-pron_me: The number of first-person singular pronouns.
 
-### Labels: Let utt_i, and utt_i+1 two consecutive utterances in the discussion. 
--n_comwords, n_stopwords, n_contwords: Count of overlapping words between utt_i and utt_i+1 (i.e., |utt_i ∩ utt_i+1|).
+-pron_we: The number of first-person plural pronouns.
 
--reply_fra_comwords, reply_fra_stopwords, reply_fra_contwords: Proportion of overlapping words relative to the reply (i.e., |utt_i ∩ utt_i+1|/|utt_i+1|).
+-pron_you: The number of second-person pronouns.
 
--op_fra_comwords, op_fra_stopwords, op_fra_contwords: Proportion of overlapping words relative to the original message (i.e., |utt_i ∩ utt_i+1|/|utt_i|).
+-pron_3rd: The number of third-person pronouns.
 
--jac_comwords, jac_stopwords, jac_contwords: Jaccard similarity between the two utterances (i.e., |utt_i ∩ utt_i+1|/|utt_i ∪ utt_i+1|). 
+-geo: The number of geography-related terms.
+
+-meta: The number of meta-discourse terms. Meta terms are associated with the functionalities, actions, and elements within the StreetCrowd environment
+
+-certain: The number of words expressing certainty.
+
+-hedge: The number of hedging terms (words that indicate uncertainty).
+
+-n_introduced: The number of new content words introduced by a user.
+
+-n_introduced_w_certain: The number of new content words introduced in an utterance that are also accompanied by certainty terms.
+
+-n_introduced_w_hedge: The number of new content words introduced in an utterance that are also accompanied by hedging terms.
+
+```python
+from DiscQuA import calculate_collaboration
+
+    collaboration_scores = calculate_collaboration(
+                                                    collaboration_scores = calculate_collaboration(
+                                                    message_list=message_list,
+                                                    speakers_list=speakers_list,
+                                                    disc_id=disc_id,
+                                                    discussion_level=True,
+                                                  )
+```
+## calculate_readability: Readability Analysis (Turn-Level)
+This module evaluates each utterance in a discussion using four standard readability metrics (Flesch, 1948; Gunning, 1952; Mc Laughlin, 1969; Kincaid, 1975). These measures help assess the complexity of language used at the turn level.
+
+#### Labels:
+-Gunning_Fog: Gunning Fog Index-higher values indicate less readable text.
+
+-Smog: SMOG index-higher values indicate less readable text.
+
+-Flesch: The Flesch Reading Ease score-higher values indicate more readable text.
+
+-Flesch_Kincaid: Flesch-Kincaid index-higher values indicate less readable text.
 
 
 ```python
-from DiscQuA import calculate_language_features
+from DiscQuA import calculate_readability
+    
+    readability_scores = calculate_readability(message_list=message_list, disc_id=disc_id)
 
-    language_fetures_scores=calculate_language_features(
-                                                        message_list=message_list,
-                                                        disc_id=disc_id,
-                                                       )
 ```
 # Persuasiveness 
 
@@ -686,6 +711,69 @@ from DiscQuA import calculate_persuasiveness
                                                     model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
                                                     gpu=True,
                                                    )
+```
+## calculate_persuasion_strategy: Persuasiveness Analysis (Turn-Level)
+This module analyzes utterances in a discussion to identify persuasion strategies presented by Chen et al. (2025). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific persuasion strategy.
+#### Labels:
+
+-Label 0–Presenting Facts: Uses verified evidence and logical reasoning to support a persuasive claim.
+
+-Label 1–Challenging & Questioning: Disputes another viewpoint with skepticism and backs it up with strong counter-evidence.
+
+-Label 2-Emotion Eliciting: Provokes targeted feelings to sway opinions and attitudes.
+
+-Label 3–Self-Modeling: Shares personal actions or choices to set an example and inspire others to do the same.
+
+-Label 4–Building Trust: Promotes mutual understanding through respectful and empathetic dialogue.
+
+-Label 5–Courtesy Tips: Shares thanks, praise, or approval to foster goodwill and reduce tension.
+
+-Label 6-Compromise: Expresses concessions on time to avoid making the discussion too intense causing someone to leave the discussion.
+
+-Label 7-Attaching Views: Shows empathy and attentiveness by echoing another’s perspective with kindness and concern.
+
+-Label 8–Problem Decomposition: Breaks down complex goals into clear, manageable parts to guide discussion, clarify views, and build consensus.
+
+-Label 9-Social Identity: Highlights shared affiliations or values to foster group solidarity and boost persuasive impact.
+
+-Label 10-Herd Mentality: Appeals to popular opinion or social norms to imply that widespread acceptance signals correctness.
+
+-Label 11–Emotive Framing: Expresses a strong personal feeling or tone to deepen impact and emotionally connect with others.
+
+-Label 12–Logical Appeal: Strengthens credibility by using clear logic and sound reasoning to support persuasion.
+
+-Label 13–Task Inquiry: Poses questions that directly relate to achieving persuasive objectives.
+
+-Label 14–Personal Story: Shares a personal experience to inspire, build relatability, and reinforce persuasive impact.
+
+-Label 15–Refutation of Objections: Directly challenges another participant’s viewpoint by presenting counterarguments, evidence, or reasoning.
+
+*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
+
+```python
+from DiscQuA import calculate_persuasion_strategy
+
+    persuasion_strategy = calculate_persuasion_strategy(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        disc_id=disc_id,
+                                                        openAIKEY="your key",
+                                                        model_type="openai",
+                                                        model_path="",
+                                                        gpu=False,
+                                                        ctx=1,
+                                                       )
+
+    persuasion_strategy = calculate_persuasion_strategy(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        disc_id=disc_id,
+                                                        openAIKEY="",
+                                                        model_type="transformers",
+                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                        gpu=True,
+                                                        ctx=1,
+                                                       )
 ```
 # Politeness
 ## calculate_politeness: Politeness markers (Discussion and Turn Level)
@@ -736,7 +824,7 @@ This module annotates a discussion or each comment within the discussion with po
 -Indicative words: The use of indicative mood words like ‘can’ or ‘will’ when preceded by ‘you’ (e.g., Can/Will you . . .).
 
 ```python
-from DiscQuA import 
+from DiscQuA import calculate_politeness
 
     politeness_features_scores = calculate_politeness(
                                                         message_list=message_list,
@@ -744,6 +832,42 @@ from DiscQuA import
                                                         disc_id=disc_id,
                                                         discussion_level=True,
                                                      )
+```
+
+
+## politeness_analysis: Politeness Analysis (Turn-Level)
+
+This module assesses the degree of respect and courtesy expressed in each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a politeness label (integer) on a 1-to-3 scale, where:
+
+- **1** – Low levels of respect and courtsey.
+- **3** – High levels of respect and courtsey.
+
+*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
+
+```python
+from DiscQuA import politeness_analysis
+
+    politeness = politeness_analysis(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    disc_id=disc_id,
+                                    openAIKEY="your key",
+                                    model_type="openai",
+                                    model_path="",
+                                    gpu=False,
+                                    ctx=1,
+                                    )
+
+    politeness = politeness_analysis(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    disc_id=disc_id,
+                                    openAIKEY="",
+                                    model_type="transformers",
+                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                    gpu=True,
+                                    ctx=1,
+                                    )
 ```
 # Power, Status and Social Bias
 ## calculate_coordination_per_disc_utt: Linguistic Style Coordination (Discussion and Turn Level)
@@ -817,32 +941,12 @@ from DiscQuA import calculate_social_bias
                                                 ctx=1,
                                               )
 ```
-# Readability
-## calculate_readability: Readability Analysis (Turn-Level)
-This module evaluates each utterance in a discussion using four standard readability metrics (Flesch, 1948; Gunning, 1952; Mc Laughlin, 1969; Kincaid, 1975). These measures help assess the complexity of language used at the turn level.
 
-#### Labels:
--Gunning_Fog: Gunning Fog Index-higher values indicate less readable text.
+# Dialogue Acts
+## calculate_dialogue_acts: Dialogue Acts Analysis (Turn-Level).
+This module analyzes utterances in a discussion to identify dialogue acts that indicate the deliberative quality of communicative exchanges, following the frameworks presented by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson & Paritosh (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific speech act.
 
--Smog: SMOG index-higher values indicate less readable text.
-
--Flesch: The Flesch Reading Ease score-higher values indicate more readable text.
-
--Flesch_Kincaid: Flesch-Kincaid index-higher values indicate less readable text.
-
-
-```python
-from DiscQuA import calculate_readability
-    
-    readability_scores = calculate_readability(message_list=message_list, disc_id=disc_id)
-
-```
-
-# Speech Acts
-## calculate_speech_acts: Speech Acts Analysis (Turn-Level).
-This module analyzes utterances in a discussion to identify speech acts that indicate the deliberative quality of communicative exchanges, following the frameworks presented by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson & Paritosh (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific speech act.
-
-#### Speech Act Labels:
+#### Dialogue Act Labels:
 
 -Label 0: Interruption - Comment that interrupts a previous utterance.
 
@@ -876,29 +980,29 @@ This module analyzes utterances in a discussion to identify speech acts that ind
 
 
 ```python
-from DiscQuA import calculate_speech_acts
+from DiscQuA import calculate_dialogue_acts
 
-    speech_acts = calculate_speech_acts(
-                                        message_list,
-                                        speakers_list,
-                                        disc_id,
-                                        openAIKEY="your key",
-                                        model_type="openai",
-                                        model_path="",
-                                        gpu=False,
-                                        ctx=1,
-                                       )
+    dialogue_acts = calculate_dialogue_acts(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            openAIKEY="your key",
+                                            model_type="openai",
+                                            model_path="",
+                                            gpu=False,
+                                            ctx=1,
+                                           )
 
-    speech_acts = calculate_speech_acts(
-                                        message_list,
-                                        speakers_list,
-                                        disc_id,
-                                        openAIKEY="",
-                                        model_type="transformers",
-                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                        gpu=True,
-                                        ctx=1,
-                                       )
+    dialogue_acts = calculate_dialogue_acts(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            openAIKEY="",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
+                                            ctx=1,
+                                           )
 ```
 # Structure Features
 ## calculate_structure_features: Structure Analysis (Discussion and Turn Level)
@@ -955,9 +1059,42 @@ from DiscQuA import calculate_toxicity
                                             openAIKEY="",
                                             model_type="transformers",
                                             model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=False,
+                                            gpu=True,
                                             ctx=1,
                                         )
+```
+# Sentiment
+## sentiment_analysis: Sentiment Analysis (Turn–Level)
+This module assesses the overall emotional tone of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a sentiment label (integer) on a 0-to-2 scale:
+
+- **0** – Negative
+- **1** – Neutral
+- **2** – Positive
+
+*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
+
+```python
+from DiscQuA import sentiment_analysis
+    sentiment = sentiment_analysis(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    disc_id=disc_id,
+                                    openAIKEY="your key",
+                                    model_type="openai",
+                                    model_path="",
+                                    gpu=False,
+                                    ctx=1,
+                                  )
+    sentiment = sentiment_analysis(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    disc_id=disc_id,
+                                    openAIKEY="",
+                                    model_type="transformers",
+                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                    gpu=True,
+                                    ctx=1,
+                                  )
 ```
 # Turn Taking 
 ## calculate_balanced_participation: Participation Analysis (Discussion and Turn Level)
@@ -991,6 +1128,8 @@ from DiscQuA import make_visualization
 # References
 -Avalle, M., Di Marco, N., Etta, G., Sangiorgio, E., Alipour, S., Bonetti, A., Alvisi, L., Scala, A., Baronchelli, A., Cinelli, M., & Quattrociocchi, W. (2024). Persistent interaction patterns across social media platforms and over time. Nature, 628, 582-589.
 
+-Chen, M., Guo, B., Wang, H., Li, H., Zhao, Q., Liu, J., ... & Yu, Z. (2025). The future of cognitive strategy-enhanced persuasive dialogue agents: new perspectives and trends. Frontiers of Computer Science, 19(5), 195315.
+
 -Danescu-Niculescu-Mizil, C., Lee, L., Pang, B., & Kleinberg, J. (2012). Echoes of power: Language effects and power differences in social interaction. In Proceedings of the 21st international conference on World Wide Web (pp. 699-708).
 
 -Danescu-Niculescu-Mizil, C., Sudhof, M., Jurafsky, D., Leskovec, J., & Potts, C. (2013). A computational approach to politeness with application to social factors. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 250-259).
@@ -1007,8 +1146,6 @@ from DiscQuA import make_visualization
 
 -Kincaid, J. (1975). Derivation of new readability formulas for navy enlisted personnel. Branch Report 8-75.
 
--Macagno, F., Rapanta, C., Mayweg-Paus, E., & Garcia-Milà, M. (2022). Coding empathy in dialogue. Journal of Pragmatics, 192, 116-132.
-
 -Mc Laughlin, G. H. (1969). SMOG grading-a new readability formula. Journal of reading, 12, 639-646.
 
 -Mendonça, J., Trancoso, I., & Lavie, A. (2024). ECoh: Turn-level Coherence Evaluation for Multilingual Dialogues. In Proceedings of the 25th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 516-532).
@@ -1021,21 +1158,10 @@ from DiscQuA import make_visualization
 
 -Wachsmuth, H., Naderi, N., Hou, Y., Bilu, Y., Prabhakaran, V., Thijm, T. A., Hirst, G., & Stein, B. (2017). Computational argumentation quality assessment in natural language. In Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers (pp. 176-187).
 
+-Welivita, A., & Pu, P. (2020). A Taxonomy of Empathetic Response Intents in Human Social Conversations. In Proceedings of the 28th International Conference on Computational Linguistics (pp. 4886-4899).
+
 -Zhang, A., Culbertson, B., & Paritosh, P. (2017). Characterizing online discussion using coarse discourse sequences. In proceedings of the international AAAI conference on web and social media (Vol. 11, No. 1, pp. 357-366).
 
 -Zhang, J., Danescu-Niculescu-Mizil, C., Sauper, C., & Taylor, S. J. (2018). Characterizing online public discussions through patterns of participant interactions. Proceedings of the ACM on Human-Computer Interaction, 2(CSCW), 1-27.
 
 -Zhang, C., D'Haro, L. F., Chen, Y., Zhang, M., & Li, H. (2024). A comprehensive analysis of the effectiveness of large language models as automatic dialogue evaluators. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 38, No. 17, pp. 19515-19524).
-
-
-
-
-
-
-
-
-
-
-
-
-

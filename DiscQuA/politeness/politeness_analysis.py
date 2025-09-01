@@ -24,15 +24,15 @@ inflammatory and aggressive speech.
 
 *RESPONSE*: "{response}"
 
-Given the post that the discussion is based on and the conversation history, rate the diversity of arguments in the response on a scale from 1 to 5.
-A score 1 indicates low diversity (the response repeats arguments that have already been presented) and 5 of high diversity (the response presents new arguments with a broad range of perspectives and reasoning styles).
+Given the post that the discussion is based on and the conversation history, rate the degree of respect and courtesy expressed in the response on a scale from 1 to 3.
+A score 1 indicates low levels of respect and courtesy while a score of 3 reflects high levels of respect and courtesy.
 Please provide the final answer directly with no reasoning steps.
-For clarity, your evaluation should be presented with the statement: 'The diversity of the arguments of the new response is: [X]', where X is the rating (integer number) you've determined.
+For clarity, your evaluation should be presented with the statement: 'The politeness of the new response is: [X]', where X is the rating (integer number) you've determined.
 Please, ensure that your last statement is the score in brackets [].
 """
 
 
-def calculate_response_diversity_score(utts, topic, openAIKEY, model_type, model, ctx):
+def calculate_response_politeness_score(utts, topic, openAIKEY, model_type, model, ctx):
     annotations_ci = []
     for index, utt in enumerate(tqdm(utts, desc="Processing utterances")):
         conv_hist = ""
@@ -62,7 +62,7 @@ def calculate_response_diversity_score(utts, topic, openAIKEY, model_type, model
     return annotations_ci
 
 
-def calculate_diversity_response(
+def politeness_analysis(
     message_list,
     speakers_list,
     disc_id,
@@ -73,8 +73,8 @@ def calculate_diversity_response(
     ctx=1,
     device="auto",
 ):
-    """Computes diversity scores for each response within a discussion using a specified language model.
-       Each response is evaluated in context to determine the novelty and variety of arguments presented.
+    """Computes politeness scores for each response within a discussion using a specified language model.
+
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
@@ -89,7 +89,7 @@ def calculate_diversity_response(
 
     Returns:
        dict[str, dict[str, integer]]: A nested dictionary mapping discussion IDs to per-utterance
-       diversity scores, where each utterance ID (e.g., "utt_0") is assigned a numeric score.
+       politeness scores, where each utterance ID (e.g., "utt_0") is assigned a numeric score.
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
@@ -101,7 +101,7 @@ def calculate_diversity_response(
     if model_type == "llama" or model_type == "transformers":
         llm = getModel(model_path, gpu, model_type, device)
 
-    div_per_resp_scores_llm_output_dict = {}
+    polit_per_resp_scores_llm_output_dict = {}
 
     try:
         utterances, speakers = getUtterances(
@@ -109,49 +109,49 @@ def calculate_diversity_response(
         )
         conv_topic = message_list[0]
         print(
-            "Diversity Score Per Response-Proccessing discussion: ",
+            "Politeness Score Per Response-Proccessing discussion: ",
             disc_id,
             " with LLM",
         )
-        div_per_resp = calculate_response_diversity_score(
+        polit_per_resp = calculate_response_politeness_score(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
         )
-        div_per_resp_scores_llm_output_dict[disc_id] = div_per_resp
+        polit_per_resp_scores_llm_output_dict[disc_id] = polit_per_resp
         sleep(model_type)
     except Exception as e:
         print("Error: ", e)
         print(disc_id)
 
     save_dict_2_json(
-        div_per_resp_scores_llm_output_dict,
-        "llm_output_div_per_response",
+        polit_per_resp_scores_llm_output_dict,
+        "llm_output_pol_per_response",
         disc_id,
         timestr,
     )
 
     """            
-        with open("llm_output_div_per_response_.json", encoding="utf-8") as f:
-            div_scores = json.load(f)
-        div_per_resp_scores_llm_output_dict=div_scores
+        with open("llm_output_pol_per_response_.json", encoding="utf-8") as f:
+            pol_scores = json.load(f)
+        polit_per_resp_scores_llm_output_dict=pol_scores
     """
-    div_scores_per_response = {}
-    for disc_id, turnAnnotations in div_per_resp_scores_llm_output_dict.items():
+    pol_scores_per_response = {}
+    for disc_id, turnAnnotations in polit_per_resp_scores_llm_output_dict.items():
         counter = 0
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
                 print(
-                    "LLM output with missing diversity response score , skipping response\n"
+                    "LLM output with missing politeness response score , skipping response\n"
                 )
                 print(label)
                 counter += 1
                 continue
-            parts = label.split("diversity of the arguments of the new response is:")
+            parts = label.split("politeness of the new response is:")
 
             value = isValidResponse(parts)
             if value == -1:
                 print(
-                    "LLM output with missing diversity response score , skipping response\n"
+                    "LLM output with missing politeness response score , skipping response\n"
                 )
                 print(label)
                 counter += 1
@@ -159,9 +159,9 @@ def calculate_diversity_response(
             key_iter = "utt_" + str(counter)
             ut_dict[key_iter] = value
             counter += 1
-        div_scores_per_response[disc_id] = ut_dict
+        pol_scores_per_response[disc_id] = ut_dict
 
     save_dict_2_json(
-        div_scores_per_response, "diversity_per_response", disc_id, timestr
+        pol_scores_per_response, "politeness_per_response", disc_id, timestr
     )
-    return div_scores_per_response
+    return pol_scores_per_response

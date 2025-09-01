@@ -11,6 +11,7 @@ from DiscQuA import (
     calculate_collaboration,
     calculate_controversy,
     calculate_coordination_per_disc_utt,
+    calculate_dialogue_acts,
     calculate_dispute_tactics,
     calculate_diversity_conversation,
     calculate_diversity_response,
@@ -18,17 +19,19 @@ from DiscQuA import (
     calculate_engagement_response,
     calculate_informativeness_conversation,
     calculate_informativeness_response,
-    calculate_language_features,
+    calculate_ngramdiversity_response,
     calculate_overall_arg_quality,
+    calculate_persuasion_strategy,
     calculate_persuasiveness,
     calculate_politeness,
     calculate_readability,
     calculate_social_bias,
-    calculate_speech_acts,
     calculate_structure_features,
     calculate_toxicity,
-    dialogicity,
+    expressed_empathy,
     make_visualization,
+    politeness_analysis,
+    sentiment_analysis,
 )
 
 # model_path = r"D:\virtual\models\llama-2-13b-chat.Q5_K_M.gguf"
@@ -84,14 +87,6 @@ def test_make_turn_taking_visualization():
         replyto_list=replyto_list,
         disc_id=disc_id,
     )
-
-
-def test_language_features():
-    language_fetures_scores = calculate_language_features(
-        message_list=message_list,
-        disc_id=disc_id,
-    )
-    pprint(language_fetures_scores)
 
 
 def test_controversy():
@@ -173,8 +168,15 @@ def test_diversity_response():
     print(diversity_resp_score)
 
 
-def test_dialogicity():
-    dialogicity_labels = dialogicity(
+def test_ngram_diversity():
+    lexical_diversity = calculate_ngramdiversity_response(
+        message_list=message_list, disc_id=disc_id
+    )
+    print(lexical_diversity)
+
+
+def test_expressed_empathy():
+    expr_empathy_labels = expressed_empathy(
         message_list=message_list,
         speakers_list=speakers_list,
         disc_id=disc_id,
@@ -185,7 +187,7 @@ def test_dialogicity():
         ctx=1,
         # device="cuda:0"
     )
-    print(dialogicity_labels)
+    print(expr_empathy_labels)
 
 
 def test_engagement_conversation():
@@ -258,6 +260,21 @@ def test_persuasiveness():
         # device="cuda:0"
     )
     print(persuasiveness_score)
+
+
+def test_persuasion_strategy():
+    persuasion_strategy = calculate_persuasion_strategy(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="",
+        model_type="transformers",
+        model_path=model_path,
+        gpu=True,
+        ctx=1,
+        # device="cuda:0"
+    )
+    print(persuasion_strategy)
 
 
 def test_toxicity():
@@ -375,11 +392,11 @@ def test_dispute_tactics():
     print(disp_tact)
 
 
-def test_speech_acts():
-    speech_acts = calculate_speech_acts(
-        message_list,
-        speakers_list,
-        disc_id,
+def test_dialogue_acts():
+    dialogue_acts = calculate_dialogue_acts(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
         openAIKEY="",
         model_type="transformers",
         model_path=model_path,
@@ -387,7 +404,37 @@ def test_speech_acts():
         ctx=1,
         # device="cuda:0"
     )
-    print(speech_acts)
+    print(dialogue_acts)
+
+
+def test_sentiment_analysis():
+    sentiment = sentiment_analysis(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="",
+        model_type="transformers",
+        model_path=model_path,
+        gpu=True,
+        ctx=1,
+        # device="cuda:0"
+    )
+    print(sentiment)
+
+
+def test_politeness_analysis():
+    politeness = politeness_analysis(
+        message_list=message_list,
+        speakers_list=speakers_list,
+        disc_id=disc_id,
+        openAIKEY="",
+        model_type="transformers",
+        model_path=model_path,
+        gpu=True,
+        ctx=1,
+        # device="cuda:0"
+    )
+    print(politeness)
 
 
 def non_llm_measures():
@@ -395,7 +442,7 @@ def non_llm_measures():
     # test_structure_features()
     # test_balanced_participation()
     # test_make_turn_taking_visualization()
-    # test_language_features()
+    # test_ngram_diversity()
     # test_coordination_per_disc_utt()
     # test_politeness()
     # test_readability()
@@ -404,24 +451,27 @@ def non_llm_measures():
 
 def llm_measures():
     print("LLM measures")
-    # test_coherence_conversation()  #
-    # test_coherence_response()  #
-    # test_coherence_ecoh()  #
-    # test_diversity_conversation()  #
+    # test_coherence_conversation()
+    # test_coherence_response()
+    # test_coherence_ecoh()
+    # test_diversity_conversation()
     # test_diversity_response()
-    # test_dialogicity()  #
-    # test_engagement_conversation()  #
+    # test_engagement_conversation()
     # test_engagement_response()
-    # test_informativeness_conversation()  #
+    # test_informativeness_conversation()
     # test_informativeness_response()
-    # test_persuasiveness()  #
-    # test_toxicity()  #
-    # test_social_bias()  #
-    # test_argument_qual_dim()  #
-    # test_overall_arg_quality()  #
-    # test_dispute_tactics()  #
-    # test_speech_acts()
+    # test_persuasiveness()
+    # test_persuasion_strategy()
+    # test_politeness_analysis()
+    # test_toxicity()
+    # test_social_bias()
+    # test_sentiment_analysis()
+    # test_argument_qual_dim()
+    # test_overall_arg_quality()
+    # test_dispute_tactics()
+    # test_dialogue_acts()
     # test_controversy()
+    # test_expressed_empathy()
 
 
 if __name__ == "__main__":

@@ -84,7 +84,7 @@ def get_metrics_contentwords(u1, u2):
     return (number_of_common_words, reply_fraction, op_fraction, jaccard)
 
 
-def calculate_language_features(message_list, disc_id):
+def calculate_ngramdiversity_response(message_list, disc_id):
     """Computes lexical similarity features between consecutive utterance pairs in a discussion.
     For each adjacent pair, it extracts overlap metrics based on all words, stopwords, and content words.
 
@@ -101,7 +101,7 @@ def calculate_language_features(message_list, disc_id):
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances = message_list
     language_feat_dict = {}
-    print("language_features-Proccessing disc: ", disc_id)
+    print("ngram diversity-Proccessing disc: ", disc_id)
     utt_pair_dict = {}
     features_allwords_dict = {}
     features_stopwords_dict = {}
@@ -151,5 +151,5 @@ def calculate_language_features(message_list, disc_id):
             features_content_dict,
         ]
     language_feat_dict[disc_id] = utt_pair_dict
-    save_dict_2_json(language_feat_dict, "language_feat_per_pair", disc_id, timestr)
+    save_dict_2_json(language_feat_dict, "ngram_diversity_per_pair", disc_id, timestr)
     return language_feat_dict
