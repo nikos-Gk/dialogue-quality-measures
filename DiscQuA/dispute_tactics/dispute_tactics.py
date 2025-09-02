@@ -1,13 +1,13 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
+    extractFeature,
     getModel,
     getUtterances,
     save_dict_2_json,
     sleep,
     validateInputParams,
-    extractFeature,
-    isValidResponse
 )
 
 from .DisputeTacticsCl import DisputeTactics
@@ -22,7 +22,7 @@ def calculate_dispute_tactics(
     model_path="",
     gpu=False,
     ctx=1,
-    device="auto"
+    device="auto",
 ):
     """Annotates the utterances in a discussion using the dispute tactics labels based on the frameworks proposed by De Kock and Vlachos (2022, December).
 
@@ -47,14 +47,13 @@ def calculate_dispute_tactics(
 
     """
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
     if model_type == "llama" or model_type == "transformers":
         llm = getModel(model_path, gpu, model_type, device)
-
 
     dispute_tactics_llm_output_dict = {}
 
@@ -63,7 +62,7 @@ def calculate_dispute_tactics(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print("Discpute tactics-Proccessing disc: ", disc_id, " with LLM")
+        dprint("info", f"Discpute tactics-Proccessing disc: {disc_id} with LLM")
 
         dispute = DisputeTactics(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -92,22 +91,25 @@ def calculate_dispute_tactics(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print("LLM output for utterance is ill-formatted, skipping utterance\n")
-                print(label)
+                dprint(
+                    "info",
+                    "LLM output for utterance is ill-formatted, skipping utterance\n",
+                )
+                dprint("info", label)
                 counter += 1
                 continue
-            
+
             feature = {}
-            
-            feature=extractFeature(feature , label)
+
+            feature = extractFeature(feature, label)
             if feature == -1:
-                counter+=1
+                counter += 1
                 continue
 
             key_iter = "utt_" + str(counter)
             ut_dict[key_iter] = feature
             counter += 1
-            
+
         if disc_id in dispute_tactics_per_utt:
             dispute_tactics_per_utt[disc_id].append(ut_dict)
         else:

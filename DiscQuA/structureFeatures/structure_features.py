@@ -4,7 +4,7 @@ from datetime import datetime
 from convokit import Corpus, HyperConvo, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import dprint, save_dict_2_json
 
 
 def calculate_structure_features(
@@ -53,7 +53,7 @@ def calculate_structure_features(
         counter += 1
     if discussion_level:
         corpus = Corpus(utterances=utterances)
-        print("Corpus created successfully.")
+        dprint("info", "Corpus created successfully.")
         # corpus.print_summary_stats()
         #############################################################################################################
         # prefix_len – Use the first [prefix_len] utterances of each conversation to construct the hypergraph

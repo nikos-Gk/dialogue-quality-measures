@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from tqdm import tqdm
 
-from DiscQuA.utils import prompt_gpt4
+from DiscQuA.utils import dprint, prompt_gpt4
 
 #######################################################################################################################################
 ini = """Below is given a set of definitions of various argument quality dimensions."""
@@ -175,7 +175,7 @@ class AQualityDimensions:
         elif self.dimension == "overall":
             prompt = ini + overall_prompt + final_overall
         else:
-            print("No matching dimension")
+            dprint("error", "No matching dimension")
             return []
         # prompt = ini + Argument_quality_dimensions + final
         annotations_ci = []

@@ -2,6 +2,7 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -49,7 +50,7 @@ def calculate_coherence_conversation(
     model_type="openai",
     model_path="",
     gpu=False,
-    device="auto"
+    device="auto",
 ):
     """Evaluates the overall coherence of a discussion on a scale from 1 to 5, where 1 is of poor coherence quality (incoherent) and 5 of high coherence quality (coherent).
 
@@ -69,7 +70,7 @@ def calculate_coherence_conversation(
 
     validateInputParams(model_type, openAIKEY, model_path)
 
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
@@ -82,7 +83,9 @@ def calculate_coherence_conversation(
         message_list, speakers_list, disc_id, replyto_list=[]
     )
     conv_topic = message_list[0]
-    print("Overall Coherence Score-Proccessing discussion: ", disc_id, " with LLM")
+    dprint(
+        "info", f"Overall Coherence Score-Proccessing discussion: {disc_id} with LLM "
+    )
     coh_score = calculate_discussion_coherence_score(
         utterances, conv_topic, openAIKEY, model_type, llm
     )
@@ -105,10 +108,11 @@ def calculate_coherence_conversation(
     for disc_id, turnAnnotations in coherence_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing overall coherence score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall coherence score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
             parts = label.split(
                 "coherence of the comments presented in the above discussion is:"
@@ -116,10 +120,11 @@ def calculate_coherence_conversation(
 
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing overall coherence score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall coherence score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
             coherence_scores_per_disc[disc_id] = value
 

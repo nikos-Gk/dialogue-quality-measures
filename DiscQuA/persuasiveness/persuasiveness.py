@@ -2,6 +2,7 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -46,8 +47,7 @@ def calculate_persuasiveness(
     model_type="openai",
     model_path="",
     gpu=False,
-    device="auto"
-
+    device="auto",
 ):
     """Calculates the overall persuasiveness score of the arguments of the discussion using a specified language model.
 
@@ -66,13 +66,11 @@ def calculate_persuasiveness(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
     if model_type == "llama" or model_type == "transformers":
         llm = getModel(model_path, gpu, model_type, device)
-
 
     pers_scores_llm_output_dict = {}
     #
@@ -81,10 +79,8 @@ def calculate_persuasiveness(
     )
     conv_topic = message_list[0]
 
-    print(
-        "Overall Persuasiveness Score-Proccessing discussion: ",
-        disc_id,
-        " with LLM",
+    dprint("info",
+        f"Overall Persuasiveness Score-Proccessing discussion: {disc_id} with LLM,
     )
     pers_score = calculate_discussion_persuasiveness_score(
         utterances, conv_topic, openAIKEY, model_type, llm
@@ -105,20 +101,20 @@ def calculate_persuasiveness(
     for disc_id, turnAnnotations in pers_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                print(
+                dprint("info",
                     "LLM output with missing overall persuasiveness score , skipping discussion\n"
                 )
-                print(label)
+                dprint("info", label)
                 continue
             parts = label.split(
                 "persuasiveness of the arguments of the above discussion is:"
             )
             value = isValidResponse(parts)
             if value == -1:
-                print(
+                dprint("info",
                     "LLM output with missing overall persuasiveness score , skipping discussion\n"
                 )
-                print(label)
+                dprint("info", label)
                 continue
             pers_scores_per_disc[disc_id] = value
 

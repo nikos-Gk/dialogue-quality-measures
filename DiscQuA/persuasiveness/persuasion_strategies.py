@@ -3,6 +3,7 @@ import time
 from tqdm import tqdm
 
 from DiscQuA.utils import (
+    dprint,
     extractFeature,
     getModel,
     getUtterances,
@@ -125,7 +126,7 @@ def calculate_persuasion_strategy(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
     if model_type == "llama" or model_type == "transformers":
@@ -138,7 +139,9 @@ def calculate_persuasion_strategy(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print("Speech acts labels-Proccessing discussion: ", disc_id, " with LLM")
+        dprint(
+            "info", f"Persuasion strategy-Proccessing discussion: {disc_id} with LLM "
+        )
         #
         pers_strategies = persuassion_steategy(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -168,10 +171,11 @@ def calculate_persuasion_strategy(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing persuasion strategy, skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing persuasion strategy, skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
 

@@ -4,6 +4,7 @@ import time
 from tqdm import tqdm
 
 from DiscQuA.utils import (
+    dprint,
     extractFeature,
     getModel,
     getUtterances,
@@ -117,7 +118,7 @@ def calculate_social_bias(
         dict: Dictionary containing social bias annotations per utterance for the given discussion.
     """
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
@@ -130,7 +131,9 @@ def calculate_social_bias(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print("Social bias labels-Proccessing discussion: ", disc_id, " with LLM")
+        dprint(
+            "info", f"Social bias labels-Proccessing discussion: {disc_id} with LLM "
+        )
         #
         socialbias_features = calculate_social_bias_labels(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -161,8 +164,11 @@ def calculate_social_bias(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print("LLM output with missing social bias label , skipping response\n")
-                print(label)
+                dprint(
+                    "info",
+                    "LLM output with missing social bias label , skipping response\n",
+                )
+                dprint("info", label)
                 counter += 1
                 continue
 

@@ -2,6 +2,7 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -48,8 +49,7 @@ def calculate_engagement_conversation(
     model_type="openai",
     model_path="",
     gpu=False,
-    device="auto"
-
+    device="auto",
 ):
     """Calculates an overall engagement score for a discussion using a large language model (LLM).
 
@@ -70,7 +70,8 @@ def calculate_engagement_conversation(
 
     validateInputParams(model_type, openAIKEY, model_path)
 
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
+
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
@@ -84,7 +85,9 @@ def calculate_engagement_conversation(
     #
     conv_topic = message_list[0]
     #
-    print("Overall Engagement Score-Proccessing discussion: ", disc_id, " with LLM")
+    dprint(
+        "info", f"Overall Engagement Score-Proccessing discussion: {disc_id} with LLM "
+    )
     engag_score = calculate_discussion_engagement_score(
         utterances, conv_topic, openAIKEY, model_type, llm
     )
@@ -104,18 +107,20 @@ def calculate_engagement_conversation(
     for disc_id, turnAnnotations in engag_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing overall engagement score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall engagement score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
             parts = label.split("engagement quality of the above discussion is:")
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing overall engagement score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall engagement score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
 
             engag_scores_per_disc[disc_id] = value

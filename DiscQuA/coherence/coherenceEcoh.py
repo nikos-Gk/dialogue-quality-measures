@@ -2,7 +2,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import getModel, save_dict_2_json
+from DiscQuA.utils import dprint, getModel, save_dict_2_json
 
 #############################################################
 
@@ -93,7 +93,7 @@ def calculate_coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
         where 1 indicates a coherent response and 0 indicates incoherence, for each utterance.
     """
 
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     model, tokenizer = getModel(
         model_path="", gpu=True, model_type="echo", device=device

@@ -4,7 +4,7 @@ from datetime import datetime
 from convokit import Coordination, Corpus, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import dprint, save_dict_2_json
 
 
 def calculate_coordination_per_disc_utt(
@@ -56,7 +56,7 @@ def calculate_coordination_per_disc_utt(
     if discussion_level:
         output_dict_disc = {}
         corpus = Corpus(utterances=utterances)
-        print("Corpus created successfully.")
+        dprint("info", "Corpus created successfully.")
         # corpus.print_summary_stats()
         # conv=corpus.get_conversation(disc_id)
         # conv.print_conversation_structure()
@@ -72,12 +72,12 @@ def calculate_coordination_per_disc_utt(
                 {person: (lambda speaker, person=person: speaker.id == person)}
             )
 
-        print("coordination of all speakers to user")
+        dprint("info", "coordination of all speakers to user")
         coord_allspeakers_2_user = {}
         for item in user_lamda_list:
             user = list(item.keys())[0]
             lamda_function = list(item.values())[0]
-            print("> coordination of all speakers to user ", user)
+            dprint("info", f"> coordination of all speakers to user: {user}")
             allspeakers_2_user = coord.summarize(
                 corpus,
                 all_speakers,
@@ -88,12 +88,12 @@ def calculate_coordination_per_disc_utt(
             )
             coord_allspeakers_2_user[user] = allspeakers_2_user
 
-        print("coordination of user to all speakers")
+        dprint("info", "coordination of user to all speakers")
         coord_user_2_allspeaker = {}
         for item in user_lamda_list:
             user = list(item.keys())[0]
             lamda_function = list(item.values())[0]
-            print(f"> coordination of user {user} to all speakers ")
+            dprint("info", f"> coordination of user {user} to all speakers ")
             user_2_allspeakers = coord.summarize(
                 corpus,
                 lamda_function,
@@ -118,8 +118,10 @@ def calculate_coordination_per_disc_utt(
             if utter_index == 0:
                 continue
             corpus = Corpus(utterances=utterances[0 : utter_index + 1])
-            print(f"Corpus for utterances 0 - {utter_index} created successfully.")
-            corpus.print_summary_stats()
+            dprint(
+                "info", f"Corpus for utterances 0 - {utter_index} created successfully."
+            )
+            # corpus.print_summary_stats()
             coord = Coordination()
             coord.fit(corpus)
             coord.transform(corpus)
@@ -129,12 +131,12 @@ def calculate_coordination_per_disc_utt(
                 user_lamda_list.append(
                     {person: (lambda speaker, person=person: speaker.id == person)}
                 )
-            print("coordination of all speakers to user")
+            dprint("info", "coordination of all speakers to user")
             coord_allspeakers_2_user = {}
             for item in user_lamda_list:
                 user = list(item.keys())[0]
                 lamda_function = list(item.values())[0]
-                print("> coordination of all speakers to user ", user)
+                dprint("info", f"> coordination of all speakers to user: {user} ")
                 allspeakers_2_user = coord.summarize(
                     corpus,
                     all_speakers,
@@ -144,12 +146,12 @@ def calculate_coordination_per_disc_utt(
                     summary_report=True,
                 )
                 coord_allspeakers_2_user[user] = allspeakers_2_user
-            print("coordination of user to all speakers")
+            dprint("info", "coordination of user to all speakers")
             coord_user_2_allspeaker = {}
             for item in user_lamda_list:
                 user = list(item.keys())[0]
                 lamda_function = list(item.values())[0]
-                print(f"> coordination of user {user} to all speakers ")
+                dprint("info", f"> coordination of user {user} to all speakers ")
                 user_2_allspeakers = coord.summarize(
                     corpus,
                     lamda_function,

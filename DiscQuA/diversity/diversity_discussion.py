@@ -2,6 +2,7 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -31,7 +32,7 @@ def calculate_discussion_diversity_score(utts, topic, key, model_type, model):
     annotations_ci = []
     try:
         response_text = prompt_gpt4(formatted_prompt, key, model_type, model)
-        #print(formatted_prompt)
+        # print(formatted_prompt)
         annotations_ci.append(response_text)
     except Exception as e:
         print("Error: ", e)
@@ -47,7 +48,7 @@ def calculate_diversity_conversation(
     model_type="openai",
     model_path="",
     gpu=False,
-    device="auto"
+    device="auto",
 ):
     """Assings an overall conversational diversity score for the given discussion based on linguistic variety,
     argumentation patterns, and idea breadth. The evaluation is performed using a large language model.
@@ -66,7 +67,7 @@ def calculate_diversity_conversation(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of:{len(message_list)} utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
     if model_type == "llama" or model_type == "transformers":
@@ -78,7 +79,9 @@ def calculate_diversity_conversation(
         message_list, speakers_list, disc_id, replyto_list=[]
     )
     conv_topic = message_list[0]
-    print("Overall Diversity Score-Proccessing discussion: ", disc_id, " with LLM")
+    dprint(
+        "info", f"Overall Diversity Score-Proccessing discussion: {disc_id} with LLM"
+    )
     div_score = calculate_discussion_diversity_score(
         utterances, conv_topic, openAIKEY, model_type, llm
     )
@@ -98,20 +101,22 @@ def calculate_diversity_conversation(
     for disc_id, turnAnnotations in divers_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing overall diversity score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall diversity score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
             parts = label.split(
                 "diversity of the arguments of the above discussion is:"
             )
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing overall diversity score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall diversity score , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
 
             div_scores_per_disc[disc_id] = value

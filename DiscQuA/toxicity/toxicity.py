@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import time
+
 from tqdm import tqdm
 
-
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -70,7 +71,7 @@ def calculate_toxicity(
     model_path="",
     gpu=False,
     ctx=1,
-    device="auto"
+    device="auto",
 ):
     """Evaluates the toxicity level of each utterance in a discussion using a selected language model, with optional context from previous utterances.
 
@@ -90,7 +91,7 @@ def calculate_toxicity(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
@@ -104,10 +105,9 @@ def calculate_toxicity(
         )
         conv_topic = message_list[0]
 
-        print(
-            "Toxicilty Label Per Response-Proccessing discussion: ",
-            disc_id,
-            " with LLM",
+        dprint(
+            "info",
+            f"Toxicilty Label Per Response-Proccessing discussion: {disc_id} with LLM ",
         )
         #
         tox_per_resp = calculate_response_toxicity_score(
@@ -139,19 +139,21 @@ def calculate_toxicity(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing toxicity response label , skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing toxicity response label , skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
             parts = label.split("toxicity of the new utterance is:")
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing toxicity response label , skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing toxicity response label , skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
 

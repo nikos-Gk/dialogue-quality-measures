@@ -3,6 +3,7 @@ import time
 from tqdm import tqdm
 
 from DiscQuA.utils import (
+    dprint,
     extractFeature,
     getModel,
     getUtterances,
@@ -99,7 +100,7 @@ def sentiment_analysis(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
     if model_type == "llama" or model_type == "transformers":
@@ -112,7 +113,7 @@ def sentiment_analysis(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print("Sentiment labels-Proccessing discussion: ", disc_id, " with LLM")
+        dprint("info", f"Sentiment labels-Proccessing discussion: {disc_id} with LLM")
         #
         sentiment_features = calculate_sentiment_labels(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -143,8 +144,11 @@ def sentiment_analysis(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print("LLM output with missing sentiment label, skipping response\n")
-                print(label)
+                dprint(
+                    "info",
+                    "LLM output with missing sentiment label, skipping response\n",
+                )
+                dprint("info", label)
                 counter += 1
                 continue
 

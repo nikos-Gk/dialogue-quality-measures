@@ -8,7 +8,7 @@ import regex as re
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import dprint, save_dict_2_json
 
 
 def syllable_count(word, stopwords_list, pronouncing_dict):
@@ -95,15 +95,15 @@ def calculate_readability(message_list, disc_id):
     with open(file_path, "r", encoding="utf-8") as f:
         for word in f.read().splitlines():
             stopwords_list.append(word.lower())
-
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utt_dict = {}
     read_indic_per_disc = {}
     for i, utt in enumerate(message_list):
         try:
-            print(
-                f"Readability Indices Per Utterance-Proccessing discussion:{disc_id}, utterance:utt_{i}"
+            dprint(
+                "info",
+                f"Readability Indices Per Utterance-Proccessing discussion: {disc_id}, utterance:utt_{i}",
             )
             #
             gunning_fog_index, smog_index, Flesch_index, Flesch_Kincaid_index = (

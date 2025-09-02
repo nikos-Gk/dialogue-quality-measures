@@ -4,6 +4,7 @@ import time
 from tqdm import tqdm
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -93,8 +94,8 @@ def politeness_analysis(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
 
-    print("Building corpus of ", len(message_list), "utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
     llm = None
@@ -108,10 +109,9 @@ def politeness_analysis(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print(
-            "Politeness Score Per Response-Proccessing discussion: ",
-            disc_id,
-            " with LLM",
+        dprint(
+            "info",
+            f"Politeness Score Per Response-Proccessing discussion: {disc_id} with LLM ",
         )
         polit_per_resp = calculate_response_politeness_score(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -140,20 +140,22 @@ def politeness_analysis(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing politeness response score , skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing politeness response score , skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
             parts = label.split("politeness of the new response is:")
 
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing politeness response score , skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing politeness response score , skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
             key_iter = "utt_" + str(counter)

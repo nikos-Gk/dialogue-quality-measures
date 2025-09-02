@@ -1,6 +1,6 @@
 import time
 
-from DiscQuA.utils import save_dict_2_json
+from DiscQuA.utils import dprint, save_dict_2_json
 
 from .stopwords import stopwords
 
@@ -101,7 +101,7 @@ def calculate_ngramdiversity_response(message_list, disc_id):
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances = message_list
     language_feat_dict = {}
-    print("ngram diversity-Proccessing disc: ", disc_id)
+    dprint("info", f"ngram diversity-Proccessing disc: {disc_id} ")
     utt_pair_dict = {}
     features_allwords_dict = {}
     features_stopwords_dict = {}

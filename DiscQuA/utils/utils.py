@@ -1,4 +1,5 @@
 import json
+import logging
 import re
 import sys
 import time
@@ -6,6 +7,15 @@ import time
 import openai
 from convokit import Speaker, Utterance
 from llama_cpp import Llama
+
+logger = logging.getLogger(__name__)
+
+
+def dprint(level="info", message=""):
+    if level == "info":
+        logger.info(message)
+    elif level == "error":
+        logger.error(message)
 
 
 def getUtterances(message_list, speakers_list, disc_id, replyto_list=[]):
@@ -174,7 +184,7 @@ _cached_models = {}
 def getModel(model_path, gpu, model_type="llama", device="auto"):
     key = (model_path, model_type, device, gpu)
     if key in _cached_models:
-        print(" Using cached model for:", key)
+        dprint("info", " Using cached model for: {key}")
         return _cached_models[key]
 
     if model_type == "controversy":

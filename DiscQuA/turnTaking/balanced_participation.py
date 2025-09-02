@@ -1,7 +1,7 @@
 import math
 import time
 
-from DiscQuA.utils import getUtterances, save_dict_2_json
+from DiscQuA.utils import dprint, getUtterances, save_dict_2_json
 
 
 def compute_balance(contributions):
@@ -34,7 +34,7 @@ def calculate_balanced_participation(
         disc_speakers_messages_dict = {}
         disc_number_of_messages_dict = {}
         disc_sum_number_of_words_dict = {}
-        print("Balanced Participation-Proccessing discussion: ", disc_id)
+        dprint("info", f"Balanced Participation-Proccessing discussion: {disc_id} ")
         disc_speakers_messages_dict[disc_id] = {
             speaker: [] for speaker in speakers.keys()
         }

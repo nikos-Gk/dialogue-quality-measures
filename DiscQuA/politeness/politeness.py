@@ -2,7 +2,7 @@ import time
 
 from convokit import Corpus, PolitenessStrategies, TextParser
 
-from DiscQuA.utils import getUtterances, save_dict_2_json
+from DiscQuA.utils import dprint, getUtterances, save_dict_2_json
 
 
 def calculate_politeness(message_list, speakers_list, disc_id, discussion_level):
@@ -23,7 +23,7 @@ def calculate_politeness(message_list, speakers_list, disc_id, discussion_level)
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     if discussion_level:
         corpus = Corpus(utterances=utterances)
-        print("Corpus created successfully.")
+        dprint("info", "Corpus created successfully.")
         # corpus.print_summary_stats()
         politeness_per_disc = {}
         parser = TextParser()

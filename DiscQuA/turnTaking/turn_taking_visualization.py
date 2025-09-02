@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from convokit import Corpus, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
+from DiscQuA.utils import dprint
+
 
 def save_stdout_to_image(func, conversation_id, *args, **kwargs):
     old_stdout = sys.stdout
@@ -49,8 +51,7 @@ def make_visualization(message_list, speakers_list, msgsid_list, replyto_list, d
     Returns:
         _type_: _description_
     """
-
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
 
     speakers_unq = set(speakers_list)
     speakers = {speaker: Speaker(id=speaker) for speaker in speakers_unq}
@@ -79,8 +80,8 @@ def make_visualization(message_list, speakers_list, msgsid_list, replyto_list, d
         counter += 1
 
     corpus = Corpus(utterances=utterances)
-    print("Corpus created successfully.")
-    corpus.print_summary_stats()
+    dprint("info", "Corpus created successfully.")
+    # corpus.print_summary_stats()
     conv0 = corpus.get_conversation(disc_id)
     save_stdout_to_image(
         conv0.print_conversation_structure,

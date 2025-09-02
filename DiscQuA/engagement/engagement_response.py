@@ -1,7 +1,9 @@
 import time
+
 from tqdm import tqdm
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -72,7 +74,7 @@ def calculate_engagement_response(
     model_path="",
     gpu=False,
     ctx=1,
-    device="auto"
+    device="auto",
 ):
     """Calculates engagement scores for each response in a discussion using a specified Large Language Model (LLM).
     Each utterance is evaluated in context for its engagement quality based on characteristics of variety of response according to the context,
@@ -99,7 +101,8 @@ def calculate_engagement_response(
 
     validateInputParams(model_type, openAIKEY, model_path)
 
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
+
     timestr = time.strftime("%Y%m%d-%H%M%S")
 
     llm = None
@@ -112,10 +115,9 @@ def calculate_engagement_response(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
         conv_topic = message_list[0]
-        print(
-            "Engagement Score Per Response-Proccessing discussion: ",
-            disc_id,
-            " with LLM",
+        dprint(
+            "info",
+            f"Engagement Score Per Response-Proccessing discussion: {disc_id} with LLM ",
         )
         engag_per_resp = calculate_response_engagement_score(
             utterances, conv_topic, openAIKEY, model_type, llm, ctx
@@ -145,20 +147,22 @@ def calculate_engagement_response(
         ut_dict = {}
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing engagement response score , skipping response\n"
+                dprint(
+                    "info",
+                    "LLM output with missing engagement response score , skipping response\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
             parts = label.split("engagement score of the new response is:")
 
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing engagement response score , skipping utterance\n"
+                dprint(
+                    "info",
+                    "LLM output with missing engagement response score , skipping utterance\n",
                 )
-                print(label)
+                dprint("info", label)
                 counter += 1
                 continue
             key_iter = "utt_" + str(counter)

@@ -2,7 +2,7 @@ import time
 
 import numpy as np
 
-from DiscQuA.utils import getModel, save_dict_2_json
+from DiscQuA.utils import dprint, getModel, save_dict_2_json
 
 
 def calculate_controversy(message_list, disc_id, discussion_level, device="auto"):
@@ -28,7 +28,7 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
 
     pipe = getModel(model_path="", gpu=True, model_type="controversy", device=device)
     #
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", "Building corpus of: {len(message_list)} utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     #
     unorm_disc_controversy_dict = {}
@@ -39,13 +39,13 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
     utterances = []
     for i, utt in enumerate(message_list):
         if not isinstance(utt, str):
-            print("Found non string utterance, casting to string: ", utt)
+            dprint("info", f"Found non string utterance, casting to string: {utt} ")
             utt = str(utt)
         utt = utt.replace("\r\n", " ").replace("\n", " ").rstrip().lstrip()
         utterances.append((utt, f"conv_{disc_id}_utt_{i}"))
 
     #
-    print("Controversy-Proccessing disc: ", disc_id)
+    dprint("info", f"Controversy-Proccessing disc: {disc_id} ")
     utt_resultlist_iter_dict = {}
     utt_labelprobproduct_iter_dict = {}
     utt_unnormalized_factor_iter_dict = {}

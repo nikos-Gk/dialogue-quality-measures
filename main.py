@@ -1,5 +1,6 @@
 # import unsloth
 import json
+import logging
 from pprint import pprint
 
 from DiscQuA import (
@@ -42,6 +43,8 @@ test_path = "./example_discussion/fe858614-6571-43e7-badf-3cdcb38337b3.json"
 
 with open(test_path, "r", encoding="utf-8") as file:
     data = json.load(file)
+
+logger = logging.getLogger(__name__)
 
 message_list = [log[1] for log in data["logs"]]
 speakers_list = [log[0] for log in data["logs"]]
@@ -476,5 +479,6 @@ def llm_measures():
 
 if __name__ == "__main__":
     print("Executing discussion quality aspects.")
+    logging.basicConfig(level=logging.ERROR)
     # non_llm_measures()
     # llm_measures()

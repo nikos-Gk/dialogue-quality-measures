@@ -1,6 +1,7 @@
 import time
 
 from DiscQuA.utils import (
+    dprint,
     getModel,
     getUtterances,
     isValidResponse,
@@ -40,7 +41,7 @@ def calculate_overall_arg_quality(
     """
 
     validateInputParams(model_type, openAIKEY, model_path)
-    print("Building corpus of ", len(message_list), "utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
 
@@ -54,7 +55,9 @@ def calculate_overall_arg_quality(
     )
     conv_topic = message_list[0]
     #
-    print("Overall Argument Quality-Proccessing discussion: ", disc_id, " with LLM")
+    dprint(
+        "info", f"Overall Argument Quality-Proccessing discussion: {disc_id} with LLM "
+    )
     ovargqual = OAQuality(utterances, conv_topic, openAIKEY, mode, model_type, llm)
     ovargument_quality_scores_features = ovargqual.calculate_ovargquality_scores()
     ovargquality_scores_llm_output_dict[disc_id] = ovargument_quality_scores_features
@@ -75,20 +78,22 @@ def calculate_overall_arg_quality(
     for disc_id, turnAnnotations in ovargquality_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                print(
-                    "LLM output with missing overall argument quality , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall argument quality , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
             parts = label.split(
                 "average overall quality of the arguments presented in the above discussion is:"
             )
             value = isValidResponse(parts)
             if value == -1:
-                print(
-                    "LLM output with missing overall argument quality , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall argument quality , skipping discussion\n",
                 )
-                print(label)
+                dprint("info", label)
                 continue
 
             oaq_dim_per_disc[disc_id] = value
