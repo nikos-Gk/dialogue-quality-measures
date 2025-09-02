@@ -23,6 +23,29 @@ To use the readability measure please ensure that the following resources exist 
 
 In the main.py file you can find examples of usage.
 
+# Saving
+-By default, output files are saved to the current working directory (cwd).
+
+-Users can choose to disable automatic saving of output files.
+```python
+from DiscQuA import utils
+utils.set_saving_enabled(False)
+```
+-To specify a custom save path:
+```python
+from DiscQuA import utils
+saving_path = ""
+utils.set_output_path(saving_path)
+```
+# Logging
+-A logger is used to display informational and error messages. Logging level can be customized by the user.
+
+```python
+import logging
+logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
+```
+
 # Description of input parameters
 
 -message_list: The list of utterances in the discussion. 

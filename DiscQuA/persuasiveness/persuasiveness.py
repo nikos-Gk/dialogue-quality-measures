@@ -79,8 +79,9 @@ def calculate_persuasiveness(
     )
     conv_topic = message_list[0]
 
-    dprint("info",
-        f"Overall Persuasiveness Score-Proccessing discussion: {disc_id} with LLM,
+    dprint(
+        "info",
+        f"Overall Persuasiveness Score-Proccessing discussion: {disc_id} with LLM",
     )
     pers_score = calculate_discussion_persuasiveness_score(
         utterances, conv_topic, openAIKEY, model_type, llm
@@ -101,8 +102,9 @@ def calculate_persuasiveness(
     for disc_id, turnAnnotations in pers_scores_llm_output_dict.items():
         for label in turnAnnotations:
             if label == -1:
-                dprint("info",
-                    "LLM output with missing overall persuasiveness score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall persuasiveness score , skipping discussion\n",
                 )
                 dprint("info", label)
                 continue
@@ -111,8 +113,9 @@ def calculate_persuasiveness(
             )
             value = isValidResponse(parts)
             if value == -1:
-                dprint("info",
-                    "LLM output with missing overall persuasiveness score , skipping discussion\n"
+                dprint(
+                    "info",
+                    "LLM output with missing overall persuasiveness score , skipping discussion\n",
                 )
                 dprint("info", label)
                 continue

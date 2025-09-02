@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import re
 import sys
 import time
@@ -9,6 +10,19 @@ from convokit import Speaker, Utterance
 from llama_cpp import Llama
 
 logger = logging.getLogger(__name__)
+_OUTPUT_PATH = os.getcwd()
+
+_ENABLE_SAVING = True
+
+
+def set_saving_enabled(value):
+    global _ENABLE_SAVING
+    _ENABLE_SAVING = bool(value)
+
+
+def set_output_path(value):
+    global _OUTPUT_PATH
+    _OUTPUT_PATH = value
 
 
 def dprint(level="info", message=""):
@@ -39,8 +53,11 @@ def getUtterances(message_list, speakers_list, disc_id, replyto_list=[]):
     return utterances, speakers
 
 
-def save_dict_2_json(scores_dict, fine_name, conv_id, timestr):
-    with open(f"{fine_name}_{conv_id}_{timestr}.json", "w", encoding="utf-8") as fout:
+def save_dict_2_json(scores_dict, file_name, conv_id, timestr):
+    if not _ENABLE_SAVING:
+        return
+    filepath = os.path.join(_OUTPUT_PATH, f"{file_name}_{conv_id}_{timestr}.json")
+    with open(filepath, "w", encoding="utf-8") as fout:
         json.dump(scores_dict, fout, ensure_ascii=False, indent=4)
 
 

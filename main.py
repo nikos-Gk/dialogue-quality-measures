@@ -33,6 +33,7 @@ from DiscQuA import (
     make_visualization,
     politeness_analysis,
     sentiment_analysis,
+    utils,
 )
 
 # model_path = r"D:\virtual\models\llama-2-13b-chat.Q5_K_M.gguf"
@@ -44,7 +45,9 @@ test_path = "./example_discussion/fe858614-6571-43e7-badf-3cdcb38337b3.json"
 with open(test_path, "r", encoding="utf-8") as file:
     data = json.load(file)
 
-logger = logging.getLogger(__name__)
+utils.set_saving_enabled(True)
+saving_path = ""
+utils.set_output_path(saving_path)
 
 message_list = [log[1] for log in data["logs"]]
 speakers_list = [log[0] for log in data["logs"]]
@@ -69,7 +72,7 @@ def test_structure_features():
         disc_id=disc_id,
         discussion_level=False,
     )
-    pprint(structure_features)
+    # pprint(structure_features)
 
 
 def test_balanced_participation():
@@ -79,7 +82,7 @@ def test_balanced_participation():
         disc_id=disc_id,
         discussion_level=False,
     )
-    pprint(entropy_scores)
+    # pprint(entropy_scores)
 
 
 def test_make_turn_taking_visualization():
@@ -99,8 +102,8 @@ def test_controversy():
         discussion_level=False,
         device="cuda",
     )
-    pprint(unorm_scores)
-    pprint(norm_scores)
+    # pprint(unorm_scores)
+    # pprint(norm_scores)
 
 
 def test_coherence_conversation():
@@ -114,7 +117,7 @@ def test_coherence_conversation():
         gpu=True,
         # device="cuda:0"
     )
-    print(coherence_disc_score)
+    # print(coherence_disc_score)
 
 
 def test_coherence_response():
@@ -129,7 +132,7 @@ def test_coherence_response():
         ctx=1,
         # device="cuda:0"
     )
-    print(coherence_resp_score)
+    # print(coherence_resp_score)
 
 
 def test_coherence_ecoh():
@@ -139,7 +142,7 @@ def test_coherence_ecoh():
         disc_id=disc_id,
         device="cuda",
     )
-    print(coherence_booleans)
+    # print(coherence_booleans)
 
 
 def test_diversity_conversation():
@@ -153,7 +156,7 @@ def test_diversity_conversation():
         gpu=True,
         # device="cuda:0"
     )
-    print(diversity_disc_score)
+    # print(diversity_disc_score)
 
 
 def test_diversity_response():
@@ -168,14 +171,14 @@ def test_diversity_response():
         ctx=1,
         # device="cuda:0"
     )
-    print(diversity_resp_score)
+    # print(diversity_resp_score)
 
 
 def test_ngram_diversity():
     lexical_diversity = calculate_ngramdiversity_response(
         message_list=message_list, disc_id=disc_id
     )
-    print(lexical_diversity)
+    # print(lexical_diversity)
 
 
 def test_expressed_empathy():
@@ -190,7 +193,7 @@ def test_expressed_empathy():
         ctx=1,
         # device="cuda:0"
     )
-    print(expr_empathy_labels)
+    # print(expr_empathy_labels)
 
 
 def test_engagement_conversation():
@@ -204,7 +207,7 @@ def test_engagement_conversation():
         gpu=True,
         # device="cuda:0"
     )
-    print(engagement_disc_score)
+    # print(engagement_disc_score)
 
 
 def test_engagement_response():
@@ -219,7 +222,7 @@ def test_engagement_response():
         ctx=1,
         # device="cuda:0"
     )
-    print(engagement_resp_score)
+    # print(engagement_resp_score)
 
 
 def test_informativeness_conversation():
@@ -233,7 +236,7 @@ def test_informativeness_conversation():
         gpu=True,
         # device="cuda:0"
     )
-    print(informativeness_disc_score)
+    # print(informativeness_disc_score)
 
 
 def test_informativeness_response():
@@ -248,7 +251,7 @@ def test_informativeness_response():
         ctx=1,
         # device="cuda:0"
     )
-    print(informativeness_resp_score)
+    # print(informativeness_resp_score)
 
 
 def test_persuasiveness():
@@ -262,7 +265,7 @@ def test_persuasiveness():
         gpu=True,
         # device="cuda:0"
     )
-    print(persuasiveness_score)
+    # print(persuasiveness_score)
 
 
 def test_persuasion_strategy():
@@ -277,7 +280,7 @@ def test_persuasion_strategy():
         ctx=1,
         # device="cuda:0"
     )
-    print(persuasion_strategy)
+    # print(persuasion_strategy)
 
 
 def test_toxicity():
@@ -292,7 +295,7 @@ def test_toxicity():
         ctx=1,
         # device="cuda:0"
     )
-    print(toxicity_scores)
+    # print(toxicity_scores)
 
 
 def test_coordination_per_disc_utt():
@@ -304,7 +307,7 @@ def test_coordination_per_disc_utt():
         disc_id=disc_id,
         discussion_level=False,
     )
-    print(coordination_scores)
+    # print(coordination_scores)
 
 
 def test_social_bias():
@@ -319,7 +322,7 @@ def test_social_bias():
         ctx=1,
         # device="cuda:0"
     )
-    print(social_bias_labels)
+    # print(social_bias_labels)
 
 
 def test_politeness():
@@ -329,14 +332,14 @@ def test_politeness():
         disc_id=disc_id,
         discussion_level=False,
     )
-    print(politeness_features_scores)
+    # print(politeness_features_scores)
 
 
 def test_readability():
     readability_scores = calculate_readability(
         message_list=message_list, disc_id=disc_id
     )
-    print(readability_scores)
+    # print(readability_scores)
 
 
 def test_collaboration():
@@ -346,7 +349,7 @@ def test_collaboration():
         disc_id=disc_id,
         discussion_level=False,
     )
-    print(collaboration_scores)
+    # print(collaboration_scores)
 
 
 def test_argument_qual_dim():
@@ -362,7 +365,7 @@ def test_argument_qual_dim():
         dimension="logic",
         # device="cuda:0"
     )
-    print(arg_dim_scores)
+    # print(arg_dim_scores)
 
 
 def test_overall_arg_quality():
@@ -377,7 +380,7 @@ def test_overall_arg_quality():
         gpu=True,
         # device="cuda:0"
     )
-    print(overall_argument_quality_score)
+    # print(overall_argument_quality_score)
 
 
 def test_dispute_tactics():
@@ -392,7 +395,7 @@ def test_dispute_tactics():
         ctx=1,
         # device="cuda:0"
     )
-    print(disp_tact)
+    # print(disp_tact)
 
 
 def test_dialogue_acts():
@@ -407,7 +410,7 @@ def test_dialogue_acts():
         ctx=1,
         # device="cuda:0"
     )
-    print(dialogue_acts)
+    # print(dialogue_acts)
 
 
 def test_sentiment_analysis():
@@ -422,7 +425,7 @@ def test_sentiment_analysis():
         ctx=1,
         # device="cuda:0"
     )
-    print(sentiment)
+    # print(sentiment)
 
 
 def test_politeness_analysis():
@@ -437,7 +440,7 @@ def test_politeness_analysis():
         ctx=1,
         # device="cuda:0"
     )
-    print(politeness)
+    # print(politeness)
 
 
 def non_llm_measures():
