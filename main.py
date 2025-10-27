@@ -484,8 +484,8 @@ def test_make_turn_taking_visualization():
 
 def non_llm_measures():
     print("Non LLM measures")
-    test_reciprocity()
-    test_balanced_participation()
+    # test_reciprocity()
+    # test_balanced_participation()
     # test_make_turn_taking_visualization()
     # test_ngram_diversity()
     # test_coordination()

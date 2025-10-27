@@ -23,7 +23,7 @@ setuptools.setup(
     python_requires=">=3.10,<=3.12",
     install_requires=[
         "pandas >=1.5.0",
-        "convokit==3.1.0",
+        "convokit==3.5.0",
         "openai==0.28",
         # "llama-cpp-python==0.3.9",
     ],
