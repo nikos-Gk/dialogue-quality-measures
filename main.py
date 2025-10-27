@@ -87,7 +87,6 @@ def test_overall_arg_quality():
     overall_argument_quality_score = overall_arg_quality(
         message_list=message_list,
         speakers_list=speakers_list,
-        msgsid_list=msgsid_list,
         disc_id=disc_id,
         conver_topic=message_list[0],
         openAIKEY="",
