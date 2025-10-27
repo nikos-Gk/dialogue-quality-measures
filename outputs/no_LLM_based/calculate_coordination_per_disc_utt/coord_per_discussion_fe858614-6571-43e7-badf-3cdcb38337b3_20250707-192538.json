@@ -1,0 +1,540 @@
+{
+    "fe858614-6571-43e7-badf-3cdcb38337b3": {
+        "coord_allspeakers_2_user": {
+            "CryptoBro89": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "ReclusivePoet31": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "StoicSamurai99": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "OptimisticTeacher59": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "OptimisticNurse42": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "AdventureSeeker34": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "StoicScholar73": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        },
+        "coord_user_2_allspeaker": {
+            "CryptoBro89": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "ReclusivePoet31": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "StoicSamurai99": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "OptimisticTeacher59": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "OptimisticNurse42": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "AdventureSeeker34": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            },
+            "StoicScholar73": {
+                "marker_agg1": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg2": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "marker_agg3": {
+                    "article": 0.0,
+                    "auxverb": 0.0,
+                    "conj": 0.0,
+                    "adverb": 0.0,
+                    "ppron": 0.0,
+                    "ipron": 0.0,
+                    "preps": 0.0,
+                    "quant": 0.0
+                },
+                "agg1": 0.0,
+                "agg2": 0.0,
+                "agg3": 0.0,
+                "count_agg1": 1,
+                "count_agg2": 1,
+                "count_agg3": 1
+            }
+        }
+    }
+}
