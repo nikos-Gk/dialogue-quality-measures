@@ -1,5 +1,5 @@
 # DiscQuA: Discussion Quality Aspects
-![Alt Text](images/DiscQuA.png)
+![Alt Text](images/discqua.png)
 
 
 # Installation
