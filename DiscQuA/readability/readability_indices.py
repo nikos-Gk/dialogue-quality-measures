@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import math
 import os
+import sys
 import time
 
 import nltk
@@ -8,7 +9,7 @@ import regex as re
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 
-from DiscQuA.utils import dprint, save_dict_2_json
+from discqua.utils import dprint, save_dict_2_json
 
 
 def syllable_count(word, stopwords_list, pronouncing_dict):
@@ -74,17 +75,21 @@ def calculate_gunning_fog_smog_fleschkincaid_index(
     return gunning_fog_index, smog_index, Flesch_index, Flesch_Kincaid_index
 
 
-def calculate_readability(message_list, disc_id):
+def readability(message_list, msgsid_list, disc_id):
     """Calculates readability indices (including Gunning Fog Index, SMOG Index, Flesch Reading Ease, and Flesch-Kincaid) for each utterance in a discussion.
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
 
     Returns:
      dict: A dictionary containing the readability indices for each utterance in the discussion,
-              structured as {disc_id: {utt_i: {readability_scores}}}.
+              structured as {disc_id: {msg_id: {readability_scores}}}.
     """
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     nltk.download("cmudict")
     pronouncing_dict = nltk.corpus.cmudict.dict()
 
@@ -111,7 +116,7 @@ def calculate_readability(message_list, disc_id):
                     utt, stopwords_list, pronouncing_dict
                 )
             )
-            key_iter = f"utt_{i}"
+            key_iter = str(msgsid_list[i])
             utt_dict[key_iter] = {
                 "Gunning_Fog": gunning_fog_index,
                 "Smog": smog_index,

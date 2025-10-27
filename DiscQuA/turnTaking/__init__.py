@@ -1,2 +1,2 @@
-from .balanced_participation import calculate_balanced_participation
+from .balanced_participation import participation
 from .turn_taking_visualization import make_visualization

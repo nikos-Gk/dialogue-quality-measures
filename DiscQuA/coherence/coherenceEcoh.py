@@ -2,7 +2,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import dprint, getModel, save_dict_2_json
+from discqua.utils import dprint, getModel, save_dict_2_json
 
 #############################################################
 
@@ -78,7 +78,7 @@ def processDiscussion(message_list, speaker_list, disc_id, tokenizer, model, dev
     return inference_result_list, context_list, response_list, conversation_id
 
 
-def calculate_coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
+def coherence_ecoh(message_list, speaker_list, disc_id, device="cpu"):
     """Calculates coherence scores for a discussion using a fine-tuned causal language model,
        returning binary judgments and rationales for each message.
 

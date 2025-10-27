@@ -1,11 +1,12 @@
+import sys
 import time
 
 import numpy as np
 
-from DiscQuA.utils import dprint, getModel, save_dict_2_json
+from discqua.utils import dprint, getModel, save_dict_2_json
 
 
-def calculate_controversy(message_list, disc_id, discussion_level, device="auto"):
+def controversy(message_list, disc_id, msgsid_list, discussion_level, device="auto"):
     """Evaluates the controversy of a discussion based on sentiment variability.
        Sentiment scores are computed using a pretrained multilingual sentiment analysis model.
        Variability is quantified using the sample standard deviation of the sentiment scores, either at the discussion or utterance level.
@@ -13,6 +14,7 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         disc_id (str): Unique identifier for the discussion.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
 
     Returns:
@@ -25,10 +27,12 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
                                                by utterance window (e.g., "utt_[0:2]").
                 - dict[str, dict[str, float]]: Corresponding rolling standard deviation of the normalized sentiment scores.
     """
-
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     pipe = getModel(model_path="", gpu=True, model_type="controversy", device=device)
     #
-    dprint("info", "Building corpus of: {len(message_list)} utterances")
+    dprint("info", f"Building corpus of: {len(message_list)} utterances")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     #
     unorm_disc_controversy_dict = {}
@@ -42,7 +46,8 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
             dprint("info", f"Found non string utterance, casting to string: {utt} ")
             utt = str(utt)
         utt = utt.replace("\r\n", " ").replace("\n", " ").rstrip().lstrip()
-        utterances.append((utt, f"conv_{disc_id}_utt_{i}"))
+        # utterances.append((utt, f"conv_{disc_id}_utt_{i}"))
+        utterances.append((utt, f"{msgsid_list[i]}"))
 
     #
     dprint("info", f"Controversy-Proccessing disc: {disc_id} ")
@@ -125,14 +130,18 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
         controversy_perutt_unorm = {}
 
         for disc_id, sent_dict in unorm_disc_controversy_dict.items():
-            utt_ids_sorted = sorted(
-                sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
-            )
+            # utt_ids_sorted = sorted(
+            #    sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
+            # )
+            utt_ids_sorted = [key for key in sent_dict.keys()]
             scores_sorted = [sent_dict[utt_id] for utt_id in utt_ids_sorted]
             #
             rolling_std_dict = {}
+            counter = 0
             for i in range(len(scores_sorted)):
-                key_iter = f"utt_[0:{i}]"
+                # key_iter = f"utt_[0:{i}]"
+                key_iter = f"[{utt_ids_sorted[0]}:{utt_ids_sorted[counter]}]"
+                counter += 1
                 if i == 0:
                     rolling_std_dict[key_iter] = 0.0
                 else:
@@ -148,14 +157,18 @@ def calculate_controversy(message_list, disc_id, discussion_level, device="auto"
         controversy_perutt_norm = {}
 
         for disc_id, sent_dict in norm_disc_controversy_dict.items():
-            utt_ids_sorted = sorted(
-                sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
-            )
+            # utt_ids_sorted = sorted(
+            #    sent_dict.keys(), key=lambda x: int(x.split("_")[-1])
+            # )
+            utt_ids_sorted = [key for key in sent_dict.keys()]
             scores_sorted = [sent_dict[utt_id] for utt_id in utt_ids_sorted]
             #
             rolling_std_dict = {}
+            counter = 0
             for i in range(len(scores_sorted)):
-                key_iter = f"utt_[0:{i}]"
+                # key_iter = f"utt_[0:{i}]"
+                key_iter = f"[{utt_ids_sorted[0]}:{utt_ids_sorted[counter]}]"
+                counter += 1
                 if i == 0:
                     rolling_std_dict[key_iter] = 0.0
                 else:

@@ -1,2 +1,2 @@
-from .politeness import calculate_politeness
-from .politeness_analysis import politeness_analysis
+from .politeness import politeness_ngrams
+from .politeness_analysis import politeness

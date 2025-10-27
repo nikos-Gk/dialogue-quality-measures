@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from DiscQuA.utils import prompt_gpt4
+from discqua.utils import prompt_gpt4
 
 #################################################################################
 

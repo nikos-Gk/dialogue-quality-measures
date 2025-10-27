@@ -1,1 +1,1 @@
-from .controversy import calculate_controversy
+from .controversy import controversy

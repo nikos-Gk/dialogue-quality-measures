@@ -1,6 +1,7 @@
+import sys
 import time
 
-from DiscQuA.utils import dprint, save_dict_2_json
+from discqua.utils import dprint, save_dict_2_json
 
 from .stopwords import stopwords
 
@@ -84,20 +85,23 @@ def get_metrics_contentwords(u1, u2):
     return (number_of_common_words, reply_fraction, op_fraction, jaccard)
 
 
-def calculate_ngramdiversity_response(message_list, disc_id):
+def ngramdiversity(message_list, msgsid_list, disc_id):
     """Computes lexical similarity features between consecutive utterance pairs in a discussion.
     For each adjacent pair, it extracts overlap metrics based on all words, stopwords, and content words.
 
     Args:
         message_list (list[str]):  The list of utterances in the discussion.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
 
     Returns:
         dict[str, dict[str, list[dict[str, float]]]]: A nested dictionary where the top-level key is the discussion ID.
-        Each value maps a pair ID (e.g., "pair_0,1") to a list of dictionaries, each containing language overlap features
+        Each value maps a pair of message IDs to a list of dictionaries, each containing language overlap features
         for all words, stopwords, and content words, respectively.
     """
-
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances = message_list
     language_feat_dict = {}
@@ -111,7 +115,8 @@ def calculate_ngramdiversity_response(message_list, disc_id):
             continue
         utt2_text_iter = utterances[i]
         utt1_text_iter = utterances[i - 1]
-        pair_key = f"pair_{i-1,i}"
+        pair_key = f"pair_{msgsid_list[i-1]}_{msgsid_list[i]}"
+
         number_of_common_words, reply_fraction, op_fraction, jaccard = (
             get_metrics_allwords(utt1_text_iter, utt2_text_iter)
         )

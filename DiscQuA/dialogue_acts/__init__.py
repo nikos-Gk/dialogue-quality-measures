@@ -1,1 +1,1 @@
-from .dialogue_acts import calculate_dialogue_acts
+from .dialogue_acts import dialogue_acts

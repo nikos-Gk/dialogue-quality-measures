@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from convokit import Corpus, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import dprint
+from discqua.utils import dprint
 
 
 def save_stdout_to_image(func, conversation_id, *args, **kwargs):

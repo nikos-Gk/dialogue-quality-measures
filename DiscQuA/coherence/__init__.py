@@ -1,3 +1,3 @@
-from .coherence_discussion import calculate_coherence_conversation
-from .coherence_response import calculate_coherence_response
-from .coherenceEcoh import calculate_coherence_ecoh
+from .coherence_discussion import coherence_disc
+from .coherence_response import coherence_response
+from .coherenceEcoh import coherence_ecoh

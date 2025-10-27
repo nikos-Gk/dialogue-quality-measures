@@ -2,7 +2,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     getModel,
     getUtterances,
@@ -65,10 +65,12 @@ def calculate_response_engagement_score(utts, topic, openAIKEY, model_type, mode
     return annotations_ci
 
 
-def calculate_engagement_response(
+def engagement_response(
     message_list,
     speakers_list,
+    msgsid_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -85,10 +87,12 @@ def calculate_engagement_response(
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
@@ -96,10 +100,10 @@ def calculate_engagement_response(
 
     Returns:
        dict[str, dict[str, float]]: Nested dictionary mapping the discussion ID to a dictionary of per-utterance
-        engagement scores. Each inner dictionary maps utterance IDs (e.g., "utt_0") to a float score between 0 and 100.
+        engagement scores. Each inner dictionary maps message IDs to a float score between 0 and 100.
     """
 
-    validateInputParams(model_type, openAIKEY, model_path)
+    validateInputParams(model_type, openAIKEY, model_path, message_list, msgsid_list)
 
     dprint("info", f"Building corpus of: {len(message_list)} utterances ")
 
@@ -114,7 +118,7 @@ def calculate_engagement_response(
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
-        conv_topic = message_list[0]
+        conv_topic = conver_topic
         dprint(
             "info",
             f"Engagement Score Per Response-Proccessing discussion: {disc_id} with LLM ",
@@ -165,7 +169,7 @@ def calculate_engagement_response(
                 dprint("info", label)
                 counter += 1
                 continue
-            key_iter = "utt_" + str(counter)
+            key_iter = msgsid_list[counter]
             ut_dict[key_iter] = value
             counter += 1
         engagement_scores_per_response[disc_id] = ut_dict

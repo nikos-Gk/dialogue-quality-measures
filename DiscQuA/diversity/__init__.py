@@ -1,3 +1,3 @@
-from .diversity_discussion import calculate_diversity_conversation
-from .diversity_response import calculate_diversity_response
-from .ngram_diversity import calculate_ngramdiversity_response
+from .diversity_discussion import diversity_disc
+from .diversity_response import diversity_response
+from .ngram_diversity import ngramdiversity

@@ -1,1 +1,1 @@
-from .readability_indices import calculate_readability
+from .readability_indices import readability

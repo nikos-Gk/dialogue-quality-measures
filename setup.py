@@ -3,7 +3,7 @@ import pathlib
 import setuptools
 
 setuptools.setup(
-    name="DiscQuA",
+    name="discqua",
     version="0.0.1",
     description="Discussion Quality Aspects",
     long_description=pathlib.Path("README.md").read_text(encoding="utf-8"),
@@ -25,7 +25,7 @@ setuptools.setup(
         "pandas >=1.5.0",
         "convokit==3.1.0",
         "openai==0.28",
-        "llama-cpp-python==0.3.9",
+        # "llama-cpp-python==0.3.9",
     ],
     packages=setuptools.find_packages(),
     include_package_data=True,

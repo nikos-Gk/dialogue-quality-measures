@@ -1,1 +1,1 @@
-from .dispute_tactics import calculate_dispute_tactics
+from .dispute_tactics import dispute_tactics

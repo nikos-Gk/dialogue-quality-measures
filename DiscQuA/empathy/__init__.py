@@ -1,1 +1,1 @@
-from .empathy_intents import expressed_empathy
+from .empathy_intents import empathy

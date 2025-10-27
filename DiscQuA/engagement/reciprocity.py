@@ -1,16 +1,17 @@
+import sys
 import time
 from datetime import datetime
 
 from convokit import Corpus, HyperConvo, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import dprint, save_dict_2_json
+from discqua.utils import dprint, save_dict_2_json
 
 
-def calculate_structure_features(
+def reciprocity(
     message_list, speakers_list, msgsid_list, replyto_list, disc_id, discussion_level
 ):
-    """Extracts structural features from a discussion.Features can be computed over the full discussion or incrementally per utterance.
+    """Extracts reciprocity features from a discussion.Features can be computed over the full discussion or incrementally per utterance.
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
@@ -22,10 +23,11 @@ def calculate_structure_features(
 
 
     Returns:
-        tuple: Two dictionaries:
             - motifs_dict (dict): Contains reciprocity features extracted from the conversation structure.
-            - features_dict (dict): Contains full structural feature vectors per discussion or per utterance span.
     """
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     speakers_unq = set(speakers_list)
     speakers = {speaker: Speaker(id=speaker) for speaker in speakers_unq}
     utterances = []
@@ -76,18 +78,19 @@ def calculate_structure_features(
         features_dict = dt_features_tp.to_dict()
         #############################################################################################################
         save_dict_2_json(motifs_dict, "reciprocity_per_discussion_", disc_id, timestr)
-        save_dict_2_json(
-            features_dict, "structure_fet_per_discussion_", disc_id, timestr
-        )
+        # save_dict_2_json(
+        #    features_dict, "structure_fet_per_discussion_", disc_id, timestr
+        # )
         #############################################################################################################
-        return motifs_dict, features_dict
+        # return motifs_dict, features_dict
+        return motifs_dict
     else:
         output_dict_rec = {}
         output_dict_struct = {}
         for utter_index, utter in enumerate(utterances):
             if utter_index == 0:
                 continue
-            key_iter = "utt_" + str(0) + "-" + str(utter_index)
+            key_iter = str(msgsid_list[0]) + "-" + str(msgsid_list[utter_index])
             corpus = Corpus(utterances=utterances[0 : utter_index + 1])
             # print(f"Corpus for utterances 0 - {utter_index} created successfully.")
             # corpus.print_summary_stats()
@@ -121,6 +124,7 @@ def calculate_structure_features(
                 output_dict_struct[disc_id] = [{key_iter: list(features_dict.values())}]
         #############################################################################################################
         save_dict_2_json(output_dict_rec, "reciprocity_per_ut_", disc_id, timestr)
-        save_dict_2_json(output_dict_struct, "structure_fet_per_ut_", disc_id, timestr)
+        # save_dict_2_json(output_dict_struct, "structure_fet_per_ut_", disc_id, timestr)
         #############################################################################################################
-        return output_dict_rec, output_dict_struct
+        # return output_dict_rec, output_dict_struct
+        return output_dict_rec

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from tqdm import tqdm
 
-from DiscQuA.utils import prompt_gpt4
+from discqua.utils import prompt_gpt4
 
 ini = """Below are two sets of linguistic features for disagreement levels and non-disagreement labels."""
 

@@ -2,7 +2,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     extractFeature,
     getModel,
@@ -70,10 +70,12 @@ def calculate_sentiment_labels(utts, topic, openAIKEY, model_type, model, ctx):
     return annotations_ci
 
 
-def sentiment_analysis(
+def sentiment(
     message_list,
     speakers_list,
+    msgsid_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -85,21 +87,22 @@ def sentiment_analysis(
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
         dict: A dictionary mapping discussion IDs to lists of per-utterance sentiment labels dictionaries.
-              Each entry is keyed by utterance ID (e.g., "utt_0") and contains extracted features.
+              Each entry is keyed by message ID and contains extracted features.
 
     """
-
-    validateInputParams(model_type, openAIKEY, model_path)
+    validateInputParams(model_type, openAIKEY, model_path, message_list, msgsid_list)
     dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
@@ -112,7 +115,7 @@ def sentiment_analysis(
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
-        conv_topic = message_list[0]
+        conv_topic = conver_topic
         dprint("info", f"Sentiment labels-Proccessing discussion: {disc_id} with LLM")
         #
         sentiment_features = calculate_sentiment_labels(
@@ -159,7 +162,7 @@ def sentiment_analysis(
                 counter += 1
                 continue
 
-            key_iter = "utt_" + str(counter)
+            key_iter = str(msgsid_list[counter])
             ut_dict[key_iter] = [feature]
             counter += 1
 

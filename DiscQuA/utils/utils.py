@@ -7,7 +7,8 @@ import time
 
 import openai
 from convokit import Speaker, Utterance
-from llama_cpp import Llama
+
+# from llama_cpp import Llama
 
 logger = logging.getLogger(__name__)
 _OUTPUT_PATH = os.getcwd()
@@ -119,7 +120,13 @@ def extractFeature(feature, label):
     return feature
 
 
-def validateInputParams(model_type, openAIKEY, model_path):
+def validateInputParams(
+    model_type, openAIKEY, model_path, message_list=[], msgsid_list=[]
+):
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
+
     if model_type == "openai" and not openAIKEY:
         print("OpenAI API key does not exist. Scores will not be computed. Exiting")
         sys.exit(1)
@@ -137,7 +144,8 @@ def validateInputParams(model_type, openAIKEY, model_path):
         and model_type != "openai"
         and model_type != "transformers"
     ):
-        print("Expected model type: openai or llama or transformers. Exiting")
+        # print("Expected model type: openai or llama or transformers. Exiting")
+        print("Expected model type: openai  or transformers. Exiting")
         sys.exit(1)
 
     return True
@@ -183,7 +191,8 @@ def prompt_gpt4(prompt, key, model_type, model):
                 result = response
             else:
                 raise ValueError(
-                    "Invalid model_type. Choose 'openai', 'llama' or 'transformers'."
+                    # "Invalid model_type. Choose 'openai', 'llama' or 'transformers'."
+                    "Invalid model_type. Choose 'openai' or 'transformers'."
                 )
             ok = True
         except Exception as ex:
@@ -198,7 +207,7 @@ def prompt_gpt4(prompt, key, model_type, model):
 _cached_models = {}
 
 
-def getModel(model_path, gpu, model_type="llama", device="auto"):
+def getModel(model_path, gpu, model_type="transformers", device="auto"):
     key = (model_path, model_type, device, gpu)
     if key in _cached_models:
         dprint("info", " Using cached model for: {key}")
@@ -239,10 +248,12 @@ def getModel(model_path, gpu, model_type="llama", device="auto"):
         )
         _cached_models[key] = generator
         return generator
-    llm = Llama(
-        model_path=model_path,
-        n_gpu_layers=50 if gpu else 0,
-        n_ctx=4096 * 2,
-    )
-    _cached_models[key] = llm
-    return llm
+    print("MODEL NOT FOUND")
+    sys.exit(1)
+    # llm = Llama(
+    #    model_path=model_path,
+    #    n_gpu_layers=50 if gpu else 0,
+    #    n_ctx=4096 * 2,
+    # )
+    # _cached_models[key] = llm
+    # return llm

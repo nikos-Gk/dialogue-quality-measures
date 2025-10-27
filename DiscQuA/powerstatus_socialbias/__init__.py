@@ -1,2 +1,2 @@
-from .coordination_per_disc_utt import calculate_coordination_per_disc_utt
-from .social_bias import calculate_social_bias
+from .coordination_per_disc_utt import coordination
+from .social_bias import social_bias

@@ -3,7 +3,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     extractFeature,
     getModel,
@@ -118,10 +118,12 @@ def calculate_expressed_empathy_labels(utts, topic, openAIKEY, model_type, model
     return annotations_ci
 
 
-def expressed_empathy(
+def empathy(
     message_list,
     speakers_list,
+    msgsid_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -135,10 +137,12 @@ def expressed_empathy(
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
@@ -146,12 +150,11 @@ def expressed_empathy(
     Returns:
 
         dict[str, dict[str, dict[str, int]]]: Dictionary mapping the discussion ID to a dictionary
-        of utterance-level empathy labels. Each inner dictionary maps utterance IDs (e.g., "utt_0")
-        to a set of extracted expressed empathy features as key-value pairs.
+        of utterance-level empathy labels. Each inner dictionary maps message IDs to a set of extracted expressed empathy features as key-value pairs.
 
     """
 
-    validateInputParams(model_type, openAIKEY, model_path)
+    validateInputParams(model_type, openAIKEY, model_path, message_list, msgsid_list)
     dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
@@ -165,7 +168,7 @@ def expressed_empathy(
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
-        conv_topic = message_list[0]
+        conv_topic = conver_topic
         dprint(
             "info",
             f"Expressed empathy labels Per Response-Proccessing discussion: {disc_id} with LLM ",
@@ -213,7 +216,7 @@ def expressed_empathy(
                 counter += 1
                 continue
 
-            key_iter = "utt_" + str(counter)
+            key_iter = msgsid_list[counter]
             ut_dict[key_iter] = feature
             counter += 1
 

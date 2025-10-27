@@ -1,7 +1,8 @@
 import math
+import sys
 import time
 
-from DiscQuA.utils import dprint, getUtterances, save_dict_2_json
+from discqua.utils import dprint, getUtterances, save_dict_2_json
 
 
 def compute_balance(contributions):
@@ -11,14 +12,13 @@ def compute_balance(contributions):
     return balance
 
 
-def calculate_balanced_participation(
-    message_list, speakers_list, disc_id, discussion_level
-):
+def participation(message_list, speakers_list, msgsid_list, disc_id, discussion_level):
     """Computes participation balance metrics by analyzing the number of messages and total words contributed by each speaker.
     These metrics are used to calculate entropy-based indicators of participation equality.
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
         discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
 
@@ -27,7 +27,9 @@ def calculate_balanced_participation(
               - 'entropy_number_of_messages': Entropy based on speaker message counts.
               - 'entropy_number_of_words': Entropy based on total word counts per speaker.
     """
-
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     if discussion_level:
@@ -140,7 +142,7 @@ def calculate_balanced_participation(
                 disc_sum_number_of_words_dict_temp[disc_id][
                     speaker
                 ] = disc_speaker_number_of_words
-            key_iter = "utt_" + str(0) + "-" + str(utter_index)
+            key_iter = str(msgsid_list[0]) + "-" + str(msgsid_list[utter_index])
             #
             output_dict_turn[key_iter] = {
                 "number_of_messages": list(disc_number_of_messages_dict_temp.values()),

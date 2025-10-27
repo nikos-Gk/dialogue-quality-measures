@@ -1,13 +1,14 @@
+import sys
 import time
 from datetime import datetime
 
 from convokit import Coordination, Corpus, Speaker, Utterance
 from dateutil.relativedelta import relativedelta
 
-from DiscQuA.utils import dprint, save_dict_2_json
+from discqua.utils import dprint, save_dict_2_json
 
 
-def calculate_coordination_per_disc_utt(
+def coordination(
     message_list, speakers_list, msgsid_list, replyto_list, disc_id, discussion_level
 ):
     """Computes linguistic coordination metrics either at the discussion level or at the utterance level
@@ -28,6 +29,9 @@ def calculate_coordination_per_disc_utt(
               -'coord_user_2_allspeaker': Coordination from each user toward all other speakers.
     """
 
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     speakers_unq = set(speakers_list)
     speakers = {speaker: Speaker(id=speaker) for speaker in speakers_unq}
     utterances = []
@@ -162,7 +166,7 @@ def calculate_coordination_per_disc_utt(
                     summary_report=True,
                 )
                 coord_user_2_allspeaker[user] = user_2_allspeakers
-            key_iter = "utt_" + str(0) + "-" + str(utter_index)
+            key_iter = str(msgsid_list[0]) + "-" + str(msgsid_list[utter_index])
             output_dict_turn[key_iter] = {
                 "coord_allspeakers_2_user": coord_allspeakers_2_user,
                 "coord_user_2_allspeaker": coord_user_2_allspeaker,

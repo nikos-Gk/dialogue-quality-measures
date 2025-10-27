@@ -3,7 +3,7 @@ import time
 
 from tqdm import tqdm
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     extractFeature,
     getModel,
@@ -90,10 +90,12 @@ def calculate_social_bias_labels(utts, topic, openAIKEY, model_type, model, ctx)
     return annotations_ci
 
 
-def calculate_social_bias(
+def social_bias(
     message_list,
     speakers_list,
+    msgsid_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -106,18 +108,20 @@ def calculate_social_bias(
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
-        dict: Dictionary containing social bias annotations per utterance for the given discussion.
+        dict: Dictionary containing social bias annotations per message id for the given discussion.
     """
-    validateInputParams(model_type, openAIKEY, model_path)
+    validateInputParams(model_type, openAIKEY, model_path, message_list, msgsid_list)
     dprint("info", f"Building corpus of: {len(message_list)} utterances ")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     llm = None
@@ -130,7 +134,7 @@ def calculate_social_bias(
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
-        conv_topic = message_list[0]
+        conv_topic = conver_topic
         dprint(
             "info", f"Social bias labels-Proccessing discussion: {disc_id} with LLM "
         )
@@ -178,7 +182,7 @@ def calculate_social_bias(
                 counter += 1
                 continue
 
-            key_iter = "utt_" + str(counter)
+            key_iter = msgsid_list[counter]
             ut_dict[key_iter] = [feature]
             counter += 1
 

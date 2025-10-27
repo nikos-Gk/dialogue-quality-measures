@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     getModel,
     getUtterances,
@@ -41,10 +41,11 @@ def calculate_discussion_engagement_score(utts, topic, key, model_type, model):
     return annotations_ci
 
 
-def calculate_engagement_conversation(
+def engagement_disc(
     message_list,
     speakers_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -57,9 +58,10 @@ def calculate_engagement_conversation(
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
@@ -83,7 +85,7 @@ def calculate_engagement_conversation(
         message_list, speakers_list, disc_id, replyto_list=[]
     )
     #
-    conv_topic = message_list[0]
+    conv_topic = conver_topic
     #
     dprint(
         "info", f"Overall Engagement Score-Proccessing discussion: {disc_id} with LLM "

@@ -1,7 +1,7 @@
 import sys
 import time
 
-from DiscQuA.utils import (
+from discqua.utils import (
     dprint,
     extractFeature,
     getModel,
@@ -15,10 +15,12 @@ from DiscQuA.utils import (
 from .arg_qual_dimensions import AQualityDimensions
 
 
-def calculate_arg_dim(
+def arg_dimensions(
     message_list,
     speakers_list,
+    msgsid_list,
     disc_id,
+    conver_topic,
     openAIKEY,
     model_type="openai",
     model_path="",
@@ -33,22 +35,24 @@ def calculate_arg_dim(
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
+        conver_topic(str): The topic of conversation.
         openAIKEY (str): OpenAI API key, required if using OpenAI-based models.
-        model_type (str): Language model type to use, either "openai" or "llama" or "transformers". Defaults to "openai".
-        model_path (str): Path to the model, used only for model_type "llama" or "transformers". Defaults to "".
+        model_type (str): Language model type to use, either "openai" or "transformers". Defaults to "openai".
+        model_path (str): Path to the model, used only for model_type "transformers". Defaults to "".
         gpu (bool): A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU. Defaults to False.
         ctx (int): Number of previous utterances to include as context for each input. Defaults to 1.
-        dimension (str): logic, rhetoric, dialectic, overall
+        dimension (str): logic, rhetoric, dialectic, overall.
         device(str): The device to load the model on. If None, the device will be inferred. Defaults to auto.
 
     Returns:
         dict: A dictionary mapping the discussion ID to a list of per-utterance argument quality annotations.
-              Each utterance is represented by an ID key (e.g., "utt_0") and contains the evaluated quality
+              Each utterance is represented by message ID key and contains the evaluated quality
               dimensions as subfields.
     """
 
-    validateInputParams(model_type, openAIKEY, model_path)
+    validateInputParams(model_type, openAIKEY, model_path, message_list, msgsid_list)
     if dimension not in ["logic", "rhetoric", "dialectic", "overall"]:
         print(
             f"Invalid argument quality dimension: {dimension}. Expected one of ",
@@ -72,9 +76,9 @@ def calculate_arg_dim(
         utterances, speakers = getUtterances(
             message_list, speakers_list, disc_id, replyto_list=[]
         )
-        conv_topic = message_list[0]
+        conv_topic = conver_topic
         dprint(
-            "info", "Argument Quality Dimensions-Proccessing disc: {disc_id} with LLM"
+            "info", f"Argument Quality Dimensions-Proccessing disc: {disc_id} with LLM"
         )
 
         argqualdimensions = AQualityDimensions(
@@ -142,7 +146,8 @@ def calculate_arg_dim(
                 if feature == -1:
                     counter += 1
                     continue
-            key_iter = "utt_" + str(counter)
+            # key_iter = "utt_" + str(counter)
+            key_iter = msgsid_list[counter]
             ut_dict[key_iter] = [feature]
             counter += 1
         if disc_id in arq_dim_per_disc:

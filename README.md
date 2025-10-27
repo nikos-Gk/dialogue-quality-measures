@@ -1,5 +1,5 @@
-# DisQuA: Discussion Quality Aspects
-![Alt Text](images/DisQuA.png)
+# DiscQuA: Discussion Quality Aspects
+![Alt Text](images/DiscQuA.png)
 
 
 # Installation
@@ -28,12 +28,12 @@ In the main.py file you can find examples of usage.
 
 -Users can choose to disable automatic saving of output files.
 ```python
-from DiscQuA import utils
+from discqua import utils
 utils.set_saving_enabled(False)
 ```
 -To specify a custom save path:
 ```python
-from DiscQuA import utils
+from discqua import utils
 saving_path = ""
 utils.set_output_path(saving_path)
 ```
@@ -58,22 +58,24 @@ logging.basicConfig(level=logging.INFO)
 
 -disc_id: A unique identifier for the discussion.
 
+-conver_topic: The topic of the discussion.
+
 -discussion_level: A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
 
 -ctx: Number of previous utterances to include as context for each input.
 
 -openAIKEY: OpenAI API key, required if using OpenAI-based models.
 
--model_type: Specifies the model to use; options are "openai", "llama" or "transformers" .
+-model_type: Specifies the model to use; options are "openai" or "transformers" .
 
--model_path:  Path to the local LlaMA model directory, used only if model_type is "llama" or "transformers".
+-model_path:  Path to the local LlaMA model directory, used only if model_type is "transformers".
 
 -gpu: A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU.
 
 -device: The device to load the model on. If None, the device will be inferred. Defaults to cpu.
 
 # Argument Quality
-## calculate_arg_dim: Argument Quality Aspects (Turn-Level)
+## arg_dimensions: Argument Quality Aspects (Turn-Level)
 This module evaluates the quality of argumentation in individual discussion turns using the taxonomy proposed by Wachsmuth et al. (2017). Leveraging either OpenAI's language models or a locally hosted Llama model, it assigns scores across multiple dimensions of argument quality, with each dimension rated on a scale from 1 (low) to 3 (high).
 
 #### Logic Dimensions:
@@ -114,29 +116,33 @@ This module evaluates the quality of argumentation in individual discussion turn
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
- from DiscQuA import calculate_arg_dim
-    arg_dim_scores = calculate_arg_dim(
-                                        message_list=message_list,
-                                        speakers_list=speakers_list,
-                                        disc_id=disc_id,
-                                        openAIKEY="your key",
-                                        model_type="openai",
-                                        model_path="",
-                                        gpu=False,
-                                        ctx=1,
-                                        dimension="logic",
-                                      )
-    arg_dim_scores = calculate_arg_dim(
-                                        message_list=message_list,
-                                        speakers_list=speakers_list,
-                                        disc_id=disc_id,
-                                        openAIKEY="",
-                                        model_type="transformers",
-                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                        gpu=True,
-                                        ctx=1,
-                                        dimension="logic",
-                                      )
+ from discqua import arg_dimensions
+    arg_dim_scores = arg_dimensions(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    disc_id=disc_id,
+                                    conver_topic=conver_topic,
+                                    openAIKEY="your key",
+                                    model_type="openai",
+                                    model_path="",
+                                    gpu=False,
+                                    ctx=1,
+                                    dimension="logic",
+                                    )
+    arg_dim_scores = arg_dimensions(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    disc_id=disc_id,
+                                    conver_topic=conver_topic,
+                                    openAIKEY="",
+                                    model_type="transformers",
+                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                    gpu=True,
+                                    ctx=1,
+                                    dimension="logic",
+                                    )
 
 where dimension (str): The argument quality dimension to evaluate. Choose from:
             - "logic": Evaluates the internal structure and reasoning of the argument.
@@ -145,7 +151,7 @@ where dimension (str): The argument quality dimension to evaluate. Choose from:
             - "overall": Provides a holistic score across all dimensions.
 
 ```
-## calculate_overall_arg_quality: Overall Argument Quality (Discussion-Level)
+## overall_arg_quality: Overall Argument Quality (Discussion-Level)
 This module evaluates the average overall quality of argumentation across the entire discussion. Leveraging either OpenAI’s language models or a locally hosted Llama model, it returns a discussion-level score that reflects the holistic strength of arguments exchanged throughout the discussion.
 
 #### Scoring Modes:
@@ -157,32 +163,37 @@ This module evaluates the average overall quality of argumentation across the en
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_overall_arg_quality
+from discqua import overall_arg_quality
 
-    overall_argument_quality_score = calculate_overall_arg_quality(
-                                                                    message_list=message_list,
-                                                                    speakers_list=speakers_list,
-                                                                    disc_id=disc_id,
-                                                                    openAIKEY="your key",
-                                                                    model_type="openai",
-                                                                    model_path="",
-                                                                    mode="real",
-                                                                    gpu=False,
-                                                                  )
+    overall_argument_quality_score = overall_arg_quality(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        msgsid_list=msgsid_list,
+                                                        disc_id=disc_id,
+                                                        conver_topic=conver_topic,
+                                                        openAIKEY="your key",
+                                                        model_type="openai",
+                                                        model_path="",
+                                                        mode="real",
+                                                        gpu=False,
+                                                        )
 
-    overall_argument_quality_score = calculate_overall_arg_quality(
-                                                                    message_list=message_list,
-                                                                    speakers_list=speakers_list,
-                                                                    disc_id=disc_id,
-                                                                    openAIKEY="",
-                                                                    model_type="transformers",
-                                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                                    mode="real",
-                                                                    gpu=True,
-                                                                  )                                                                
+    overall_argument_quality_score = overall_arg_quality(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        msgsid_list=msgsid_list,
+                                                        disc_id=disc_id,
+                                                        conver_topic=conver_topic,
+                                                        openAIKEY="",
+                                                        model_type="transformers",
+                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                        mode="real",
+                                                        gpu=True,
+                                                        )
+            
 ```
 # Coherence
-## calculate_coherence_conversation: Coherence Analysis (Discussion-Level)
+## coherence_disc: Coherence Analysis (Discussion-Level)
 This module assesses the overall coherence of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It assesses how logically and contextually connected the messages are across the discussion. The model assigns a coherence score (integer) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Poor coherence (incoherent or disjointed)
@@ -191,29 +202,31 @@ This module assesses the overall coherence of a discussion using OpenAI's langua
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_coherence_conversation
+from discqua import coherence_disc
 
-    coherence_disc_score=calculate_coherence_conversation(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="you key",
-                                                            model_type="openai",
-                                                            model_path="",
-                                                            gpu=False,
-                                                         )
+    coherence_disc_score=coherence_disc(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="you key",
+                                        model_type="openai",
+                                        model_path="",
+                                        gpu=False,
+                                        )
 
-    coherence_disc_score=calculate_coherence_conversation(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="",
-                                                            model_type="transformers",
-                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                            gpu=True,
-                                                         )
+    coherence_disc_score=coherence_disc(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="",
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                        gpu=True,
+                                        )
 ```
-## calculate_coherence_response: Coherence Analysis (Turn-Level) 
+## coherence_response: Coherence Analysis (Turn-Level) 
 This module evaluates the coherence of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it examines how well a message aligns with its conversational context. The model assigns a coherence score (integer number) to each response on a 1-to-5 scale:
 
 - **1** – Incoherent response (off-topic, confusing, or disjointed)
@@ -222,30 +235,34 @@ This module evaluates the coherence of individual responses within a discussion.
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_coherence_response
+from discqua import coherence_response
 
-    score = calculate_coherence_response(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="you key",
-                                            model_type="openai",
-                                            model_path="",
-                                            gpu=False,
-                                            ctx=1,
-                                        )
-    score = calculate_coherence_response(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="",
-                                            model_type="transformers",
-                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=True,
-                                            ctx=1,
-                                        )
+    score = coherence_response(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="you key",
+                                model_type="openai",
+                                model_path="",
+                                gpu=False,
+                                ctx=1,
+                              )
+    score = coherence_response(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="",
+                                model_type="transformers",
+                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                gpu=True,
+                                ctx=1,
+                              )
 ```
-## calculate_coherence_ecoh: Coherence Analysis (Turn-Level) 
+## coherence_ecoh: Coherence Analysis (Turn-Level) 
 
 This module evaluates the coherence of individual responses within a discussion. Using a locally hosted model presented at Mendonça, Trancoso and Lavie (2024), it examines how well a comment aligns with its conversational context. The model assigns a binary coherence label to each response, where:
 
@@ -254,17 +271,17 @@ This module evaluates the coherence of individual responses within a discussion.
 
 
 ```python
-from DiscQuA import calculate_coherence_ecoh
+from discqua import coherence_ecoh
 
-    coherence_booleans = calculate_coherence_ecoh(
-                                                    message_list=message_list,
-                                                    speaker_list=speakers_list,
-                                                    disc_id=disc_id,
-                                                    device="cuda",
-                                                 )
+    coherence_booleans = coherence_ecoh(
+                                        message_list=message_list,
+                                        speaker_list=speakers_list,
+                                        disc_id=disc_id,
+                                        device="cuda",
+                                        )
 ```
 # Controversy
-## calculate_controversy: Controversy Analysis (Discussion and Turn Level)
+## controversy: Controversy Analysis (Discussion and Turn Level)
 This module quantifies the level of controversy in a discussion by analyzing the standard deviation of sentiment scores assigned to individual comments (Avalle et al., 2024). Sentiment scores are derived using a pretrained BERT model.
 
 #### Outputs:
@@ -279,17 +296,85 @@ This module quantifies the level of controversy in a discussion by analyzing the
 
 
 ```python
-from DiscQuA import calculate_controversy
+from discqua import controversy
 
-    unorm_scores, norm_scores = calculate_controversy(
-                                                        message_list=message_list, 
-                                                        disc_id=disc_id, 
-                                                        discussion_level=True
-                                                     )
+    unorm_scores, norm_scores = controversy(
+                                            message_list=message_list, 
+                                            disc_id=disc_id, 
+                                            msgsid_list=msgsid_list,
+                                            discussion_level=True
+                                            )
+```
+
+# Dialogue Acts
+## dialogue_acts: Dialogue Acts Analysis (Turn-Level).
+This module analyzes utterances in a discussion to identify dialogue acts that indicate the deliberative quality of communicative exchanges, following the frameworks presented by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson & Paritosh (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific dialogue act.
+
+#### Dialogue Act Labels:
+
+-Label 0: Interruption - Comment that interrupts a previous utterance.
+
+-Label 1: Explanation - Comment that provides a minimum level of context for the claims or opinions that are expressed.
+
+-Label 2: Causal reasoning - Comment that makes explicit causal connections between any observations, values, or objectives and the claims, conclusions, or recommendations that are made.
+
+-Label 3: Narrative - Comment that employs personall story telling to justify claims or values.
+
+-Label 4: Question - Comment that asks for clarifications or input.
+
+-Label 5: Response - Comment that replies to a question directed toward it.
+
+-Label 6: Advocacy - Comment that explicitly defends or advances the interests or claims of identifiable groups or communities.
+
+-Label 7: Public interest - Comment that attempts to connect claims, policies, or recommendations to the interests of the community as a whole.
+
+-Label 8: Disrespect - Comment that contains insults, dispersions, misrepresentations, name calling, and dismissive or disrespectful statements.
+
+-Label 9: Respect - Comment that contains explicit shows of respect, such as salutations, complements, or apologies.
+
+-Label 10: Counterarguments - Comment that engages with critiques made by other comments or attempts to address or respond to counter claims, concerns, or countervailing evidence.
+
+-Label 11: Constructive proposal - Comment that proposes solutions to shared problems, alternative options, or compromises.
+
+-Label 12: Sarcasm (mocking)- Comment that is primarily a joke, a piece of sarcasm, or a pun intended to get a laugh or be silly but not trying to add information. 
+
+-Label 13: Sarcasm (nomocking)- Comment that uses sarcasm in a non-mocking way (e.g., aimed at devaluing the reference object) but just as a communication function that aligns with the nature of the point that is being made, or necessary to communicate to a particular audience.
+
+*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
+
+
+```python
+from discqua import dialogue_acts
+
+    dialogue_acts_scores = dialogue_acts(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            msgsid_list=msgsid_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="your key",
+                                            model_type="openai",
+                                            model_path="",
+                                            gpu=False,
+                                            ctx=1,
+                                        )
+
+    dialogue_acts_scores = dialogue_acts(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            msgsid_list=msgsid_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
+                                            ctx=1,
+                                        )
 ```
 
 # Dispute Tactics
-## calculate_dispute_tactics: Disagreement Levels and Coordination Labels Analysis (Turn-Level).
+## dispute_tactics: Disagreement Levels and Coordination Labels Analysis (Turn-Level).
 This module analyzes utterances in a discussion to identify levels of disagreement and markers of coordination, based on the annotation framework introduced by De Kock and Vlachos (2022). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific disagreement level or coordination label.
 #### Disagreement levels:
 
@@ -336,31 +421,36 @@ challenging.
 
 
 ```python
-from DiscQuA import calculate_dispute_tactics
+from discqua import dispute_tactics
 
-    disp_tact = calculate_dispute_tactics(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="your key",
-                                            model_type="openai",
-                                            model_path="",
-                                            gpu=False,
-                                            ctx=1,
-                                         )
-    disp_tact = calculate_dispute_tactics(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="",
-                                            model_type="transformers",
-                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=True,
-                                            ctx=1,
-                                         )
+    disp_tact = dispute_tactics(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="your key",
+                                model_type="openai",
+                                model_path="",
+                                gpu=False,
+                                ctx=1,
+                                )
+
+    disp_tact = dispute_tactics(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="",
+                                model_type="transformers",
+                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                gpu=True,
+                                ctx=1,
+                                )
 ```
 # Diversity
-## calculate_diversity_conversation: Diversity Analysis (Discussion-Level)
+## diversity_disc: Diversity Analysis (Discussion-Level)
 This module assesses the diversity of arguments within a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). Diversity in arguments reflects the presence of multiple perspectives, contributing to a richer and more balanced exchange. The model assigns a diversity score (integer number) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Poor diversity (high similarity or repetition in arguments)
@@ -369,30 +459,31 @@ This module assesses the diversity of arguments within a discussion using OpenAI
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_diversity_conversation
+from discqua import diversity_disc
 
 
-    diversity_disc_score = calculate_diversity_conversation(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="your key",
-                                                            model_type="openai",
-                                                            model_path="",
-                                                            gpu=False,
-                                                           )
-
-    diversity_disc_score = calculate_diversity_conversation(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="",
-                                                            model_type="transformers",
-                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                            gpu=True,
-                                                           )
+    diversity_disc_score = diversity_disc(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="your key",
+                                            model_type="openai",
+                                            model_path="",
+                                            gpu=False,
+                                         )
+    diversity_disc_score = diversity_disc(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
+                                         )
 ```
-## calculate_diversity_response: Diversity Analysis (Turn-Level)
+## diversity_response: Diversity Analysis (Turn-Level)
 This module computes diversity scores for each response within a discussion using OpenAI's language models or a locally hosted Llama model. The model assigns a diversity score (integer number) to each response on a 1-to-5 scale, where:
 
 - **1** – Poor diversity (high similarity or repetition in arguments)
@@ -401,30 +492,34 @@ This module computes diversity scores for each response within a discussion usin
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_diversity_response
+from discqua import diversity_response
 
-    diversity_resp_score = calculate_diversity_response(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        openAIKEY="your key",
-                                                        model_type="openai",
-                                                        model_path="",
-                                                        gpu=False,
-                                                        ctx=1,
-                                                       )
-    diversity_resp_score = calculate_diversity_response(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        openAIKEY="",
-                                                        model_type="transformers",
-                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                        gpu=True,
-                                                        ctx=1,
-                                                       )
+    diversity_resp_score = diversity_response(
+                                                message_list=message_list,
+                                                speakers_list=speakers_list,
+                                                msgsid_list=msgsid_list,
+                                                disc_id=disc_id,
+                                                conver_topic=conver_topic,
+                                                openAIKEY="your key",
+                                                model_type="openai",
+                                                model_path="",
+                                                gpu=False,
+                                                ctx=1,
+                                             )
+    diversity_resp_score = diversity_response(
+                                                message_list=message_list,
+                                                speakers_list=speakers_list,
+                                                msgsid_list=msgsid_list,
+                                                disc_id=disc_id,
+                                                conver_topic=conver_topic,
+                                                openAIKEY="",
+                                                model_type="transformers",
+                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                gpu=True,
+                                                ctx=1,
+                                             )
 ```
-## calculate_ngramdiversity_response: Ngram diversity based on word overlap (Turn-level).
+## ngramdiversity: Ngram diversity based on word overlap (Turn-level).
 This module analyzes ngram diversity by measuring word overlap between consecutive messages within a discussion (Tan et al., 2016). It focuses on:
 
 -common words (comwords),
@@ -444,16 +539,17 @@ This module analyzes ngram diversity by measuring word overlap between consecuti
 
 
 ```python
-from DiscQuA import calculate_ngramdiversity_response
+from discqua import ngramdiversity
 
-    lexical_diversity=calculate_ngramdiversity_response(
-                                                        message_list=message_list,
-                                                        disc_id=disc_id,
-                                                       )
+    lexical_diversity=ngramdiversity(
+                                        message_list=message_list,
+                                        msgsid_list=msgsid_list,
+                                        disc_id=disc_id,
+                                    )
 ```
 
 # Empathy
-## expressed_empathy: Empathy Analysis (Turn–Level)
+## empathy: Empathy Analysis (Turn–Level)
 This module analyzes utterances in a discussion to identify empathetic traits, based on the taxonomy introduced by Welivita and Pu (2020). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific empathetic intent.
 #### Labels:
 
@@ -490,31 +586,35 @@ This module analyzes utterances in a discussion to identify empathetic traits, b
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import expressed_empathy
+from discqua import empathy
 
-    expr_empathy_labels = expressed_empathy(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="your key",
-                                            model_type="openai",
-                                            model_path="",
-                                            gpu=False,
-                                            ctx=1,
-                                            )
-    expr_empathy_labels = expressed_empathy(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="",
-                                            model_type="transformers",
-                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=True,
-                                            ctx=1,
-                                            )
+    expr_empathy_labels = empathy(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    disc_id=disc_id,
+                                    conver_topic=conver_topic,
+                                    openAIKEY="your key",
+                                    model_type="openai",
+                                    model_path="",
+                                    gpu=False,
+                                    ctx=1,
+                                 )
+    expr_empathy_labels = empathy(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    disc_id=disc_id,
+                                    conver_topic=conver_topic,
+                                    openAIKEY="",
+                                    model_type="transformers",
+                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                    gpu=True,
+                                    ctx=1,
+                                 )
 ```
 # Engagement
-## calculate_engagement_conversation: Engagement Analysis (Discussion–Level)
+## engagement_disc: Engagement Analysis (Discussion–Level)
 This module assesses the level of engagement within a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). Engagement captures how actively participants contribute and how sustained the interaction is across the discussion. The model assigns an engagement score (integer number) to the entire discussion on a 1-to-5 scale, where:
 
 - **1** – Law engagement (limited interaction, short or shallow exchanges)
@@ -523,28 +623,30 @@ This module assesses the level of engagement within a discussion using OpenAI's 
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_engagement_conversation
+from discqua import engagement_disc
 
-    engagement_disc_score = calculate_engagement_conversation(
-                                                                message_list=message_list,
-                                                                speakers_list=speakers_list,
-                                                                disc_id=disc_id,
-                                                                openAIKEY="your key",
-                                                                model_type="openai",
-                                                                model_path="",
-                                                                gpu=False,
-                                                             )
-    engagement_disc_score = calculate_engagement_conversation(
-                                                                message_list=message_list,
-                                                                speakers_list=speakers_list,
-                                                                disc_id=disc_id,
-                                                                openAIKEY="",
-                                                                model_type="transformers",
-                                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                                gpu=True,
-                                                             )
+    engagement_disc_score = engagement_disc(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="your key",
+                                            model_type="openai",
+                                            model_path="",
+                                            gpu=False,
+                                           )
+    engagement_disc_score = engagement_disc(
+                                            message_list=message_list,
+                                            speakers_list=speakers_list,
+                                            disc_id=disc_id,
+                                            conver_topic=conver_topic,
+                                            openAIKEY="",
+                                            model_type="transformers",
+                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                            gpu=True,
+                                           )
 ```
-## calculate_engagement_response: Engagement Analysis (Turn–Level)
+## engagement_response: Engagement Analysis (Turn–Level)
 This module assigns engagement scores for each response in a discussion using OpenAI's language models or a locally hosted Llama model. Each response is evaluated in context for its engagement quality based on characteristics of variety of response according to the context, likelihood of encouraging the other participant to respond, likelihood of encouraging a quality response from the other participants, interestingness, specificity, and likelihood of creating a sense of belonging for the other participants (Ferron et al., 2023).  The model assigns an engagement score to each response on a continuous scale from 0 to 100, where:
 - **0** – disengaging.
 - **100** – very engaging.
@@ -552,32 +654,60 @@ This module assigns engagement scores for each response in a discussion using Op
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_engagement_response
+from discqua import engagement_response
 
-     engagement_resp_score = calculate_engagement_response(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="your key",
-                                                            model_type="openai",
-                                                            model_path="",
-                                                            gpu=False,
-                                                            ctx=1,
-                                                          )
+     engagement_resp_score = engagement_response(
+                                                    message_list=message_list,
+                                                    speakers_list=speakers_list,
+                                                    msgsid_list=msgsid_list,
+                                                    disc_id=disc_id,
+                                                    conver_topic=conver_topic,
+                                                    openAIKEY="your key",
+                                                    model_type="openai",
+                                                    model_path="",
+                                                    gpu=False,
+                                                    ctx=1,
+                                                )
                                                             
-     engagement_resp_score = calculate_engagement_response(
-                                                            message_list=message_list,
-                                                            speakers_list=speakers_list,
-                                                            disc_id=disc_id,
-                                                            openAIKEY="",
-                                                            model_type="transformers",
-                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                            gpu=False,
-                                                            ctx=1,
-                                                         )
+     engagement_resp_score = engagement_response(
+                                                    message_list=message_list,
+                                                    speakers_list=speakers_list,
+                                                    msgsid_list=msgsid_list,
+                                                    disc_id=disc_id,
+                                                    conver_topic=conver_topic,
+                                                    openAIKEY="",
+                                                    model_type="transformers",
+                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                    gpu=True,
+                                                    ctx=1,
+                                                )
+```
+## reciprocity: Reciprocity Motifs: Serve as proxies for engagement (Discussion and Turn Level)
+This module gives the reciprocity motifs proposed by Zhang et al. (2018). These features help uncover participation patterns and interactional dynamics.
+
+-Reciprocity motif: Occurs when the target of a reply returns to respond to the replier.
+
+-External reciprocity motif: Captures the tedency of a comment to draw responses from speakers beyond its explicit target.
+
+-Dyadic interaction motif: Tracks dyadic (back-and-forth) interactions between pairs of participants across the entire discussion.
+
+-Incoming triads: Cases where a speaker receives replies from two different participants.
+
+-Outgoing triads: Instances where a speaker replies to two different participants.
+
+```python
+from discqua import reciprocity
+ structure_features =reciprocity(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    replyto_list=replyto_list,
+                                    disc_id=disc_id,
+                                    discussion_level=True,
+                                )
 ```
 # Informativeness
-## calculate_informativeness_conversation: Informativeness Analysis (Discussion-Level)
+## informativeness_disc: Informativeness Analysis (Discussion-Level)
 
 This module evaluates the informativeness of a discussion using OpenAI's language models or a locally hosted Llama model (Zhang et al., 2024). It estimates how much relevant, useful, and novel information is conveyed by the participants throughout the discussion. The model assigns an informativeness score (integer) to the entire discussion on a 1-to-5 scale, where:
 
@@ -587,28 +717,30 @@ This module evaluates the informativeness of a discussion using OpenAI's languag
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_informativeness_conversation
+from discqua import informativeness_disc
 
-    informativeness_disc_score = calculate_informativeness_conversation(
-                                                                        message_list=message_list,
-                                                                        speakers_list=speakers_list,
-                                                                        disc_id=disc_id,
-                                                                        openAIKEY="your key",
-                                                                        model_type="openai",
-                                                                        model_path="",
-                                                                        gpu=False,
-                                                                       )
-    informativeness_disc_score = calculate_informativeness_conversation(
-                                                                        message_list=message_list,
-                                                                        speakers_list=speakers_list,
-                                                                        disc_id=disc_id,
-                                                                        openAIKEY="",
-                                                                        model_type="transformers",
-                                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                                        gpu=True,
-                                                                       )
+    informativeness_disc_score = informativeness_disc(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        disc_id=disc_id,
+                                                        conver_topic=conver_topic,
+                                                        openAIKEY="your key",
+                                                        model_type="openai",
+                                                        model_path="",
+                                                        gpu=False,
+                                                     )
+    informativeness_disc_score = informativeness_disc(
+                                                        message_list=message_list,
+                                                        speakers_list=speakers_list,
+                                                        disc_id=disc_id,
+                                                        conver_topic=conver_topic,
+                                                        openAIKEY="",
+                                                        model_type="transformers",
+                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                        gpu=True,
+                                                     )
 ```
-## calculate_informativeness_response: Informativeness Analysis (Turn-Level)
+## informativeness_response: Informativeness Analysis (Turn-Level)
 
 This module evaluates the informativeness of individual responses within a discussion. Using OpenAI's language models or a locally hosted Llama model, it assigns an informativeness score (integer number) to each response on a 1-to-5 scale:
 
@@ -618,92 +750,36 @@ This module evaluates the informativeness of individual responses within a discu
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_informativeness_response
+from discqua import informativeness_response
 
-    informativeness_resp_score = calculate_informativeness_response(
-                                                                    message_list=message_list,
-                                                                    speakers_list=speakers_list,
-                                                                    disc_id=disc_id,
-                                                                    openAIKEY="your key",
-                                                                    model_type="openai",
-                                                                    model_path="",
-                                                                    gpu=False,
-                                                                    ctx=1,
-                                                                   )
-    informativeness_resp_score = calculate_informativeness_response(
-                                                                    message_list=message_list,
-                                                                    speakers_list=speakers_list,
-                                                                    disc_id=disc_id,
-                                                                    openAIKEY="",
-                                                                    model_type="transformers",
-                                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                                    gpu=True,
-                                                                    ctx=1,
-                                                                   )
-```
-# Language Features 
-## calculate_collaboration: Collaboration markers (Discussion and Turn Level)
-This module annotates a discussion or each comment within the discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).
-
-#### Labels:
-
--n_words: The number of words in an utterance.
-
--pron_me: The number of first-person singular pronouns.
-
--pron_we: The number of first-person plural pronouns.
-
--pron_you: The number of second-person pronouns.
-
--pron_3rd: The number of third-person pronouns.
-
--geo: The number of geography-related terms.
-
--meta: The number of meta-discourse terms. Meta terms are associated with the functionalities, actions, and elements within the StreetCrowd environment
-
--certain: The number of words expressing certainty.
-
--hedge: The number of hedging terms (words that indicate uncertainty).
-
--n_introduced: The number of new content words introduced by a user.
-
--n_introduced_w_certain: The number of new content words introduced in an utterance that are also accompanied by certainty terms.
-
--n_introduced_w_hedge: The number of new content words introduced in an utterance that are also accompanied by hedging terms.
-
-```python
-from DiscQuA import calculate_collaboration
-
-    collaboration_scores = calculate_collaboration(
-                                                    collaboration_scores = calculate_collaboration(
-                                                    message_list=message_list,
-                                                    speakers_list=speakers_list,
-                                                    disc_id=disc_id,
-                                                    discussion_level=True,
-                                                  )
-```
-## calculate_readability: Readability Analysis (Turn-Level)
-This module evaluates each utterance in a discussion using four standard readability metrics (Flesch, 1948; Gunning, 1952; Mc Laughlin, 1969; Kincaid, 1975). These measures help assess the complexity of language used at the turn level.
-
-#### Labels:
--Gunning_Fog: Gunning Fog Index-higher values indicate less readable text.
-
--Smog: SMOG index-higher values indicate less readable text.
-
--Flesch: The Flesch Reading Ease score-higher values indicate more readable text.
-
--Flesch_Kincaid: Flesch-Kincaid index-higher values indicate less readable text.
-
-
-```python
-from DiscQuA import calculate_readability
-    
-    readability_scores = calculate_readability(message_list=message_list, disc_id=disc_id)
+    informativeness_resp_score = informativeness_response(
+                                                            message_list=message_list,
+                                                            speakers_list=speakers_list,
+                                                            msgsid_list=msgsid_list,
+                                                            disc_id=disc_id,
+                                                            conver_topic=conver_topic,
+                                                            openAIKEY="your key",
+                                                            model_type="openai",
+                                                            model_path="",
+                                                            gpu=False,
+                                                            ctx=1,
+                                                         )
+    informativeness_resp_score = informativeness_response(
+                                                            message_list=message_list,
+                                                            speakers_list=speakers_list,
+                                                            msgsid_list=msgsid_list,
+                                                            disc_id=disc_id,
+                                                            conver_topic=conver_topic,
+                                                            openAIKEY="",
+                                                            model_type="transformers",
+                                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                            gpu=False,
+                                                            ctx=1,
+                                                         )
 
 ```
 # Persuasiveness 
-
-## calculate_persuasiveness: Persuasiveness Analysis (Discussion-Level)
+## persuasiveness_disc: Persuasiveness Analysis (Discussion-Level)
 
 This module assesses the persuasiveness of arguments exchanged within a discussion using OpenAI's language models or a locally hosted Llama model.The model evaluates the extent to which the arguments are convincing, well-supported, and logically compelling. This reflects the rhetorical strength of the discussion and how effectively participants attempt to sway one another. The model assigns a persuasiveness score (integer) to the entire discussion on a 1-to-5 scale, where:
 
@@ -713,29 +789,30 @@ This module assesses the persuasiveness of arguments exchanged within a discussi
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_persuasiveness
+from discqua import persuasiveness_disc
 
-    persuasiveness_score = calculate_persuasiveness(
-                                                    message_list=message_list,
-                                                    speakers_list=speakers_list,
-                                                    disc_id=disc_id,
-                                                    openAIKEY="your key",
-                                                    model_type="openai",
-                                                    model_path="",
-                                                    gpu=False,
-                                                   )
-
-    persuasiveness_score = calculate_persuasiveness(
-                                                    message_list=message_list,
-                                                    speakers_list=speakers_list,
-                                                    disc_id=disc_id,
-                                                    openAIKEY="",
-                                                    model_type="transformers",
-                                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                    gpu=True,
-                                                   )
+    persuasiveness_score = persuasiveness_disc(
+                                                message_list=message_list,
+                                                speakers_list=speakers_list,
+                                                disc_id=disc_id,
+                                                conver_topic=conver_topic,
+                                                openAIKEY="your key",
+                                                model_type="openai",
+                                                model_path="",
+                                                gpu=False,
+                                              )
+    persuasiveness_score = persuasiveness_disc(
+                                                message_list=message_list,
+                                                speakers_list=speakers_list,
+                                                disc_id=disc_id,
+                                                conver_topic=conver_topic,
+                                                openAIKEY="",
+                                                model_type="transformers",
+                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                                gpu=True,
+                                              )
 ```
-## calculate_persuasion_strategy: Persuasiveness Analysis (Turn-Level)
+## persuasion_strategy: Persuasiveness Analysis (Turn-Level)
 This module analyzes utterances in a discussion to identify persuasion strategies presented by Chen et al. (2025). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific persuasion strategy.
 #### Labels:
 
@@ -774,32 +851,35 @@ This module analyzes utterances in a discussion to identify persuasion strategie
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_persuasion_strategy
+from discqua import persuasion_strategy
 
-    persuasion_strategy = calculate_persuasion_strategy(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        openAIKEY="your key",
-                                                        model_type="openai",
-                                                        model_path="",
-                                                        gpu=False,
-                                                        ctx=1,
-                                                       )
-
-    persuasion_strategy = calculate_persuasion_strategy(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        openAIKEY="",
-                                                        model_type="transformers",
-                                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                        gpu=True,
-                                                        ctx=1,
-                                                       )
+    pers_strategy = persuasion_strategy(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        msgsid_list=msgsid_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="your key",
+                                        model_type="openai",
+                                        model_path="",
+                                        gpu=False,
+                                        ctx=1,
+                                        )
+    pers_strategy = persuasion_strategy(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        msgsid_list=msgsid_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="",
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                        gpu=True,
+                                        ctx=1,
+                                        )
 ```
 # Politeness
-## calculate_politeness: Politeness markers (Discussion and Turn Level)
+## politeness_ngrams: Politeness markers (Discussion and Turn Level)
 This module annotates a discussion or each comment within the discussion with politeness markers, based on the framework presented by Danescu-Niculescu-Mizil et al. (2013).
 
 #### Labels:
@@ -847,18 +927,17 @@ This module annotates a discussion or each comment within the discussion with po
 -Indicative words: The use of indicative mood words like ‘can’ or ‘will’ when preceded by ‘you’ (e.g., Can/Will you . . .).
 
 ```python
-from DiscQuA import calculate_politeness
+from discqua import politeness_ngrams
 
-    politeness_features_scores = calculate_politeness(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        discussion_level=True,
-                                                     )
+    politeness_features_scores = politeness_ngrams(
+                                                    message_list=message_list,
+                                                    speakers_list=speakers_list,
+                                                    msgsid_list=msgsid_list,
+                                                    disc_id=disc_id,
+                                                    discussion_level=True,
+                                                  )
 ```
-
-
-## politeness_analysis: Politeness Analysis (Turn-Level)
+## politeness: Politeness Analysis (Turn-Level)
 
 This module assesses the degree of respect and courtesy expressed in each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a politeness label (integer) on a 1-to-3 scale, where:
 
@@ -868,60 +947,35 @@ This module assesses the degree of respect and courtesy expressed in each uttera
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import politeness_analysis
+from discqua import politeness
 
-    politeness = politeness_analysis(
+    politeness_score = politeness(
                                     message_list=message_list,
                                     speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
                                     disc_id=disc_id,
+                                    conver_topic=conver_topic,
                                     openAIKEY="your key",
                                     model_type="openai",
                                     model_path="",
                                     gpu=False,
                                     ctx=1,
-                                    )
-
-    politeness = politeness_analysis(
+                                 )
+    politeness_score = politeness(
                                     message_list=message_list,
                                     speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
                                     disc_id=disc_id,
+                                    conver_topic=conver_topic,
                                     openAIKEY="",
                                     model_type="transformers",
                                     model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                    gpu=True,
+                                    gpu=False,
                                     ctx=1,
-                                    )
+                                 )
 ```
 # Power, Status and Social Bias
-## calculate_coordination_per_disc_utt: Linguistic Style Coordination (Discussion and Turn Level)
-This module computes linguistic coordination metrics either at the discussion or at the utterance level. For each participant in a discussion, analyzes the extent to which they mirror the linguistic style of those they are responding to, as well as how much others, replying to them, imitate their linguistic style (Danescu-Niculescu-Mizil et al., 2012).
-
--Linguistic Style: articles, auxiliary verbs, conjunctions, adverbs, personal pronouns, impersonal pronouns, prepositions, quantifiers.
-#### Labels:
--coord_allspeakers_2_user: Coordination from all speakers toward each user.
-
--coord_user_2_allspeaker: Coordination from each user toward all other speakers.
-
--agg1: aggegate measure that does not use smoothing assumptions.
-
--agg2: aggegate measure that does use smoothing assumptions.
-
--agg3: aggegate measure that does use (different) smoothing assumptions.
-
-```python
-from DiscQuA import calculate_coordination_per_disc_utt
-
-    coordination_scores = calculate_coordination_per_disc_utt(
-                                                                message_list=message_list,
-                                                                speakers_list=speakers_list,
-                                                                msgsid_list=msgsid_list,
-                                                                replyto_list=replyto_list,
-                                                                disc_id=disc_id,
-                                                                discussion_level=True,
-                                                             )
-```
-
-## calculate_social_bias: Social Bias Analysis (Turn-Level)
+## social_bias: Social Bias Analysis (Turn-Level)
 This module analyzes utterances in a discussion to identify instances where individuals project social biases and stereotypes onto others, based on pragmatic frames introduced by Sap et al. (2020). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) that indicates the presence or absence of a specific type of social bias.
 
 #### Labels:
@@ -941,153 +995,122 @@ This module analyzes utterances in a discussion to identify instances where indi
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import calculate_social_bias
-    social_bias_labels = calculate_social_bias(
-                                                message_list=message_list,
-                                                speakers_list=speakers_list,
-                                                disc_id=disc_id,
-                                                openAIKEY="your key",
-                                                model_type="openai",
-                                                model_path="",
-                                                gpu=False,
-                                                ctx=1,
-                                              )
+from discqua import social_bias
+    social_bias_labels = social_bias(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        msgsid_list=msgsid_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="your key",
+                                        model_type="openai",
+                                        model_path="",
+                                        gpu=False,
+                                        ctx=1,
+                                    )
+    social_bias_labels = social_bias(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        msgsid_list=msgsid_list,
+                                        disc_id=disc_id,
+                                        conver_topic=conver_topic,
+                                        openAIKEY="your key",
+                                        model_type="transformers",
+                                        model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                        gpu=True,
+                                        ctx=1,
+                                    )
 
-    social_bias_labels = calculate_social_bias(
-                                                message_list=message_list,
-                                                speakers_list=speakers_list,
-                                                disc_id=disc_id,
-                                                openAIKEY="",
-                                                model_type="transformers",
-                                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                                gpu=True,
-                                                ctx=1,
-                                              )
 ```
+## coordination: Linguistic Style Coordination (Discussion and Turn Level)
+This module computes linguistic coordination metrics either at the discussion or at the utterance level. For each participant in a discussion, analyzes the extent to which they mirror the linguistic style of those they are responding to, as well as how much others, replying to them, imitate their linguistic style (Danescu-Niculescu-Mizil et al., 2012).
 
-# Dialogue Acts
-## calculate_dialogue_acts: Dialogue Acts Analysis (Turn-Level).
-This module analyzes utterances in a discussion to identify dialogue acts that indicate the deliberative quality of communicative exchanges, following the frameworks presented by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson & Paritosh (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific speech act.
+-Linguistic Style: articles, auxiliary verbs, conjunctions, adverbs, personal pronouns, impersonal pronouns, prepositions, quantifiers.
+#### Labels:
+-coord_allspeakers_2_user: Coordination from all speakers toward each user.
 
-#### Dialogue Act Labels:
+-coord_user_2_allspeaker: Coordination from each user toward all other speakers.
 
--Label 0: Interruption - Comment that interrupts a previous utterance.
+-agg1: aggegate measure that does not use smoothing assumptions.
 
--Label 1: Explanation - Comment that provides a minimum level of context for the claims or opinions that are expressed.
+-agg2: aggegate measure that does use smoothing assumptions.
 
--Label 2: Causal reasoning - Comment that makes explicit causal connections between any observations, values, or objectives and the claims, conclusions, or recommendations that are made.
-
--Label 3: Narrative - Comment that employs personall story telling to justify claims or values.
-
--Label 4: Question - Comment that asks for clarifications or input.
-
--Label 5: Response - Comment that replies to a question directed toward it.
-
--Label 6: Advocacy - Comment that explicitly defends or advances the interests or claims of identifiable groups or communities.
-
--Label 7: Public interest - Comment that attempts to connect claims, policies, or recommendations to the interests of the community as a whole.
-
--Label 8: Disrespect - Comment that contains insults, dispersions, misrepresentations, name calling, and dismissive or disrespectful statements.
-
--Label 9: Respect - Comment that contains explicit shows of respect, such as salutations, complements, or apologies.
-
--Label 10: Counterarguments - Comment that engages with critiques made by other comments or attempts to address or respond to counter claims, concerns, or countervailing evidence.
-
--Label 11: Constructive proposal - Comment that proposes solutions to shared problems, alternative options, or compromises.
-
--Label 12: Sarcasm (mocking)- Comment that is primarily a joke, a piece of sarcasm, or a pun intended to get a laugh or be silly but not trying to add information. 
-
--Label 13: Sarcasm (nomocking)- Comment that uses sarcasm in a non-mocking way (e.g., aimed at devaluing the reference object) but just as a communication function that aligns with the nature of the point that is being made, or necessary to communicate to a particular audience.
-
-*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
-
+-agg3: aggegate measure that does use (different) smoothing assumptions.
 
 ```python
-from DiscQuA import calculate_dialogue_acts
+from discqua import coordination
 
-    dialogue_acts = calculate_dialogue_acts(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="your key",
-                                            model_type="openai",
-                                            model_path="",
-                                            gpu=False,
-                                            ctx=1,
-                                           )
-
-    dialogue_acts = calculate_dialogue_acts(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="",
-                                            model_type="transformers",
-                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=True,
-                                            ctx=1,
-                                           )
+    coordination_scores = coordination(
+                                        message_list=message_list,
+                                        speakers_list=speakers_list,
+                                        msgsid_list=msgsid_list,
+                                        replyto_list=replyto_list,
+                                        disc_id=disc_id,
+                                        discussion_level=True,
+                                      )
 ```
-# Structure Features
-## calculate_structure_features: Structure Analysis (Discussion and Turn Level)
-This module extracts 140 features derived from the structure of discussions, following the framework proposed by Zhang et al. (2018). These features help uncover participation patterns and interactional dynamics.
-#### Example: 
--%_NONZERO[OUTDEGREE over C->c REPLIES]: proportion of participants who have replied during the discussion. 
-#### Reciprocity Motifs: Serve as proxies for engagement (reflect distinctive interaction patterns). 
--Reciprocity motif: Occurs when the target of a reply returns to respond to the replier.
+# Language Features 
+## collaboration: Collaboration markers (Discussion and Turn Level)
+This module annotates a discussion or each comment within the discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).
 
--External reciprocity motif: Captures the tedency of a comment to draw responses from speakers beyond its explicit target.
+#### Labels:
 
--Dyadic interaction motif: Tracks dyadic (back-and-forth) interactions between pairs of participants across the entire discussion.
+-n_words: The number of words in an utterance.
 
--Incoming triads: Cases where a speaker receives replies from two different participants.
+-pron_me: The number of first-person singular pronouns.
 
--Outgoing triads: Instances where a speaker replies to two different participants.
+-pron_we: The number of first-person plural pronouns.
+
+-pron_you: The number of second-person pronouns.
+
+-pron_3rd: The number of third-person pronouns.
+
+-geo: The number of geography-related terms.
+
+-meta: The number of meta-discourse terms. Meta terms are associated with the functionalities, actions, and elements within the StreetCrowd environment
+
+-certain: The number of words expressing certainty.
+
+-hedge: The number of hedging terms (words that indicate uncertainty).
+
+-n_introduced: The number of new content words introduced by a user.
+
+-n_introduced_w_certain: The number of new content words introduced in an utterance that are also accompanied by certainty terms.
+
+-n_introduced_w_hedge: The number of new content words introduced in an utterance that are also accompanied by hedging terms.
 
 ```python
-from DiscQuA import calculate_structure_features
- structure_features =calculate_structure_features(
-                                                    message_list=message_list,
-                                                    speakers_list=speakers_list,
-                                                    msgsid_list=msgsid_list,
-                                                    replyto_list=replyto_list,
-                                                    disc_id=disc_id,
-                                                    discussion_level=True,
-                                                 )
-```
-# Toxicity 
-## calculate_toxicity: Toxicity Analysis (Turn–Level)
-This module assesses the toxicity level of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a toxicity label (integer) on a 1-to-5 scale:
+from discqua import collaboration
 
-- **1** – Not Toxic
-- **5** – Extremely Toxic (highly offensive, threatening, or likely to push others out of the conversation)
-
-*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
-
-```python
-from DiscQuA import calculate_toxicity
-    toxicity_scores = calculate_toxicity(
+    collaboration_scores = collaboration(
                                             message_list=message_list,
                                             speakers_list=speakers_list,
+                                            msgsid_list=msgsid_list,
                                             disc_id=disc_id,
-                                            openAIKEY="your key",
-                                            model_type="openai",
-                                            model_path="",
-                                            gpu=False,
-                                            ctx=1,
+                                            discussion_level=True,
                                         )
-    toxicity_scores = calculate_toxicity(
-                                            message_list=message_list,
-                                            speakers_list=speakers_list,
-                                            disc_id=disc_id,
-                                            openAIKEY="",
-                                            model_type="transformers",
-                                            model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                            gpu=True,
-                                            ctx=1,
-                                        )
+```
+## readability: Readability Analysis (Turn-Level)
+This module evaluates each utterance in a discussion using four standard readability metrics (Flesch, 1948; Gunning, 1952; Mc Laughlin, 1969; Kincaid, 1975). These measures help assess the complexity of language used at the turn level.
+
+#### Labels:
+-Gunning_Fog: Gunning Fog Index-higher values indicate less readable text.
+
+-Smog: SMOG index-higher values indicate less readable text.
+
+-Flesch: The Flesch Reading Ease score-higher values indicate more readable text.
+
+-Flesch_Kincaid: Flesch-Kincaid index-higher values indicate less readable text.
+
+
+```python
+from discqua import readability
+    
+    readability_scores = readability(message_list=message_list, msgsid_list=msgsid_list, disc_id=disc_id)
+
 ```
 # Sentiment
-## sentiment_analysis: Sentiment Analysis (Turn–Level)
+## sentiment: Sentiment Analysis (Turn–Level)
 This module assesses the overall emotional tone of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a sentiment label (integer) on a 0-to-2 scale:
 
 - **0** – Negative
@@ -1097,48 +1120,89 @@ This module assesses the overall emotional tone of each utterance in a discussio
 *Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
 
 ```python
-from DiscQuA import sentiment_analysis
-    sentiment = sentiment_analysis(
-                                    message_list=message_list,
-                                    speakers_list=speakers_list,
-                                    disc_id=disc_id,
-                                    openAIKEY="your key",
-                                    model_type="openai",
-                                    model_path="",
-                                    gpu=False,
-                                    ctx=1,
-                                  )
-    sentiment = sentiment_analysis(
-                                    message_list=message_list,
-                                    speakers_list=speakers_list,
-                                    disc_id=disc_id,
-                                    openAIKEY="",
-                                    model_type="transformers",
-                                    model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
-                                    gpu=True,
-                                    ctx=1,
-                                  )
+from discqua import sentiment
+    sentiment_scores = sentiment(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="your key",
+                                model_type="openai",
+                                model_path="",
+                                gpu=False,
+                                ctx=1,
+                                )
+    sentiment_scores = sentiment(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="",
+                                model_type="transformers",
+                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                gpu=True,
+                                ctx=1,
+                                )
+```
+
+# Toxicity 
+## toxicity: Toxicity Analysis (Turn–Level)
+This module assesses the toxicity level of each utterance in a discussion by employing OpenAI's language models or a locally hosted Llama model. The model assigns a toxicity label (integer) on a 1-to-5 scale:
+
+- **1** – Not Toxic
+- **5** – Extremely Toxic (highly offensive, threatening, or likely to push others out of the conversation)
+
+*Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.*
+
+```python
+from discqua import toxicity
+    toxicity_scores = toxicity(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="your key",
+                                model_type="openai",
+                                model_path="",
+                                gpu=False,
+                                ctx=1,
+                              )
+    toxicity_scores = toxicity(
+                                message_list=message_list,
+                                speakers_list=speakers_list,
+                                msgsid_list=msgsid_list,
+                                disc_id=disc_id,
+                                conver_topic=conver_topic,
+                                openAIKEY="",
+                                model_type="transformers",
+                                model_path="unsloth/Meta-Llama-3.1-8B-Instruct",
+                                gpu=False,
+                                ctx=1,
+                              )
 ```
 # Turn Taking 
-## calculate_balanced_participation: Participation Analysis (Discussion and Turn Level)
+## participation: Participation Analysis (Discussion and Turn Level)
 This module computes the entropy of number of messages and word counts per participant to evaluate participation balance (Niculae and Danescu-Niculescu-Mizil, 2016). Values close to 1 indicate balanced contributions across participants, while values closer to 0 suggest a dominant speaker driving most of the discussion.
 
 ```python
-from DiscQuA import calculate_balanced_participation
+from discqua import participation
 
-    entropy_scores =calculate_balanced_participation(
-                                                        message_list=message_list,
-                                                        speakers_list=speakers_list,
-                                                        disc_id=disc_id,
-                                                        discussion_level=False,
-                                                    )
+    entropy_scores =participation(
+                                    message_list=message_list,
+                                    speakers_list=speakers_list,
+                                    msgsid_list=msgsid_list,
+                                    disc_id=disc_id,
+                                    discussion_level=False,
+                                 )
 ```
-
 ## make_visualization: (Discussion-Level)
 Generates a PNG image that visualizes turn-taking behavior, highlighting how speakers alternate and interact throughout the discussion.
 
 ```python
-from DiscQuA import make_visualization
+from discqua import make_visualization
 
     make_visualization(
                         message_list=message_list,
@@ -1148,6 +1212,7 @@ from DiscQuA import make_visualization
                         disc_id=disc_id,
                       )
 ```
+
 # References
 -Avalle, M., Di Marco, N., Etta, G., Sangiorgio, E., Alipour, S., Bonetti, A., Alvisi, L., Scala, A., Baronchelli, A., Cinelli, M., & Quattrociocchi, W. (2024). Persistent interaction patterns across social media platforms and over time. Nature, 628, 582-589.
 

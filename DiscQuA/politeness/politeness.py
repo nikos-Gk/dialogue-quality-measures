@@ -1,24 +1,31 @@
+import sys
 import time
 
 from convokit import Corpus, PolitenessStrategies, TextParser
 
-from DiscQuA.utils import dprint, getUtterances, save_dict_2_json
+from discqua.utils import dprint, getUtterances, save_dict_2_json
 
 
-def calculate_politeness(message_list, speakers_list, disc_id, discussion_level):
+def politeness_ngrams(
+    message_list, speakers_list, msgsid_list, disc_id, discussion_level
+):
     """Annotates a discussion with politeness markers based on the framework presented by Danescu-Niculescu-Mizil et al. (2013, August),
     either at the discussion level or at the utterance level.
 
     Args:
         message_list (list[str]): The list of utterances in the discussion.
         speakers_list (list[str]): The corresponding list of speakers for each utterance.
+        msgsid_list (list[str]) : List of messages ids corresponding to each utterance.
         disc_id (str): Unique identifier for the discussion.
         discussion_level (bool): A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.
 
     Returns:
         dict: If discussion_level=True, returns a dictionary mapping the discussion ID to an aggregated politeness strategy summary.
-              If utterance-level=False, returns a dictionary mapping the discussion ID to a list of per-utterance politeness strategy summaries.
+              If utterance-level=False, returns a dictionary mapping the discussion ID to a list of per-message IDs politeness strategy summaries.
     """
+    if len(message_list) != len(msgsid_list):
+        print("The lengths of 'message_list' and 'msgsid_list' do not match")
+        sys.exit(1)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     utterances, speakers = getUtterances(message_list, speakers_list, disc_id)
     if discussion_level:
@@ -49,11 +56,11 @@ def calculate_politeness(message_list, speakers_list, disc_id, discussion_level)
             data = politeness_transformer.summarize(corpus, plot=False)
             if disc_id in politenes_per_utt:
                 politenes_per_utt[disc_id].append(
-                    {"utt_" + str(utterance_index): dict(data)}
+                    {str(msgsid_list[utterance_index]): dict(data)}
                 )
             else:
                 politenes_per_utt[disc_id] = [
-                    {"utt_" + str(utterance_index): dict(data)}
+                    {str(msgsid_list[utterance_index]): dict(data)}
                 ]
         save_dict_2_json(politenes_per_utt, "politeness_per_utt", disc_id, timestr)
         return politenes_per_utt

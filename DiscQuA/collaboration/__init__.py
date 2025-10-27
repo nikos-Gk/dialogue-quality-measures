@@ -1,1 +1,1 @@
-from .collaboration import calculate_collaboration
+from .collaboration import collaboration
