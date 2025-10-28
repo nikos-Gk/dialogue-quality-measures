@@ -10,8 +10,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/nikos-Gk/dialogue-quality-measures",
     author="Nikos Gkoumas",
-    author_email="n.goumas@athenarc.gr",
-    licence="Apache-2.0 license",
+    author_email="nikosgoumas@hotmail.gr",
+    licence="Apache-2.0",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
