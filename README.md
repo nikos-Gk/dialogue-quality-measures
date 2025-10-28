@@ -7,7 +7,7 @@
 git clone https://github.com/nikos-Gk/dialogue-quality-measures.git
 cd dialogue-quality-measures
 git fetch --all
-git checkout main
+git checkout package-list-input
 conda create --name discMeasuresEnv python=3.12.0
 conda activate discMeasuresEnv
 pip install -e .
