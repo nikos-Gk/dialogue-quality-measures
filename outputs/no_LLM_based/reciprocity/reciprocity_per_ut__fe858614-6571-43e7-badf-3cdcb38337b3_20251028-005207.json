@@ -1,0 +1,184 @@
+{
+    "fe858614-6571-43e7-badf-3cdcb38337b3": [
+        {
+            "1177539574031867850-1803531266786227527": [
+                {
+                    "count[reciprocity motif]": 0.0,
+                    "count[external reciprocity motif]": 0.0,
+                    "count[dyadic interaction motif]": 0.0,
+                    "count[incoming triads]": 0.0,
+                    "count[outgoing triads]": 0.0
+                }
+            ]
+        },
+        [
+            {
+                "1177539574031867850-1749227735142220698": [
+                    {
+                        "count[reciprocity motif]": 1.0,
+                        "count[external reciprocity motif]": 0.0,
+                        "count[dyadic interaction motif]": 1.0,
+                        "count[incoming triads]": 0.0,
+                        "count[outgoing triads]": 0.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-454109794482785919": [
+                    {
+                        "count[reciprocity motif]": 1.0,
+                        "count[external reciprocity motif]": 1.0,
+                        "count[dyadic interaction motif]": 1.0,
+                        "count[incoming triads]": 1.0,
+                        "count[outgoing triads]": 0.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850--2245127828416994464": [
+                    {
+                        "count[reciprocity motif]": 1.0,
+                        "count[external reciprocity motif]": 2.0,
+                        "count[dyadic interaction motif]": 1.0,
+                        "count[incoming triads]": 1.0,
+                        "count[outgoing triads]": 0.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-2233598285622128570": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 2.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 1.0,
+                        "count[outgoing triads]": 1.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1122889348718222654": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 3.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 2.0,
+                        "count[outgoing triads]": 1.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1109028874001236048": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 4.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 2.0,
+                        "count[outgoing triads]": 2.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-816770070279502423": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 5.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 4.0,
+                        "count[outgoing triads]": 3.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-2220355855625471092": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 6.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 5.0,
+                        "count[outgoing triads]": 4.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850--646014961988845396": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 7.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 6.0,
+                        "count[outgoing triads]": 4.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-2141761966579780005": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 8.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 6.0,
+                        "count[outgoing triads]": 4.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-522571906947457986": [
+                    {
+                        "count[reciprocity motif]": 2.0,
+                        "count[external reciprocity motif]": 9.0,
+                        "count[dyadic interaction motif]": 2.0,
+                        "count[incoming triads]": 6.0,
+                        "count[outgoing triads]": 6.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850-543668564037697037": [
+                    {
+                        "count[reciprocity motif]": 3.0,
+                        "count[external reciprocity motif]": 9.0,
+                        "count[dyadic interaction motif]": 3.0,
+                        "count[incoming triads]": 9.0,
+                        "count[outgoing triads]": 7.0
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "1177539574031867850--1774887048546884962": [
+                    {
+                        "count[reciprocity motif]": 4.0,
+                        "count[external reciprocity motif]": 9.0,
+                        "count[dyadic interaction motif]": 3.0,
+                        "count[incoming triads]": 9.0,
+                        "count[outgoing triads]": 7.0
+                    }
+                ]
+            }
+        ]
+    ]
+}

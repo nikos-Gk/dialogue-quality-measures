@@ -1,0 +1,3950 @@
+{
+    "fe858614-6571-43e7-badf-3cdcb38337b3": [
+        {
+            "1177539574031867850-1803531266786227527": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 1,
+                        "OptimisticNurse42": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 37,
+                        "OptimisticNurse42": 62
+                    }
+                ]
+            },
+            "1177539574031867850-1749227735142220698": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 2,
+                        "OptimisticNurse42": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 115,
+                        "OptimisticNurse42": 62
+                    }
+                ]
+            },
+            "1177539574031867850-454109794482785919": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 2,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 115,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 99
+                    }
+                ]
+            },
+            "1177539574031867850--2245127828416994464": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 2,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 1,
+                        "StoicSamurai99": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 115,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 99,
+                        "StoicSamurai99": 113
+                    }
+                ]
+            },
+            "1177539574031867850-2233598285622128570": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 2,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 115,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 113
+                    }
+                ]
+            },
+            "1177539574031867850-1122889348718222654": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 2,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 1,
+                        "CryptoBro89": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 115,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 113,
+                        "CryptoBro89": 151
+                    }
+                ]
+            },
+            "1177539574031867850-1109028874001236048": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 3,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 1,
+                        "CryptoBro89": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 204,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 113,
+                        "CryptoBro89": 151
+                    }
+                ]
+            },
+            "1177539574031867850-816770070279502423": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 3,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 204,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 151
+                    }
+                ]
+            },
+            "1177539574031867850-2220355855625471092": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 3,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 204,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260
+                    }
+                ]
+            },
+            "1177539574031867850--646014961988845396": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 3,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2,
+                        "ReclusivePoet31": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 204,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260,
+                        "ReclusivePoet31": 124
+                    }
+                ]
+            },
+            "1177539574031867850-2141761966579780005": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 3,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2,
+                        "ReclusivePoet31": 1,
+                        "StoicScholar73": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 204,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260,
+                        "ReclusivePoet31": 124,
+                        "StoicScholar73": 224
+                    }
+                ]
+            },
+            "1177539574031867850-522571906947457986": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 4,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2,
+                        "ReclusivePoet31": 1,
+                        "StoicScholar73": 1
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 371,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260,
+                        "ReclusivePoet31": 124,
+                        "StoicScholar73": 224
+                    }
+                ]
+            },
+            "1177539574031867850-543668564037697037": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 4,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2,
+                        "ReclusivePoet31": 1,
+                        "StoicScholar73": 2
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 371,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260,
+                        "ReclusivePoet31": 124,
+                        "StoicScholar73": 324
+                    }
+                ]
+            },
+            "1177539574031867850--1774887048546884962": {
+                "number_of_messages": [
+                    {
+                        "OptimisticTeacher59": 5,
+                        "OptimisticNurse42": 1,
+                        "AdventureSeeker34": 2,
+                        "StoicSamurai99": 2,
+                        "CryptoBro89": 2,
+                        "ReclusivePoet31": 1,
+                        "StoicScholar73": 2
+                    }
+                ],
+                "sum_of_words": [
+                    {
+                        "OptimisticTeacher59": 453,
+                        "OptimisticNurse42": 62,
+                        "AdventureSeeker34": 234,
+                        "StoicSamurai99": 231,
+                        "CryptoBro89": 260,
+                        "ReclusivePoet31": 124,
+                        "StoicScholar73": 324
+                    }
+                ]
+            }
+        },
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ],
+        [
+            {
+                "1177539574031867850-1803531266786227527": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 1,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 37,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-1749227735142220698": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62
+                        }
+                    ]
+                },
+                "1177539574031867850-454109794482785919": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99
+                        }
+                    ]
+                },
+                "1177539574031867850--2245127828416994464": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 1,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 99,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-2233598285622128570": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113
+                        }
+                    ]
+                },
+                "1177539574031867850-1122889348718222654": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 2,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 115,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-1109028874001236048": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 1,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 113,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-816770070279502423": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 151
+                        }
+                    ]
+                },
+                "1177539574031867850-2220355855625471092": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260
+                        }
+                    ]
+                },
+                "1177539574031867850--646014961988845396": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124
+                        }
+                    ]
+                },
+                "1177539574031867850-2141761966579780005": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 3,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 204,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-522571906947457986": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 1
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 224
+                        }
+                    ]
+                },
+                "1177539574031867850-543668564037697037": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 4,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 371,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                },
+                "1177539574031867850--1774887048546884962": {
+                    "number_of_messages": [
+                        {
+                            "OptimisticTeacher59": 5,
+                            "OptimisticNurse42": 1,
+                            "AdventureSeeker34": 2,
+                            "StoicSamurai99": 2,
+                            "CryptoBro89": 2,
+                            "ReclusivePoet31": 1,
+                            "StoicScholar73": 2
+                        }
+                    ],
+                    "sum_of_words": [
+                        {
+                            "OptimisticTeacher59": 453,
+                            "OptimisticNurse42": 62,
+                            "AdventureSeeker34": 234,
+                            "StoicSamurai99": 231,
+                            "CryptoBro89": 260,
+                            "ReclusivePoet31": 124,
+                            "StoicScholar73": 324
+                        }
+                    ]
+                }
+            }
+        ]
+    ]
+}

@@ -17,6 +17,7 @@ To use the readability measure please ensure that the following resources exist 
 >>> import nltk
 >>> nltk.download('punkt_tab')
 >>> nltk.download('stopwords') 
+>>> nltk.download('averaged_perceptron_tagger_eng')
 ```
 
 # Usage
