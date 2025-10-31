@@ -1,5 +1,5 @@
 # DiscQuA: Discussion Quality Aspects
-![Alt Text](https://github.com/nikos-Gk/dialogue-quality-measures/raw/c36c3cf9ce9dbcaee9af06c8c87cad0423af6fdc/images/discqua.png)
+![Alt Text](https://github.com/nikos-Gk/dialogue-quality-measures/raw/408bb90c79d6b8a428e9d34ed2434ec5edde56c8/images/discqua.png)
 
 # Installation
 ```python
