@@ -2,6 +2,12 @@
 ![Alt Text](https://github.com/nikos-Gk/dialogue-quality-measures/raw/408bb90c79d6b8a428e9d34ed2434ec5edde56c8/images/discqua.png)
 
 # Installation
+## Option 1: Install from PyPI
+```python
+pip install discqua==0.0.1
+```
+## Option 2: Install from Source (Development Mode)
+
 ```python
 git clone https://github.com/nikos-Gk/dialogue-quality-measures.git
 cd dialogue-quality-measures
@@ -12,7 +18,7 @@ conda activate discMeasuresEnv
 pip install -e .
 python -m spacy download en_core_web_sm
 
-To use the readability measure please ensure that the following resources exist in your environment by running the following commands in the python interpreter
+Additional Setup for Readability Measures
 >>> import nltk
 >>> nltk.download('punkt_tab')
 >>> nltk.download('stopwords') 
