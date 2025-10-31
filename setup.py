@@ -13,7 +13,7 @@ setuptools.setup(
     author_email="nikosgoumas@hotmail.gr",
     licence="Apache-2.0",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.10",
